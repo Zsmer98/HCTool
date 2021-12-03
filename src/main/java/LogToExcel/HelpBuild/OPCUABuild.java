@@ -16,11 +16,13 @@ public class OPCUABuild implements LogToExcel<OPCUA> {
         for (LogText text : opcua.getList()) {
             Row r = ExcelUtil.getRow(sheet, row - 1);
             for (String s : text.getList()) {
-                ExcelUtil.setValue(r, style, coltemp++).setCellValue(s);
+                ExcelUtil.setCellValue(r, style, coltemp++).setCellValue(s);
             }
-            ExcelUtil.setValue(r, style, coltemp++).setCellFormula("(" + endcolumn + row + "-" + startcolumn + row + ")/10");
+            ExcelUtil.setCellValue(r, style, coltemp++)
+                    .setCellFormula("(" + endcolumn + row + "-" + startcolumn + row + ")/10");
             if (row != 3) {
-                ExcelUtil.setValue(r, style, coltemp).setCellFormula("(" + startcolumn + row + "-" + endcolumn + (row - 1) + ")/10");
+                ExcelUtil.setCellValue(r, style, coltemp)
+                        .setCellFormula("(" + startcolumn + row + "-" + endcolumn + (row - 1) + ")/10");
             }
             ++row;
             coltemp = column;

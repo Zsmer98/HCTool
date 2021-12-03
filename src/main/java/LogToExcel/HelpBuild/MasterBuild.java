@@ -16,11 +16,14 @@ public class MasterBuild implements LogToExcel<Master> {
         for (LogText text : master.getList()) {
             Row r = ExcelUtil.getRow(sheet, row - 1);
             for (String s : text.getList()) {
-                ExcelUtil.setValue(r, style, coltemp++).setCellValue(Integer.parseInt(s));
+                ExcelUtil.setCellValue(r, style, coltemp++)
+                        .setCellValue(Integer.parseInt(s));
             }
-            ExcelUtil.setValue(r, style, coltemp++).setCellFormula(endcolumn + row + "-" + startcolumn + row);
+            ExcelUtil.setCellValue(r, style, coltemp++)
+                    .setCellFormula(endcolumn + row + "-" + startcolumn + row);
             if (row != 3) {
-                ExcelUtil.setValue(r, style, coltemp).setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
+                ExcelUtil.setCellValue(r, style, coltemp)
+                        .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
             ++row;
             coltemp = column;
