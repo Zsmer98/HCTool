@@ -1,4 +1,4 @@
-package LogToExcel.HelpBuild;
+package LogToExcel.EntityBuild;
 
 import LogToExcel.Log.ExcelUtil;
 import LogToExcel.Log.Log;

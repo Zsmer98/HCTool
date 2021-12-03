@@ -1,9 +1,9 @@
 package LogToExcel;
 
 import FileUtils.ReadFile;
-import LogToExcel.HelpBuild.Demo3DBuild;
-import LogToExcel.HelpBuild.MasterBuild;
-import LogToExcel.HelpBuild.OPCUABuild;
+import LogToExcel.EntityBuild.Demo3DBuild;
+import LogToExcel.EntityBuild.MasterBuild;
+import LogToExcel.EntityBuild.OPCUABuild;
 import LogToExcel.Log.Entity.Demo3D;
 import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Entity.OPCUA;
