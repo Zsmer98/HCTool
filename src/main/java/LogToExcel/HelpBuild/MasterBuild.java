@@ -16,13 +16,13 @@ public class MasterBuild implements LogToExcel<Master> {
         for (LogText text : master.getList()) {
             Row r = ExcelUtil.getRow(sheet, row - 1);
             for (String s : text.getList()) {
-                ExcelUtil.setCellValue(r, style, coltemp++)
+                ExcelUtil.createCellSetStyle(r, style, coltemp++)
                         .setCellValue(Integer.parseInt(s));
             }
-            ExcelUtil.setCellValue(r, style, coltemp++)
+            ExcelUtil.createCellSetStyle(r, style, coltemp++)
                     .setCellFormula(endcolumn + row + "-" + startcolumn + row);
             if (row != 3) {
-                ExcelUtil.setCellValue(r, style, coltemp)
+                ExcelUtil.createCellSetStyle(r, style, coltemp)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
             ++row;

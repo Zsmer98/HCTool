@@ -16,25 +16,21 @@ public interface LogToExcel<T extends Log> {
         style.setAlignment(HorizontalAlignment.CENTER);
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
+        //设置顶部
         int row = 0, col = column;
         sheet.addMergedRegion(new CellRangeAddress(row, row, col, col + t.getHeader().length - 1));
-        ExcelUtil.setValue(ExcelUtil.getRow(sheet, row++), style, col).setCellValue(t.getKey());
+        ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, row++), style, col)
+                .setCellValue(t.getKey());
 
+        //设置列表标题
         for (String head : t.getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
-            ExcelUtil.setValue(ExcelUtil.getRow(sheet, row), style, col++).setCellValue(head);
+            ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, row), style, col++)
+                    .setCellValue(head);
         }
 
         if (t.getList() == null) return;
         setText(t, sheet, column, style);
-
-        String LogPath = t.path + "\\log.xlsx";
-
-        try (FileOutputStream out = new FileOutputStream(LogPath)) {
-            book.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     void setText(T t, Sheet sheet, int column, CellStyle style);

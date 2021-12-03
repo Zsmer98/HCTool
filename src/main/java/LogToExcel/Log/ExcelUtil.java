@@ -11,7 +11,7 @@ public class ExcelUtil {
         return (sheet.getRow(row) == null) ? sheet.createRow(row) : sheet.getRow(row);
     }
 
-    public static Cell setCellValue(Row row, CellStyle style, int column) {
+    public static Cell createCellSetStyle(Row row, CellStyle style, int column) {
         Cell c = row.createCell(column);
         c.setCellStyle(style);
         return c;
