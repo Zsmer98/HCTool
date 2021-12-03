@@ -27,7 +27,6 @@ public class Main {
         new MasterBuild().insertIntoExcel(book, "Master", new Master("StatCSV", path), 0);
 
         try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
-            System.out.println("write");
             book.write(out);
         } catch (IOException e) {
             e.printStackTrace();

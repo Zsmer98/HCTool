@@ -5,9 +5,6 @@ import LogToExcel.Log.Log;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 public interface LogToExcel<T extends Log> {
     default void insertIntoExcel(Workbook book, String sheetname, T t, int column) {
         Sheet sheet = ExcelUtil.getSheet(book, sheetname);
