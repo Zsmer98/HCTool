@@ -1,5 +1,7 @@
-package LogToExcel.Log;
+package LogToExcel.HelpBuild;
 
+import LogToExcel.Log.ExcelUtil;
+import LogToExcel.Log.Log;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 
@@ -16,7 +18,7 @@ public interface LogToExcel<T extends Log> {
 
         int row = 0, col = column;
         sheet.addMergedRegion(new CellRangeAddress(row, row, col, col + t.getHeader().length - 1));
-        ExcelUtil.setValue(ExcelUtil.getRow(sheet, row++), style, col).setCellValue(t.getTitle());
+        ExcelUtil.setValue(ExcelUtil.getRow(sheet, row++), style, col).setCellValue(t.getKey());
 
         for (String head : t.getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
@@ -24,14 +26,16 @@ public interface LogToExcel<T extends Log> {
         }
 
         if (t.getList() == null) return;
-        setText(sheet, column, style);
+        setText(t, sheet, column, style);
 
-        try (FileOutputStream out = new FileOutputStream(t.path + "\\log.xlsx")) {
+        String LogPath = t.path + "\\log.xlsx";
+
+        try (FileOutputStream out = new FileOutputStream(LogPath)) {
             book.write(out);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    void setText(Sheet sheet, int column, CellStyle style);
+    void setText(T t, Sheet sheet, int column, CellStyle style);
 }

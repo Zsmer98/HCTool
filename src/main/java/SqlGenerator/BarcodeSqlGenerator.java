@@ -1,3 +1,5 @@
+package SqlGenerator;
+
 import FileUtils.ReadFile;
 import FileUtils.WriteFile;
 

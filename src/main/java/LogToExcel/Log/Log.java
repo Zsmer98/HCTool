@@ -1,29 +1,30 @@
-package LogToExcel;
+package LogToExcel.Log;
 
 import FileUtils.ReadFile;
 
 import java.io.FileNotFoundException;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
-abstract class Log {
+public abstract class Log {
     //总标题，设置成和读取的关键字相同
-    private final String title;
+    private final String key;
     //列表的标题
     private final String[] header;
     //内容列表
     private List<LogText> texts;
     //文件路径
     public String path;
-    public Log(String title, String[] header, String path) {
-        this.title = title;
+
+    public Log(String key, String[] header, String path) {
+        this.key = key;
         this.header = header;
         this.path = path;
     }
 
-    public String getTitle() {
-        return title;
+    public String getKey() {
+        return key;
     }
 
     public String[] getHeader() {
@@ -50,8 +51,21 @@ abstract class Log {
             LogText t = getDataByRules(s);
             if (t.getList().size() != 0) texts.add(t);//有可能读取到的这一条数据里没有需要的
         }
-        Collections.sort(texts);
+
+        //对得到的数据自定义排序
+        texts.sort(compare());
     }
 
-    abstract LogText getDataByRules(String s);
+    abstract public LogText getDataByRules(String s);
+
+    abstract public Comparator<LogText> compare();
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (LogText text : texts) {
+            sb.append(text.toString()).append("\n");
+        }
+        return sb.toString();
+    }
 }

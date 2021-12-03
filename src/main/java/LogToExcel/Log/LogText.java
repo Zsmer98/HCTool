@@ -1,9 +1,9 @@
-package LogToExcel;
+package LogToExcel.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class LogText implements Comparable<LogText> {
+public class LogText {
     private final List<String> list;
 
     public List<String> getList() {
@@ -16,11 +16,6 @@ class LogText implements Comparable<LogText> {
 
     public LogText(int size) {
         list = new ArrayList<>(size);
-    }
-
-    @Override
-    public int compareTo(LogText logText) {
-        return Integer.parseInt(list.get(0)) - Integer.parseInt(logText.getList().get(0));
     }
 
     @Override
