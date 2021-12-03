@@ -36,7 +36,7 @@ public abstract class Log {
     }
 
     protected void setData(String filepath) {
-        filepath = path + "\\" + filepath;
+        filepath = path + filepath;
         texts = new LinkedList<>();
 
         List<String> file;
