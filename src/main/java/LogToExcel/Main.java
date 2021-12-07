@@ -35,7 +35,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\Zsm\\Desktop";
+        String path = "C:\\Users\\Zsm\\Desktop\\TestLog\\2021-12-06\\17.41.45 Test1";
 
         for (File f : ReadFile.getAllDirectory(path)) {
             new Main().process(f.getPath());

@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class Demo3D extends Log {
     public Demo3D(String key, String path) {
-        super(key, new String[]{"DStart", "DSstop", "包裹长度", "与上个包裹的间隔"}, path);
+        super(key, new String[]{"DStart", "DStop", "包裹长度", "与上个包裹的间隔"}, path);
         super.setData("\\demo3dlog.txt");
     }
 
