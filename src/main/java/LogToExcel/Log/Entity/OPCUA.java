@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 public class OPCUA extends Log {
     public OPCUA(String key, String path) {
-        super(key, new String[]{"CStart", "CSstop", "包裹长度", "与上个包裹的间隔"}, path);
+        super(key, new String[]{"CStart", "CStop", "包裹长度", "与上个包裹的间隔"}, path);
         super.setData("\\opcua-logger.log");
     }
 
