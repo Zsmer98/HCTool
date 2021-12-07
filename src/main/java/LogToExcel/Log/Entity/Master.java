@@ -1,10 +1,11 @@
 package LogToExcel.Log.Entity;
 
+import FileUtils.StringUtils;
 import LogToExcel.Log.Log;
 import LogToExcel.Log.LogText;
 
 import java.util.Comparator;
-import java.util.regex.Pattern;
+import java.util.HashMap;
 
 public class Master extends Log {
     public Master(String key, String path) {
@@ -14,19 +15,28 @@ public class Master extends Log {
 
     @Override
     public LogText getDataByRules(String s) {
-        LogText text = new LogText(super.getHeader().length);
+        String[] keys = {"newStart", "newEnd", "MergeTime", "MergeTimeStamp"};
+        HashMap<String, String> hashMap = StringUtils.getValue(keys, s);
+
+        LogText logText = new LogText(super.getHeader().length);
         if (s.contains(super.getKey())) {
-            for (String number : s.split(",")) {
-                if (Pattern.compile("[0-9]*").matcher(number).matches()) {
-                    text.addElement(number);
-                }
-            }
+            logText.addElement(String.valueOf(
+                    Long.parseLong(hashMap.get(keys[0])) +
+                            Long.parseLong((hashMap.get(keys[3])))
+            ));
+            logText.addElement(String.valueOf(
+                    Long.parseLong(hashMap.get(keys[1])) +
+                            Long.parseLong((hashMap.get(keys[3])))
+            ));
+            logText.addElement(hashMap.get(keys[2]));
         }
-        return text;
+        return logText;
     }
 
     @Override
     public Comparator<LogText> compare() {
-        return Comparator.comparingInt(o -> Integer.parseInt(o.getList().get(0)));
+        return (o1, o2) -> (int)
+                (Long.parseLong(o1.getList().get(0)) -
+                        Long.parseLong(o2.getList().get(0)));
     }
 }

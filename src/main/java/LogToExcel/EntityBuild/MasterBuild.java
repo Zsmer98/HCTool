@@ -1,7 +1,7 @@
 package LogToExcel.EntityBuild;
 
 import LogToExcel.Log.Entity.Master;
-import LogToExcel.Log.ExcelUtil;
+import LogToExcel.Log.LogUtils;
 import LogToExcel.Log.LogText;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,15 +14,17 @@ public class MasterBuild implements LogToExcel<Master> {
         String startcolumn = String.valueOf((char) (column + 'A'));
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
         for (LogText text : master.getList()) {
-            Row r = ExcelUtil.getRow(sheet, row - 1);
-            for (String s : text.getList()) {
-                ExcelUtil.createCellSetStyle(r, style, coltemp++)
-                        .setCellValue(Integer.parseInt(s));
+            Row r = LogUtils.getRow(sheet, row - 1);
+            for (int i = 0; i < 2; ++i) {
+                LogUtils.createCellSetStyle(r, style, coltemp++)
+                        .setCellValue(text.getList().get(i));
             }
-            ExcelUtil.createCellSetStyle(r, style, coltemp++)
+            LogUtils.createCellSetStyle(r, style, coltemp++)
+                    .setCellValue(Integer.parseInt(text.getList().get(2)));
+            LogUtils.createCellSetStyle(r, style, coltemp++)
                     .setCellFormula(endcolumn + row + "-" + startcolumn + row);
             if (row != 3) {
-                ExcelUtil.createCellSetStyle(r, style, coltemp)
+                LogUtils.createCellSetStyle(r, style, coltemp)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
             ++row;
