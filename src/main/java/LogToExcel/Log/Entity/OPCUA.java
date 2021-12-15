@@ -35,7 +35,7 @@ public class OPCUA extends Log implements LogToExcel {
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         //设置顶部
-        int col = column;
+        int row = 2, col = column;
         sheet.addMergedRegion(new CellRangeAddress(0, 0, col, col + getHeader().length - 1));
         ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 0), style, col)
                 .setCellValue(getKey());
@@ -49,24 +49,21 @@ public class OPCUA extends Log implements LogToExcel {
 
         //写入LogText
         if (getList() == null) return;
-        int row = 3;
-        col = column;
         String startcolumn = String.valueOf((char) (column + 'A'));
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
         for (LogText text : getList()) {
-            Row r = ExcelUtil.getRow(sheet, row - 1);
+            col = column;
+            Row r = ExcelUtil.getRow(sheet, row);
             for (String s : text.getList()) {
                 ExcelUtil.createCellSetStyle(r, style, col++)
                         .setCellValue(s);
             }
             ExcelUtil.createCellSetStyle(r, style, col++)
-                    .setCellFormula(endcolumn + row + "-" + startcolumn + row);
-            if (row != 3) {
+                    .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
+            if (row > 3) {
                 ExcelUtil.createCellSetStyle(r, style, col)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
-            ++row;
-            col = column;
         }
     }
 }

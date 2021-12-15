@@ -37,12 +37,12 @@ public class Master extends Log implements LogToExcel {
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         //设置顶部
-        int col = column;
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, col, col + getHeader().length - 1));
-        ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 0), style, col)
+        sheet.addMergedRegion(new CellRangeAddress(0, 0, column, column + getHeader().length - 1));
+        ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 0), style, column)
                 .setCellValue(getKey());
 
         //设置列表标题
+        int row = 2, col = column;
         for (String head : getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
             ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 1), style, col++)
@@ -51,12 +51,11 @@ public class Master extends Log implements LogToExcel {
 
         //写入LogText
         if (getList() == null) return;
-        int row = 3;
-        col = column;
         String startcolumn = String.valueOf((char) (column + 'A'));
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
         for (LogText text : getList()) {
-            Row r = ExcelUtil.getRow(sheet, row - 1);
+            col = column;
+            Row r = ExcelUtil.getRow(sheet, row);
             for (int i = 0; i < 2; ++i) {
                 ExcelUtil.createCellSetStyle(r, style, col++)
                         .setCellValue(text.getList().get(i));
@@ -64,13 +63,11 @@ public class Master extends Log implements LogToExcel {
             ExcelUtil.createCellSetStyle(r, style, col++)
                     .setCellValue(Integer.parseInt(text.getList().get(2)));
             ExcelUtil.createCellSetStyle(r, style, col++)
-                    .setCellFormula(endcolumn + row + "-" + startcolumn + row);
-            if (row != 3) {
+                    .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
+            if (row > 3) {
                 ExcelUtil.createCellSetStyle(r, style, col)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
-            ++row;
-            col = column;
         }
     }
 

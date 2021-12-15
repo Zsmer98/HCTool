@@ -33,7 +33,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String path = ReadFile.getPath("输入待处理的文件夹的路径");
+        String path = "C:\\Users\\Zsm\\Desktop\\2021-12-08\\14.17.57 Test1";
 
         for(File f : ReadFile.getAllDirectory(path)){
             new Main().process(f.getPath());
