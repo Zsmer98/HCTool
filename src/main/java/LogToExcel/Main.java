@@ -40,7 +40,6 @@ public class Main {
             list.add(new OPCUA("PE21", f.getPath()));
             list.add(new Master("StatCSV", f.getPath()));
 
-
             new Main().process(list, f.getPath());
         }
     }
