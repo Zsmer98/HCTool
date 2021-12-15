@@ -1,6 +1,6 @@
 package LoadGenerator;
 
-import FileUtils.WriteFile;
+import Utils.WriteFile;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -30,11 +30,11 @@ public class LoadGenerator {
         //每条线上的包裹数量
         int number;
 
-        System.out.println("Please enter the number of packages on each line.");
+        System.out.println("请输入每条线上的包裹总数：");
         try (Scanner sc = new Scanner(System.in)) {
             number = sc.nextInt();
         } catch (InputMismatchException e) {
-            System.out.println("Incorrect input, please input again");
+            System.out.println("输入格式有误：请重新输入");
             return;
         }
 

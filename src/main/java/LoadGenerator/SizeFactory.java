@@ -7,7 +7,7 @@ import java.util.Random;
 class SizeFactory {
     private final List<Size> sizelist;
     private int all;
-    private final Random r = new Random();
+    private static final Random r = new Random();
 
     public SizeFactory() {
         sizelist = new ArrayList<>();

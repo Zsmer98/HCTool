@@ -1,4 +1,4 @@
-package FileUtils;
+package Utils;
 
 import java.util.HashMap;
 

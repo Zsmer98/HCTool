@@ -1,7 +1,7 @@
 package SqlGenerator;
 
-import FileUtils.ReadFile;
-import FileUtils.WriteFile;
+import Utils.ReadFile;
+import Utils.WriteFile;
 
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -37,7 +37,7 @@ public class BarcodeSqlGenerator {
         if(oldpath == null) return null;
 
         String[] strs = oldpath.split("\\.");
-        StringBuffer sb = new StringBuffer(strs[0]);
+        StringBuilder sb = new StringBuilder(strs[0]);
         for(int i = 1; i < strs.length - 1; ++i){
             sb.append(".").append(strs[i]);
         }

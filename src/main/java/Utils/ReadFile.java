@@ -1,4 +1,4 @@
-package FileUtils;
+package Utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,7 +30,6 @@ public class ReadFile {
 
     /**
      * 读取输入的路径下所有最后一级的文件夹(该文件夹下不包含其他文件夹)
-     *
      * @param path 文件路径
      * @return 返回所有最后一级文件夹
      */
@@ -42,7 +41,6 @@ public class ReadFile {
 
     /**
      * 深度搜索最后一级文件夹
-     *
      * @param f    当前文件夹路径
      * @param list 存储文件夹列表
      */

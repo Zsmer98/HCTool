@@ -1,12 +1,10 @@
 package LogToExcel;
 
-import FileUtils.ReadFile;
-import LogToExcel.EntityBuild.Demo3DBuild;
-import LogToExcel.EntityBuild.MasterBuild;
-import LogToExcel.EntityBuild.OPCUABuild;
 import LogToExcel.Log.Entity.Demo3D;
 import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Entity.OPCUA;
+import Utils.ReadFile;
+import org.apache.batik.ext.awt.geom.RectListManager;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -18,13 +16,13 @@ public class Main {
 
     public void process(String path) {
         //Demo3D的Log处理
-        new Demo3DBuild().insertIntoExcel(book, "Demo3D", new Demo3D("PE20", path), 0);
-        new Demo3DBuild().insertIntoExcel(book, "Demo3D", new Demo3D("PE21", path), 5);
+        new Demo3D("PE20", path).setText(book, 0);
+        new Demo3D("PE21", path).setText(book, 5);
         //OPCUA的Log处理
-        new OPCUABuild().insertIntoExcel(book, "OPCUA", new OPCUA("PE20", path), 0);
-        new OPCUABuild().insertIntoExcel(book, "OPCUA", new OPCUA("PE21", path), 5);
+        new OPCUA("PE20", path).setText(book, 0);
+        new OPCUA("PE21", path).setText(book, 5);
         //Master的Log处理
-        new MasterBuild().insertIntoExcel(book, "Master", new Master("StatCSV", path), 0);
+        new Master("StatCSV", path).setText(book, 0);
 
         try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
             book.write(out);
@@ -35,9 +33,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\Zsm\\Desktop\\TestLog\\2021-12-06\\17.41.45 Test1";
+        String path = ReadFile.getPath("输入待处理的文件夹的路径");
 
-        for (File f : ReadFile.getAllDirectory(path)) {
+        for(File f : ReadFile.getAllDirectory(path)){
             new Main().process(f.getPath());
         }
     }

@@ -1,6 +1,6 @@
 package LogToExcel.Log;
 
-import FileUtils.ReadFile;
+import Utils.ReadFile;
 
 import java.io.FileNotFoundException;
 import java.util.Comparator;

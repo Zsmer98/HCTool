@@ -1,15 +1,9 @@
-import FileUtils.ReadFile;
-import FileUtils.StringUtils;
-import LogToExcel.Log.Entity.Demo3D;
+import Utils.StringUtils;
 import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Log;
-import LogToExcel.Log.LogText;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class TestFile {
