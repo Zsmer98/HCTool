@@ -31,9 +31,9 @@ public class Main {
 
     public static void main(String[] args) {
         String path = ReadFile.getPath("输入日志所在的文件夹路径");
+        List<LogToExcel> list = new ArrayList<>();
 
         for (File f : ReadFile.getAllDirectory(path)) {
-            List<LogToExcel> list = new ArrayList<>();
             list.add(new Demo3D("PE20", f.getPath()));
             list.add(new Demo3D("PE21", f.getPath()));
             list.add(new OPCUA("PE20", f.getPath()));
@@ -41,6 +41,7 @@ public class Main {
             list.add(new Master("StatCSV", f.getPath()));
 
             new Main().process(list, f.getPath());
+            list.clear();
         }
     }
 }
