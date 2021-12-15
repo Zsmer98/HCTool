@@ -1,28 +1,25 @@
 package LogToExcel;
 
 import LogToExcel.Log.Entity.Demo3D;
+import LogToExcel.Log.Entity.LogToExcel;
 import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Entity.OPCUA;
 import Utils.ReadFile;
-import org.apache.batik.ext.awt.geom.RectListManager;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     XSSFWorkbook book = new XSSFWorkbook();
 
-    public void process(String path) {
-        //Demo3D的Log处理
-        new Demo3D("PE20", path).setText(book, 0);
-        new Demo3D("PE21", path).setText(book, 5);
-        //OPCUA的Log处理
-        new OPCUA("PE20", path).setText(book, 0);
-        new OPCUA("PE21", path).setText(book, 5);
-        //Master的Log处理
-        new Master("StatCSV", path).setText(book, 0);
+    public void process(List<LogToExcel> list, String path) {
+        for (int i = 0; i < list.size(); ++i) {
+            list.get(i).setText(book, (i % 2) * 5);
+        }
 
         try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
             book.write(out);
@@ -33,10 +30,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\Zsm\\Desktop\\2021-12-08\\14.17.57 Test1";
+        String path = ReadFile.getPath("输入日志所在的文件夹路径");
 
-        for(File f : ReadFile.getAllDirectory(path)){
-            new Main().process(f.getPath());
+        for (File f : ReadFile.getAllDirectory(path)) {
+            List<LogToExcel> list = new ArrayList<>();
+            list.add(new Demo3D("PE20", f.getPath()));
+            list.add(new Demo3D("PE21", f.getPath()));
+            list.add(new OPCUA("PE20", f.getPath()));
+            list.add(new OPCUA("PE21", f.getPath()));
+            list.add(new Master("StatCSV", f.getPath()));
+
+            new Main().process(list, f.getPath());
         }
     }
 }
