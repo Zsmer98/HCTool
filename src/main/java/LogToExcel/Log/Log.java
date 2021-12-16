@@ -63,7 +63,7 @@ public abstract class Log {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(String title : getHeader()){
+        for (String title : getHeader()) {
             sb.append(title).append(" ");
         }
         sb.append("\n");

@@ -14,7 +14,7 @@ public class WriteFile {
                 bufferedWriter.write(t.toString() + "\n");
             }
 
-            System.out.printf("The file located in the %s was created successfully", newfilename);
+            System.out.printf("The file located in the %s was created successfull\n", newfilename);
         } catch (IOException e) {
             System.out.println("Write failed. Please try again");
             e.printStackTrace();
