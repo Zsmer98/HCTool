@@ -18,13 +18,13 @@ public class BarcodeSqlGenerator {
     public String toString() {
         return "INSERT INTO scc.dsi_sortinginfo (dsi_waybill_no, dsi_cde_destcode,dsi_updatetime,dsi_createtime,dsi_modtime) VALUES ('" +
                 Dsi_waybill_no + "', '" +
-                "D" + (Dsi_cde_destcode % 6 + 1) + "', " +
+                "D" + Dsi_cde_destcode + "', " +
                 Dsi_updatetime + ", " +
                 Dsi_createtime + ", " +
                 Dsi_modtime + ");";
     }
 
-    public BarcodeSqlGenerator(String Dsi_waybill_no, int Dsi_cde_destcode){
+    public BarcodeSqlGenerator(String Dsi_waybill_no, int Dsi_cde_destcode) {
         this.Dsi_waybill_no = Dsi_waybill_no;
         this.Dsi_cde_destcode = Dsi_cde_destcode;
         this.Dsi_updatetime = "1635926698.602";
@@ -33,12 +33,12 @@ public class BarcodeSqlGenerator {
     }
 
 
-    public static String newFilePath(String oldpath){
-        if(oldpath == null) return null;
+    public static String newFilePath(String oldpath) {
+        if (oldpath == null) return null;
 
         String[] strs = oldpath.split("\\.");
         StringBuilder sb = new StringBuilder(strs[0]);
-        for(int i = 1; i < strs.length - 1; ++i){
+        for (int i = 1; i < strs.length - 1; ++i) {
             sb.append(".").append(strs[i]);
         }
 
@@ -56,9 +56,9 @@ public class BarcodeSqlGenerator {
         }
 
         //Processing data
-        if(data == null) return;
+        if (data == null) return;
         List<BarcodeSqlGenerator> list = new LinkedList<>();
-        for(int i = 0; i < data.size(); ++i){
+        for (int i = 0; i < data.size(); ++i) {
             list.add(new BarcodeSqlGenerator(data.get(i), i));
         }
 

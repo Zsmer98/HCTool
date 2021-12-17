@@ -3,9 +3,9 @@ package LoadGenerator;
 import java.util.Random;
 
 public class Load implements Cloneable {
-    private final int length;
-    private final int width;
-    private final int depth;
+    private final double length;
+    private final double width;
+    private final double depth;
     private long PN;
     private Color color;
     //随机生成包裹的比率
@@ -20,15 +20,15 @@ public class Load implements Cloneable {
         return color;
     }
 
-    public int getDepth() {
+    public double getDepth() {
         return depth;
     }
 
-    public int getLength() {
+    public double getLength() {
         return length;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -41,7 +41,7 @@ public class Load implements Cloneable {
         color = Color.values()[Math.floorMod(PN, Color.values().length)];
     }
 
-    public Load(int length, int width, int depth, int probability) {
+    public Load(double length, double width, double depth, int probability) {
         this.length = length;
         this.width = width;
         this.depth = depth;

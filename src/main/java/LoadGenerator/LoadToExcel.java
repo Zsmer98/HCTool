@@ -38,15 +38,15 @@ public class LoadToExcel implements LogToExcel {
         for(LoadInfo loadInfo : list){
             Row r = ExcelUtil.getRow(sheet, ++row);
 
-            ExcelUtil.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getNumber());
-            ExcelUtil.createCellSetStyle(r, style, 1).setCellValue(loadInfo.getLoad().getWidth());
-            ExcelUtil.createCellSetStyle(r, style, 2).setCellValue(loadInfo.getLoad().getLength());
-            ExcelUtil.createCellSetStyle(r, style, 3).setCellValue(loadInfo.getLoad().getDepth());
+            ExcelUtil.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
+            ExcelUtil.createCellSetStyle(r, style, 1).setCellValue(loadInfo.getLoad().getWidth() / 1000);
+            ExcelUtil.createCellSetStyle(r, style, 2).setCellValue(loadInfo.getLoad().getDepth() / 1000);
+            ExcelUtil.createCellSetStyle(r, style, 3).setCellValue(loadInfo.getLoad().getLength() / 1000);
             ExcelUtil.createCellSetStyle(r, style, 4).setCellValue(0);
             ExcelUtil.createCellSetStyle(r, style, 5).setCellValue(0);
             ExcelUtil.createCellSetStyle(r, style, 6).setCellValue(0);
             ExcelUtil.createCellSetStyle(r, style, 7).setCellValue(loadInfo.getLoad().getColor().toString());
-            ExcelUtil.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getNumber());
+            ExcelUtil.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
             ExcelUtil.createCellSetStyle(r, style, 9).setCellValue(loadInfo.getLoad().getPN());
         }
     }

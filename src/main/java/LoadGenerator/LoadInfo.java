@@ -18,8 +18,8 @@ public class LoadInfo {
         return "HMSET 000101_MN" +
                 Line +
                 Number +
-                "_status LE " + load.getLength() +
-                " WI " + load.getWidth() +
+                "_status LE " + (int) load.getLength() +
+                " WI " + (int) load.getWidth() +
                 " PO 0";
     }
 

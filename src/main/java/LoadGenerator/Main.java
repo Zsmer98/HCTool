@@ -3,16 +3,16 @@ package LoadGenerator;
 import SqlGenerator.BarcodeSqlGenerator;
 import Utils.CollectionUtils;
 import Utils.WriteFile;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
 
 public class Main {
-    private static final int LINENUMBER = 4;
+    private static final int LINENUMBER = 4;//总共四条线路
     private final String path;
-    private final List<List<LoadInfo>> lists = new ArrayList<>();
+    private final List<List<LoadInfo>> lists = new ArrayList<>();//每条线路上Load的集合
 
     public Main(int number, String path) {
         this.path = path;
@@ -26,19 +26,19 @@ public class Main {
         }
     }
 
-    public void createTXT() {
-        WriteFile.writeFile(path + "\\Load.txt", CollectionUtils.release(lists));
+    public void createLoadTXT() {
+        WriteFile.writeFile(path + "\\loads.txt", CollectionUtils.release(lists));
     }
 
-    public void createExcel() {
+    public void createLoadExcel() {
         for (int i = 0; i < LINENUMBER; ++i) {
-            XSSFWorkbook book = new XSSFWorkbook();
+            HSSFWorkbook book = new HSSFWorkbook();
             new LoadToExcel(lists.get(i)).setText(book, 0);
 
-            try (FileOutputStream out = new FileOutputStream(path + "\\LoadData" + (i + 1) + ".xlsx")) {
+            try (FileOutputStream out = new FileOutputStream(path + "\\LoadData" + (i + 1) + ".xls")) {
                 book.write(out);
                 System.out.printf("The file located in the %s was created successfull\n",
-                        path + "\\LoadData" + (i + 1) + ".xlsx");
+                        path + "\\LoadData" + (i + 1) + ".xls");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -49,7 +49,9 @@ public class Main {
         List<BarcodeSqlGenerator> list = new LinkedList<>();
         int i = 0;
         for (LoadInfo loadInfo : CollectionUtils.release(lists)) {
-            list.add(new BarcodeSqlGenerator(loadInfo.getLoad().getPN(), i++));
+            list.add(new BarcodeSqlGenerator(
+                    loadInfo.getLoad().getPN(),
+                    loadInfo.getLoad().getColor().ordinal() + 1));
         }
 
         WriteFile.writeFile(path + "\\BarcodeSQL.txt", list);
@@ -66,8 +68,8 @@ public class Main {
             return;
         }
 
-        m.createTXT();
-        m.createExcel();
+        m.createLoadTXT();
+        m.createLoadExcel();
         m.createBarcodeSQL();
     }
 }

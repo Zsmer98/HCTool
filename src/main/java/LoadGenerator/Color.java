@@ -1,11 +1,10 @@
 package LoadGenerator;
 
 public enum Color {
-    WHITE,
-    BLACK,
-    RED,
-    BLUE,
-    YELLOW,
-    PINK,
-    GREEN
+    White,
+    Lime,
+    Crimson,
+    DeepSkyBlue,
+    Orchid,
+    SpringGreen
 }
