@@ -6,5 +6,5 @@ public enum Color {
     Crimson,
     DeepSkyBlue,
     Orchid,
-    SpringGreen
+    Blue
 }
