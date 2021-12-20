@@ -1,6 +1,6 @@
 package LogToExcel.Log;
 
-import Utils.ReadFile;
+import Utils.FileUtils;
 
 import java.io.FileNotFoundException;
 import java.util.Comparator;
@@ -41,7 +41,7 @@ public abstract class Log {
 
         List<String> file;
         try {
-            file = ReadFile.readFile(filepath);
+            file = FileUtils.readFile(filepath);
         } catch (FileNotFoundException e) {
             System.out.printf("%s文件不存在，请确定文件位置或者名称是否正确。%n", filepath);
             return;

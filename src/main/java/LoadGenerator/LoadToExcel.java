@@ -1,7 +1,7 @@
 package LoadGenerator;
 
 import LogToExcel.Log.Entity.LogToExcel;
-import Utils.ExcelUtil;
+import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.*;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class LoadToExcel implements LogToExcel {
 
     @Override
     public void setText(Workbook book, int column) {
-        Sheet sheet = ExcelUtil.getSheet(book, "sheet1");
+        Sheet sheet = ExcelUtils.getSheet(book, "sheet1");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
         style.setAlignment(HorizontalAlignment.CENTER);
@@ -29,25 +29,25 @@ public class LoadToExcel implements LogToExcel {
         int row = 0, col = column;
         for (String head : header) {
             sheet.setColumnWidth(col, 20 * 256);
-            ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 0), style, col++)
+            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 0), style, col++)
                     .setCellValue(head);
         }
 
         if(list.size() == 0) return;
         //写入Load信息
         for(LoadInfo loadInfo : list){
-            Row r = ExcelUtil.getRow(sheet, ++row);
+            Row r = ExcelUtils.getRow(sheet, ++row);
 
-            ExcelUtil.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
-            ExcelUtil.createCellSetStyle(r, style, 1).setCellValue(loadInfo.getLoad().getWidth() / 1000);
-            ExcelUtil.createCellSetStyle(r, style, 2).setCellValue(loadInfo.getLoad().getDepth() / 1000);
-            ExcelUtil.createCellSetStyle(r, style, 3).setCellValue(loadInfo.getLoad().getLength() / 1000);
-            ExcelUtil.createCellSetStyle(r, style, 4).setCellValue(0);
-            ExcelUtil.createCellSetStyle(r, style, 5).setCellValue(0);
-            ExcelUtil.createCellSetStyle(r, style, 6).setCellValue(0);
-            ExcelUtil.createCellSetStyle(r, style, 7).setCellValue(loadInfo.getLoad().getColor().toString());
-            ExcelUtil.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
-            ExcelUtil.createCellSetStyle(r, style, 9).setCellValue(loadInfo.getLoad().getPN());
+            ExcelUtils.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
+            ExcelUtils.createCellSetStyle(r, style, 1).setCellValue(loadInfo.getLoad().getWidth() / 1000);
+            ExcelUtils.createCellSetStyle(r, style, 2).setCellValue(loadInfo.getLoad().getDepth() / 1000);
+            ExcelUtils.createCellSetStyle(r, style, 3).setCellValue(loadInfo.getLoad().getLength() / 1000);
+            ExcelUtils.createCellSetStyle(r, style, 4).setCellValue(0);
+            ExcelUtils.createCellSetStyle(r, style, 5).setCellValue(0);
+            ExcelUtils.createCellSetStyle(r, style, 6).setCellValue(0);
+            ExcelUtils.createCellSetStyle(r, style, 7).setCellValue(loadInfo.getLoad().getColor().toString());
+            ExcelUtils.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
+            ExcelUtils.createCellSetStyle(r, style, 9).setCellValue(loadInfo.getLoad().getPN());
         }
     }
 }

@@ -1,7 +1,6 @@
 package SqlGenerator;
 
-import Utils.ReadFile;
-import Utils.WriteFile;
+import Utils.FileUtils;
 
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -47,10 +46,10 @@ public class BarcodeSqlGenerator {
     }
 
     public static void main(String[] args) {
-        String oldpath = ReadFile.getPath("请输入文件路径");
+        String oldpath = FileUtils.getPath("请输入文件路径");
         List<String> data = null;
         try {
-            data = ReadFile.readFile(oldpath);
+            data = FileUtils.readFile(oldpath);
         } catch (FileNotFoundException e) {
             System.out.printf("%s文件不存在，请确定文件位置或者名称是否正确。", oldpath);
         }
@@ -62,6 +61,6 @@ public class BarcodeSqlGenerator {
             list.add(new BarcodeSqlGenerator(data.get(i), i));
         }
 
-        WriteFile.writeFile(newFilePath(oldpath), list);
+        FileUtils.writeFile(newFilePath(oldpath), list);
     }
 }

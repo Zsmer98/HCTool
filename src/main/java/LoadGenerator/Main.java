@@ -2,7 +2,7 @@ package LoadGenerator;
 
 import SqlGenerator.BarcodeSqlGenerator;
 import Utils.CollectionUtils;
-import Utils.WriteFile;
+import Utils.FileUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.FileOutputStream;
@@ -39,7 +39,7 @@ public class Main {
                 list.add(new LoadInfo(i + 1, String.format("%05d", j + 1), lists.get(i).get(j % pkgnumber).getLoad()));
             }
         }
-        WriteFile.writeFile(path + "\\loads.txt", list);
+        FileUtils.writeFile(path + "\\loads.txt", list);
     }
 
     public void createLoadExcel() {
@@ -65,14 +65,14 @@ public class Main {
                     loadInfo.getLoad().getColor().ordinal() + 1));
         }
 
-        WriteFile.writeFile(path + "\\BarcodeSQL.txt", list);
+        FileUtils.writeFile(path + "\\BarcodeSQL.txt", list);
     }
 
     public static void main(String[] args) {
         int pkgnumber;
 
         System.out.println("请输入每条线上的包裹总数：");
-        try (Scanner sc = new Scanner(System.in);) {
+        try (Scanner sc = new Scanner(System.in)) {
             pkgnumber = sc.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("输入格式有误：请重新输入");

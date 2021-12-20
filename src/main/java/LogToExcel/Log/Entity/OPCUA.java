@@ -3,10 +3,13 @@ package LogToExcel.Log.Entity;
 import LogToExcel.Log.Log;
 import LogToExcel.Log.LogText;
 import Utils.LogUtils;
-import Utils.ExcelUtil;
+import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Comparator;
 
 public class OPCUA extends Log implements LogToExcel {
@@ -28,7 +31,7 @@ public class OPCUA extends Log implements LogToExcel {
 
     @Override
     public void setText(Workbook book, int column) {
-        Sheet sheet = ExcelUtil.getSheet(book, "OPCUA");
+        Sheet sheet = ExcelUtils.getSheet(book, "OPCUA");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
         style.setAlignment(HorizontalAlignment.CENTER);
@@ -37,13 +40,13 @@ public class OPCUA extends Log implements LogToExcel {
         //设置顶部
         int row = 2, col = column;
         sheet.addMergedRegion(new CellRangeAddress(0, 0, col, col + getHeader().length - 1));
-        ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 0), style, col)
+        ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 0), style, col)
                 .setCellValue(getKey());
 
         //设置列表标题
         for (String head : getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
-            ExcelUtil.createCellSetStyle(ExcelUtil.getRow(sheet, 1), style, col++)
+            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 1), style, col++)
                     .setCellValue(head);
         }
 
@@ -53,17 +56,31 @@ public class OPCUA extends Log implements LogToExcel {
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
         for (LogText text : getList()) {
             col = column;
-            Row r = ExcelUtil.getRow(sheet, row);
+            Row r = ExcelUtils.getRow(sheet, row);
             for (String s : text.getList()) {
-                ExcelUtil.createCellSetStyle(r, style, col++)
+                ExcelUtils.createCellSetStyle(r, style, col++)
                         .setCellValue(s);
             }
-            ExcelUtil.createCellSetStyle(r, style, col++)
+            ExcelUtils.createCellSetStyle(r, style, col++)
                     .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
             if (row > 3) {
-                ExcelUtil.createCellSetStyle(r, style, col)
+                ExcelUtils.createCellSetStyle(r, style, col)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
+        }
+    }
+
+    public static void main(String[] args) {
+        String path = "E:\\huanx";
+        XSSFWorkbook book = new XSSFWorkbook();
+
+        new OPCUA("PE01", path).setText(book, 0);
+        new OPCUA("PE02", path).setText(book, 5);
+
+        try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
+            book.write(out);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

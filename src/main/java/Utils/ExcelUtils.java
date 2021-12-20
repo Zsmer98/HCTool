@@ -2,7 +2,7 @@ package Utils;
 
 import org.apache.poi.ss.usermodel.*;
 
-public class ExcelUtil {
+public class ExcelUtils {
     public static Sheet getSheet(Workbook wb, String sheetname) {
         return (wb.getSheet(sheetname) == null) ? wb.createSheet(sheetname) : wb.getSheet(sheetname);
     }

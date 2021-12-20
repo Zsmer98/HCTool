@@ -4,7 +4,7 @@ import LogToExcel.Log.Entity.Demo3D;
 import LogToExcel.Log.Entity.LogToExcel;
 import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Entity.OPCUA;
-import Utils.ReadFile;
+import Utils.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -30,10 +30,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String path = ReadFile.getPath("输入日志所在的文件夹路径");
+        String path = FileUtils.getPath("输入日志所在的文件夹路径");
         List<LogToExcel> list = new ArrayList<>();
 
-        for (File f : ReadFile.getAllDirectory(path)) {
+        for (File f : FileUtils.getAllDirectory(path)) {
             list.add(new Demo3D("PE20", f.getPath()));
             list.add(new Demo3D("PE21", f.getPath()));
             list.add(new OPCUA("PE20", f.getPath()));
