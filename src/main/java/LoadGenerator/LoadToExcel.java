@@ -18,7 +18,7 @@ public class LoadToExcel implements LogToExcel {
     }
 
     @Override
-    public void setText(Workbook book, int column) {
+    public void setText(Workbook book, int row, int column) {
         Sheet sheet = ExcelUtils.getSheet(book, "sheet1");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
@@ -26,7 +26,7 @@ public class LoadToExcel implements LogToExcel {
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         //设置列表标题
-        int row = 0, col = column;
+        int  col = column;
         for (String head : header) {
             sheet.setColumnWidth(col, 20 * 256);
             ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 0), style, col++)

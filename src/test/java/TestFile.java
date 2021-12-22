@@ -6,6 +6,7 @@ import LogToExcel.Log.Entity.Master;
 import LogToExcel.Log.Log;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -13,7 +14,9 @@ public class TestFile {
 
     @Test
     public void test() {
-
+        Date dNow = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat ("yyyy年MM月dd日 HH时mm分ss秒");
+        System.out.println(ft.format(dNow));
     }
 
     @Test

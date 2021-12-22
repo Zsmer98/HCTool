@@ -8,5 +8,5 @@ public interface LogToExcel {
      * @param book 需要插入的工作表
      * @param column 插入的列号
      */
-    void setText(Workbook book, int column);
+    void setText(Workbook book, int row, int column);
 }

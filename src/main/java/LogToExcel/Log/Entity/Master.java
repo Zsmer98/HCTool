@@ -29,7 +29,7 @@ public class Master extends Log implements LogToExcel {
     }
 
     @Override
-    public void setText(Workbook book, int column) {
+    public void setText(Workbook book, int row, int column) {
         Sheet sheet = ExcelUtils.getSheet(book, "Master");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
@@ -37,22 +37,25 @@ public class Master extends Log implements LogToExcel {
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         //设置顶部
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, column, column + getHeader().length - 1));
-        ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 0), style, column)
+        sheet.addMergedRegion(new CellRangeAddress(row, row, column, column + getHeader().length - 1));
+        ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, row++), style, column)
                 .setCellValue(getKey());
 
         //设置列表标题
-        int row = 2, col = column;
+        int col = column;
         for (String head : getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
-            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 1), style, col++)
+            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, row), style, col++)
                     .setCellValue(head);
         }
 
         //写入LogText
+        ++row;
         if (getList() == null) return;
         String startcolumn = String.valueOf((char) (column + 'A'));
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
+        //以后改成stream处理
+        boolean isfirst = true;
         for (LogText text : getList()) {
             col = column;
             Row r = ExcelUtils.getRow(sheet, row);
@@ -64,10 +67,11 @@ public class Master extends Log implements LogToExcel {
                     .setCellValue(Integer.parseInt(text.getList().get(2)));
             ExcelUtils.createCellSetStyle(r, style, col++)
                     .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
-            if (row > 3) {
+            if (!isfirst) {
                 ExcelUtils.createCellSetStyle(r, style, col)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
+            isfirst = false;
         }
     }
 

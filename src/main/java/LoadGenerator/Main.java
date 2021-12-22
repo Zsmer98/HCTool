@@ -45,7 +45,7 @@ public class Main {
     public void createLoadExcel() {
         for (int i = 0; i < Main.LINENUMBER; ++i) {
             HSSFWorkbook book = new HSSFWorkbook();
-            new LoadToExcel(lists.get(i)).setText(book, 0);
+            new LoadToExcel(lists.get(i)).setText(book,0, 0);
 
             try (FileOutputStream out = new FileOutputStream(path + "\\LoadData" + (i + 1) + ".xls")) {
                 book.write(out);

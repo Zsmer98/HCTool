@@ -18,7 +18,7 @@ public class Main {
 
     public void process(List<LogToExcel> list, String path) {
         for (int i = 0; i < list.size(); ++i) {
-            list.get(i).setText(book, (i % 2) * 5);
+            list.get(i).setText(book,0,  (i % 2) * 5);
         }
 
         try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {

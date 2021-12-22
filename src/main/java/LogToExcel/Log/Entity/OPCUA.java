@@ -6,10 +6,7 @@ import Utils.LogUtils;
 import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Comparator;
 
 public class OPCUA extends Log implements LogToExcel {
@@ -30,7 +27,7 @@ public class OPCUA extends Log implements LogToExcel {
     }
 
     @Override
-    public void setText(Workbook book, int column) {
+    public void setText(Workbook book, int row, int column) {
         Sheet sheet = ExcelUtils.getSheet(book, "OPCUA");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
@@ -38,22 +35,24 @@ public class OPCUA extends Log implements LogToExcel {
         style.setVerticalAlignment(VerticalAlignment.CENTER);
 
         //设置顶部
-        int row = 2, col = column;
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, col, col + getHeader().length - 1));
-        ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 0), style, col)
+        int col = column;
+        sheet.addMergedRegion(new CellRangeAddress(row, row, col, col + getHeader().length - 1));
+        ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, row++), style, col)
                 .setCellValue(getKey());
 
         //设置列表标题
         for (String head : getHeader()) {
             sheet.setColumnWidth(col, 20 * 256);
-            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, 1), style, col++)
+            ExcelUtils.createCellSetStyle(ExcelUtils.getRow(sheet, row), style, col++)
                     .setCellValue(head);
         }
 
         //写入LogText
+        ++row;
         if (getList() == null) return;
         String startcolumn = String.valueOf((char) (column + 'A'));
         String endcolumn = String.valueOf((char) (column + 'A' + 1));
+        boolean isfirst = true;
         for (LogText text : getList()) {
             col = column;
             Row r = ExcelUtils.getRow(sheet, row);
@@ -63,24 +62,11 @@ public class OPCUA extends Log implements LogToExcel {
             }
             ExcelUtils.createCellSetStyle(r, style, col++)
                     .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
-            if (row > 3) {
+            if (!isfirst) {
                 ExcelUtils.createCellSetStyle(r, style, col)
                         .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        String path = "E:\\huanx";
-        XSSFWorkbook book = new XSSFWorkbook();
-
-        new OPCUA("PE01", path).setText(book, 0);
-        new OPCUA("PE02", path).setText(book, 5);
-
-        try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
-            book.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
+            isfirst = false;
         }
     }
 }
