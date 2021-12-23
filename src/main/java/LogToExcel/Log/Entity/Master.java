@@ -9,6 +9,8 @@ import org.apache.poi.ss.util.CellRangeAddress;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Master extends Log implements LogToExcel {
     public Master(String key, String path) {
@@ -50,29 +52,32 @@ public class Master extends Log implements LogToExcel {
         }
 
         //写入LogText
-        ++row;
-        if (getList() == null) return;
-        String startcolumn = String.valueOf((char) (column + 'A'));
-        String endcolumn = String.valueOf((char) (column + 'A' + 1));
-        //以后改成stream处理
-        boolean isfirst = true;
-        for (LogText text : getList()) {
-            col = column;
-            Row r = ExcelUtils.getRow(sheet, row);
-            for (int i = 0; i < 2; ++i) {
-                ExcelUtils.createCellSetStyle(r, style, col++)
-                        .setCellValue(text.getList().get(i));
-            }
-            ExcelUtils.createCellSetStyle(r, style, col++)
-                    .setCellValue(Integer.parseInt(text.getList().get(2)));
-            ExcelUtils.createCellSetStyle(r, style, col++)
-                    .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
-            if (!isfirst) {
-                ExcelUtils.createCellSetStyle(r, style, col)
-                        .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
-            }
-            isfirst = false;
-        }
+        final String startcolumn = String.valueOf((char) (column + 'A'));
+        final String endcolumn = String.valueOf((char) (column + 'A' + 1));
+        final AtomicInteger atomicrow = new AtomicInteger(++row);//记录行号
+        final AtomicInteger atomiccol = new AtomicInteger(column);//记录列号
+        final AtomicReference<Row> r = new AtomicReference<>();
+
+        getList()
+                .stream()
+                .peek(logText -> {
+                    atomiccol.set(column);
+                    r.set(ExcelUtils.getRow(sheet, atomicrow.get()));
+                    logText.getList()
+                            .stream()
+                            .limit(2)
+                            .forEach(s -> ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.getAndIncrement())
+                                    .setCellValue(s));
+                    ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.getAndIncrement())
+                            .setCellValue(Integer.parseInt(logText.getList().get(2)));
+                    ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.getAndIncrement())
+                            .setCellFormula(endcolumn + atomicrow.incrementAndGet() + "-" + startcolumn + atomicrow.get());
+                })
+                .skip(1)
+                .forEach(logText ->
+                        ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.get())
+                                .setCellFormula(startcolumn + atomicrow.get() + "-" + endcolumn + (atomicrow.get() - 1))
+                );
     }
 
     //初始修改方法

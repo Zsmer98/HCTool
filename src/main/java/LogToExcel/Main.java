@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 同时处理Demo3D，OPCUA，Master的日志
+ * 三份日志放在同一个文件夹当中，输入文件夹绝对路径即可处理
+ * Demo3D日志名称为：demo3d.txt，OPCUA日志名称为：opcua-logger.log，Master日志名称为：master-logger.log
+ */
 public class Main {
     XSSFWorkbook book = new XSSFWorkbook();
 

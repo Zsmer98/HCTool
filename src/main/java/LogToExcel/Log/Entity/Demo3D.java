@@ -6,8 +6,13 @@ import Utils.LogUtils;
 import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Comparator;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Demo3D extends Log implements LogToExcel {
     public Demo3D(String key, String path) {
@@ -27,7 +32,7 @@ public class Demo3D extends Log implements LogToExcel {
     }
 
     @Override
-    public void setText(Workbook book, int row, int column) {
+    public void setText(Workbook book, int row, final int column) {
         Sheet sheet = ExcelUtils.getSheet(book, "Demo3D");
         //所有表格的数据均设置成上下居中，左右居中
         CellStyle style = book.createCellStyle();
@@ -48,25 +53,40 @@ public class Demo3D extends Log implements LogToExcel {
         }
 
         //写入LogText
-        ++row;
-        boolean isfirst = true;
-        if (getList() == null) return;
-        String startcolumn = String.valueOf((char) (column + 'A'));
-        String endcolumn = String.valueOf((char) (column + 'A' + 1));
-        for (LogText text : getList()) {
-            col = column;
-            Row r = ExcelUtils.getRow(sheet, row);
-            for (String s : text.getList()) {
-                ExcelUtils.createCellSetStyle(r, style, col++)
-                        .setCellValue(Integer.parseInt(s));
-            }
-            ExcelUtils.createCellSetStyle(r, style, col++)
-                    .setCellFormula(endcolumn + (++row) + "-" + startcolumn + row);
-            if (!isfirst) {
-                ExcelUtils.createCellSetStyle(r, style, col)
-                        .setCellFormula(startcolumn + row + "-" + endcolumn + (row - 1));
-            }
-            isfirst = false;
+        final String startcolumn = String.valueOf((char) (column + 'A'));
+        final String endcolumn = String.valueOf((char) (column + 'A' + 1));
+        final AtomicInteger atomicrow = new AtomicInteger(++row);//记录行号
+        final AtomicInteger atomiccol = new AtomicInteger(column);//记录列号
+        final AtomicReference<Row> r = new AtomicReference<>();
+
+        getList()
+                .stream()
+                .peek(logText -> {
+                    atomiccol.set(column);
+                    r.set(ExcelUtils.getRow(sheet, atomicrow.get()));
+                    logText.getList().forEach(s ->
+                            ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.getAndIncrement()).setCellValue(Integer.parseInt(s))
+                    );
+                    ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.getAndIncrement())
+                            .setCellFormula(endcolumn + atomicrow.incrementAndGet() + "-" + startcolumn + atomicrow.get());
+                })
+                .skip(1)
+                .forEach(s ->
+                        ExcelUtils.createCellSetStyle(r.get(), style, atomiccol.get())
+                                .setCellFormula(startcolumn + atomicrow.get() + "-" + endcolumn + (atomicrow.get() - 1))
+                );
+    }
+
+    public static void main(String[] args) {
+        String path = "C:\\Users\\Zsm\\Desktop";
+        XSSFWorkbook book = new XSSFWorkbook();
+
+        new Demo3D("PE20", path).setText(book, 0, 0);
+
+        try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
+            book.write(out);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

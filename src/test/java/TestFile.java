@@ -2,11 +2,10 @@ import LoadGenerator.Load;
 import Utils.FileUtils;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Stream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class TestFile {
@@ -37,26 +36,13 @@ public class TestFile {
 
     @Test
     public void testStream() {
-        class T{
-            int i = 0;
-
-            @Override
-            public boolean equals(Object o){
-                return true;
-            }
-
-            @Override
-            public int hashCode(){
-                return new Random().nextInt(10000);
-            }
-        }
-        T[] ts = {new T(), new T(), new T(), new T(), new T()};
-        Arrays.stream(ts)
-                .distinct()
-                .peek(System.out::println)
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8);
+        final AtomicInteger j = new AtomicInteger();
+        list.stream()
+                .peek(i-> System.out.println(i + " " + (j.incrementAndGet())))
                 .skip(1)
-                .forEach(t -> System.out.println(t.i));
-        System.out.println(new T().equals(new T()));
+                .limit(4)
+                .forEach(i-> System.out.println("ss"));
     }
 
     @Test
