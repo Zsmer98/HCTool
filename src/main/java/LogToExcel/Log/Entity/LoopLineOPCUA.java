@@ -4,6 +4,7 @@ import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -36,7 +37,7 @@ public class LoopLineOPCUA {
     }
 
     public static void main(String[] args) {
-        String path = "D:\\huanxian";
+        String path = "C:\\Users\\Zsm\\Desktop";
         XSSFWorkbook book = new XSSFWorkbook();
 
         String[][] header = {
@@ -47,18 +48,20 @@ public class LoopLineOPCUA {
         };
         new LoopLineOPCUA().setHeader(book, 0, 10, header);
 
-        /*
-         * 需要重写构造器，将key移到setText里
-         */
-        new OPCUA("PE01", path).setText(book, 0, 0);
-        new OPCUA("PE02", path).setText(book, 0, 5);
+        new OPCUA("PE01", path, "spring-boot-logger.log").setText(book, 0, 0);
+        new OPCUA("PE02", path, "spring-boot-logger.log").setText(book, 0, 5);
 
-
-        try (FileOutputStream out = new FileOutputStream(path + "\\" +
-                new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒").format(new Date()) + "log.xlsx")) {
+        String newname = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒").format(new Date());
+        try (FileOutputStream out = new FileOutputStream(path + "\\" + newname + "log.xlsx")) {
             book.write(out);
+            System.out.println("Excel文件写入成功");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        File file = new File(path + "\\spring-boot-logger.log");
+        if(file.renameTo(new File(path + "\\" + newname + "log.log"))){
+            System.out.println("Log文件改名成功");
         }
     }
 }

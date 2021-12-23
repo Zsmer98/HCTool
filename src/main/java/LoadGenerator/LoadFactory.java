@@ -19,7 +19,7 @@ class LoadFactory {
         sizelist.add(new Load(530, 320, 230, 14));
         sizelist.add(new Load(700, 400, 320, 16));
         //sizelist.add(new Load(800, 800, 530, 10));
-        all = (int) sizelist.stream().mapToDouble(Load::getProbability).sum();
+        all = sizelist.stream().mapToInt(Load::getProbability).sum();
     }
 
     //从sizelist里返回一个随机包裹

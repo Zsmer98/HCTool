@@ -11,8 +11,12 @@ import java.util.Comparator;
 
 public class OPCUA extends Log implements LogToExcel {
     public OPCUA(String key, String path) {
+        this(key, path, "opcua-logger.log");
+    }
+
+    public OPCUA(String key, String path, String filename) {
         super(key, new String[]{"CStart", "CStop", "包裹长度", "与上个包裹的间隔"}, path);
-        setData("\\opcua-logger.log");
+        setData("\\" + filename);
     }
 
     @Override
