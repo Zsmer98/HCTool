@@ -37,8 +37,9 @@ public class Load implements Cloneable {
     }
 
     public void setPNColor() {
-        PN = random.nextLong((long) Math.pow(10,13));
+        PN = random.nextLong((long) Math.pow(10,10));
         color = Color.values()[Math.floorMod(PN, Color.values().length)];
+        PN += (color.ordinal() + 191) * ((long) Math.pow(10,10));
     }
 
     public Load(double length, double width, double depth, int probability) {
@@ -53,7 +54,6 @@ public class Load implements Cloneable {
         try {
             Load l = (Load) super.clone();
             l.setPNColor();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
             return l;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();

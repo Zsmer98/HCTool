@@ -30,8 +30,8 @@ public class FileUtils {
     /**
      * 读取输入的路径下所有最后一级的文件夹(该文件夹下不包含其他文件夹)
      *
-     * @param path 文件路径
-     * @return 返回所有最后一级文件夹
+     * @param path  文件路径
+     * @return      返回所有最后一级文件夹
      */
     public static List<File> getAllDirectory(String path) {
         List<File> list = new ArrayList<>();
@@ -73,7 +73,7 @@ public class FileUtils {
                 bufferedWriter.write(t.toString() + "\n");
             }
 
-            System.out.printf("The file located in the %s was created successfull\n", newfilename);
+            System.out.printf("The file located in the %s was created successful\n", newfilename);
         } catch (IOException e) {
             System.out.println("Write failed. Please try again");
             e.printStackTrace();

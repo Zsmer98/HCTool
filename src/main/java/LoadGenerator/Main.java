@@ -45,7 +45,7 @@ public class Main {
     public void createLoadExcel() {
         for (int i = 0; i < Main.LINENUMBER; ++i) {
             HSSFWorkbook book = new HSSFWorkbook();
-            new LoadToExcel(lists.get(i)).setText(book,0, 0);
+            new LoadToExcel(lists.get(i)).setText(book, 0, 0);
 
             try (FileOutputStream out = new FileOutputStream(path + "\\LoadData" + (i + 1) + ".xls")) {
                 book.write(out);
@@ -59,10 +59,12 @@ public class Main {
 
     public void createBarcodeSQL() {
         List<BarcodeSqlGenerator> list = new LinkedList<>();
-        for (LoadInfo loadInfo : CollectionUtils.release(lists)) {
+        List<LoadInfo> loadInfos = CollectionUtils.releaseAll(lists);
+        for (LoadInfo loadInfo : loadInfos) {
             list.add(new BarcodeSqlGenerator(
                     loadInfo.getLoad().getPN(),
-                    loadInfo.getLoad().getColor().ordinal() + 1));
+                    loadInfo.getLoad().getColor().ordinal() + 1)
+            );
         }
 
         FileUtils.writeFile(path + "\\BarcodeSQL.txt", list);
@@ -79,7 +81,7 @@ public class Main {
             return;
         }
 
-        Main m = new Main(pkgnumber, "C:\\Users\\Zsm\\Desktop\\test");
+        Main m = new Main(pkgnumber, "C:\\Users\\Zsm\\Desktop");
         m.createLoadTXT();
         m.createLoadExcel();
         m.createBarcodeSQL();

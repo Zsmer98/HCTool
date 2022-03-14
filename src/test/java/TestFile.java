@@ -1,11 +1,17 @@
+import LoadGenerator.Color;
 import LoadGenerator.Load;
+import Utils.CollectionUtils;
 import Utils.FileUtils;
+import org.apache.batik.gvt.text.ArabicTextHandler;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
+import javax.swing.text.Utilities;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 public class TestFile {
@@ -36,20 +42,160 @@ public class TestFile {
 
     @Test
     public void testStream() {
-        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8);
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
         final AtomicInteger j = new AtomicInteger();
         list.stream()
-                .peek(i-> System.out.println(i + " " + (j.incrementAndGet())))
+                .peek(i -> System.out.println(i + " " + (j.incrementAndGet())))
                 .skip(1)
                 .limit(4)
-                .forEach(i-> System.out.println("ss"));
+                .forEach(i -> System.out.println("ss"));
     }
 
     @Test
-    public void testFile() throws FileNotFoundException {
-        List<String> texts = FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\spring-boot-logger.log");
-
-        texts.forEach(System.out::println);
+    public void testFile() {
+        System.out.println(Arrays.toString(getBinary(16777472, 32)));
     }
 
+    @Test
+    public void testCol() {
+        List<String> l2 = List.of("s", "d");
+        List<Integer> l1 = List.of(1, 2, 3, 4, 5);
+        List<Integer> l = CollectionUtils.releaseAll(List.of(1, 2, 3, 4, l1));
+        l.forEach(System.out::print);
+    }
+
+    public static int[] getBinary(long input, int length) throws NumberFormatException {
+        if (input < 0 || input > ((1L << length) - 1))
+            throw new NumberFormatException();
+
+        int[] result = new int[length];
+        for (int i = 0; i < length; ++i) {
+            result[i] = ((input & (1L << i)) == 0 ? 0 : 1);
+        }
+        return result;
+    }
+
+    @Test
+    public void joining() throws Exception {
+        List<String> list = List.of("a", "b", "c");
+        System.out.println(String.join(",", list));
+        System.out.println(list.stream().collect(Collectors.joining(",")));
+        throw new Exception();
+    }
+
+    @Test
+    public void genSQL() {
+        List<String> nodeUnitList = Arrays.asList(
+                "DS01.BC1002", "DS01.BC1004", "DS01.BV1006", "DS01.BC1008",
+                "DS01.BC1010", "DS01.DV1012", "DS01.BC1014", "DS01.BV1016"
+        );
+
+        //nodeUnitList.forEach(node -> System.out.println("INSERT INTO scc.cau_all_unit VALUES ('101','2" + node.subSequence(7, 11) + "','" + node + "','406')"));
+        nodeUnitList.forEach(node -> System.out.println("INSERT INTO scc.plc_unit_info (" +
+                "unit_id, plc_node_id, unit_alarm_message_start_address, unit_name, unit_status_start_address, unit_type_id) VALUES " +
+                "('2" + node.subSequence(7, 11) + "','101', '" + node + ".Signals', '" + node + "', '" + node + ".Status', '406')"));
+    }
+
+    @Test
+    public void testWrite() {
+        int loop = 100000;
+        int max = 1000;
+        String newfilename = "C:\\Users\\Zsm\\Desktop\\test.csv";
+        List<String> res = new LinkedList<>();
+        while (loop-- > 0) {
+            Random r = new Random();
+            List<Integer> list = List.of(r.nextInt(max), r.nextInt(max), r.nextInt(max), r.nextInt(max), r.nextInt(max), r.nextInt(max));
+            res.add(list.stream().map(Object::toString).collect(Collectors.joining(",")));
+        }
+
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(newfilename), 1);
+            for (String s : res) {
+                bufferedWriter.write(s + "\n");
+            }
+        } catch (IOException | IndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getStatus(String oldBits) {
+        int[] bits = stringToBinary(oldBits, 32);
+
+        if (checkArrayValue(bits, 0)) {
+            return 3;
+        } else if (checkArrayValue(bits, 1, 4, 22, 27)) {
+            return 4;
+        } else if (checkArrayValue(bits, 2)) {
+            return 5;
+        } else if (checkArrayValue(bits, 24, 25, 26)) {
+            return 6;
+        } else if (checkArrayValue(bits, 7)) {
+            return 7;
+        } else if (checkArrayValue(bits, 5)) {
+            return 9;
+        } else if (checkArrayValue(bits, 6)) {
+            return 10;
+        } else if (checkArrayValue(bits, 8)) {
+            return 11;
+        } else if (checkArrayValue(bits, 30)) {
+            return 12;
+        } else {
+            return 1;
+        }
+    }
+
+    public static int[] stringToBinary(String string, int length) {
+        return string == null || string.isEmpty() ?
+                new int[length] :
+                getBinary(Long.parseLong(string), length);
+    }
+
+
+    public static boolean checkArrayValue(int[] array, int... locations) {
+        for (int loc : locations) {
+            if (loc < 0 || loc > array.length - 1)
+                throw new IndexOutOfBoundsException("输入的数组下标存在越界");
+            if (array[loc] != 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Test
+    public void t32() {
+        System.out.println(getStatus("128"));
+    }
+
+
+    @Test
+    public void TestPN2() {
+        Random random = new Random();
+        long PN = random.nextLong((long) Math.pow(10, 10));
+        System.out.println(PN);
+        Color color = Color.values()[Math.floorMod(PN, Color.values().length)];
+        PN += (color.ordinal() + 191) * ((long) Math.pow(10, 10));
+        System.out.println(PN);
+    }
+
+    @Test
+    public void testGetList() {
+        Integer i = 1;
+        String s = "s";
+        List<Object> res = getList(i, s);
+    }
+
+    private static <T> List<T> getList(T e1, T e2) {
+        List<T> res = new ArrayList<>();
+        res.add(e1);
+        res.add(e2);
+        return res;
+    }
+
+    @Test
+    public void TestCollectionutils() {
+        String s = "abc";
+        s.chars().forEach(System.out::println);
+        System.out.println(97 =='a');
+    }
 }

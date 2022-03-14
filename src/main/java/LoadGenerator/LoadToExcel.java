@@ -38,7 +38,7 @@ public class LoadToExcel implements LogToExcel {
         for(LoadInfo loadInfo : list){
             Row r = ExcelUtils.getRow(sheet, ++row);
 
-            ExcelUtils.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
+            ExcelUtils.createCellSetStyle(r, style, 0).setCellValue(loadInfo.getLine() + String.format("%04d", row));
             ExcelUtils.createCellSetStyle(r, style, 1).setCellValue(loadInfo.getLoad().getWidth() / 1000);
             ExcelUtils.createCellSetStyle(r, style, 2).setCellValue(loadInfo.getLoad().getDepth() / 1000);
             ExcelUtils.createCellSetStyle(r, style, 3).setCellValue(loadInfo.getLoad().getLength() / 1000);
@@ -46,7 +46,7 @@ public class LoadToExcel implements LogToExcel {
             ExcelUtils.createCellSetStyle(r, style, 5).setCellValue(0);
             ExcelUtils.createCellSetStyle(r, style, 6).setCellValue(0);
             ExcelUtils.createCellSetStyle(r, style, 7).setCellValue(loadInfo.getLoad().getColor().toString());
-            ExcelUtils.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getLoad().getColor().ordinal() + 1);
+            ExcelUtils.createCellSetStyle(r, style, 8).setCellValue(loadInfo.getLoad().getColor().ordinal() + 191);
             ExcelUtils.createCellSetStyle(r, style, 9).setCellValue(loadInfo.getLoad().getPN());
         }
     }
