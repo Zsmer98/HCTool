@@ -1,10 +1,8 @@
 package Utils;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class FileUtils {
     /*从控制台读取输入，仅限一行输入*/
@@ -30,8 +28,8 @@ public class FileUtils {
     /**
      * 读取输入的路径下所有最后一级的文件夹(该文件夹下不包含其他文件夹)
      *
-     * @param path  文件路径
-     * @return      返回所有最后一级文件夹
+     * @param path 文件路径
+     * @return 返回所有最后一级文件夹
      */
     public static List<File> getAllDirectory(String path) {
         List<File> list = new ArrayList<>();
@@ -56,6 +54,16 @@ public class FileUtils {
                 list.add(f);
             }
         }
+    }
+
+    public static List<File> getAllFile(String directory) {
+        return CollectionUtils.releaseAll(
+                FileUtils.getAllDirectory(directory)
+                        .stream().map(f ->
+                                Arrays.stream(Objects.requireNonNull(f.listFiles()))
+                                        .collect(Collectors.toList())
+                        )
+                        .collect(Collectors.toList()));
     }
 
     /**

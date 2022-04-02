@@ -4,8 +4,16 @@ import Utils.CollectionUtils;
 import Utils.FileUtils;
 import org.apache.batik.gvt.text.ArabicTextHandler;
 import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.swing.text.Utilities;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -196,6 +204,21 @@ public class TestFile {
     public void TestCollectionutils() {
         String s = "abc";
         s.chars().forEach(System.out::println);
-        System.out.println(97 =='a');
+        System.out.println(97 == 'a');
+    }
+
+    @Test
+    public void testXML() {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        try {
+            // 创建一个DocumentBuilder对象
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            // 使用parse方法解析xml文件
+            Document document = db.parse("C:\\Users\\Zsm\\Desktop\\SP211152866.xml");
+            NodeList nl = document.getElementsByTagName("OBJECT");
+            System.out.println(nl.item(0).getChildNodes().item(3).getChildNodes().item(11).getChildNodes().item(0).getNodeValue());
+        } catch (SAXException | IOException | ParserConfigurationException e) {
+            e.printStackTrace();
+        }
     }
 }
