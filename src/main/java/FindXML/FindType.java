@@ -21,7 +21,6 @@ public class FindType {
     static {
         MAP = FileUtils.getAllFile(PATH).stream()
                 .map(File::getPath)
-                .toList().stream()
                 .filter(file -> Objects.nonNull(getType(file)))
                 .collect(Collectors.toMap(
                         FindType::getType,
@@ -53,7 +52,8 @@ public class FindType {
     }
 
     public static void main(String[] args) {
-        MAP.forEach((k, v) -> System.out.println(k));
-        System.out.println(MAP.get("Straight").size());
+        long t1 = System.nanoTime();
+        MAP.get("Straight").forEach(System.out::println);
+        System.out.println((System.nanoTime() - t1) / 1000000);
     }
 }
