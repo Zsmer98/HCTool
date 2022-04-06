@@ -10,9 +10,31 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FindType {
+    private static final String PATH = "C:\\Users\\Zsm\\Desktop\\ICS\\data";
+    private static final Map<String, List<String>> map;
+
+    static {
+        map = FileUtils.getAllFile(PATH).stream()
+                .map(File::getPath)
+                .toList().stream()
+                .filter(file -> Objects.nonNull(getType(file)))
+                .collect(Collectors.toMap(
+                        FindType::getType,
+                        file -> {
+                            List<String> list = new LinkedList<>();
+                            list.add(file);
+                            return list;
+                        },
+                        (oldV, newV) -> {
+                            oldV.addAll(newV);
+                            return oldV;
+                        }));
+    }
+
 
     public static String getType(String path) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -26,16 +48,11 @@ public class FindType {
         } catch (SAXException | IOException | ParserConfigurationException e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\Zsm\\Desktop\\ICS\\data";
-        FileUtils.getAllFile(path).stream()
-                .map(File::getPath)
-                .map(FindType::getType)
-                .collect(Collectors.toSet())
-                .forEach(System.out::println);
-
+        map.forEach((k, v) -> System.out.println(k));
+        System.out.println(map.get("Straight").size());
     }
 }

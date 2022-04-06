@@ -63,7 +63,8 @@ public class FileUtils {
                                 Arrays.stream(Objects.requireNonNull(f.listFiles()))
                                         .collect(Collectors.toList())
                         )
-                        .collect(Collectors.toList()));
+                        .collect(Collectors.toList())
+        );
     }
 
     /**
