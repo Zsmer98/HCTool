@@ -15,10 +15,11 @@ import java.util.stream.Collectors;
 
 public class FindType {
     private static final String PATH = "C:\\Users\\Zsm\\Desktop\\ICS\\data";
-    private static final Map<String, List<String>> map;
+    //按照conv_type将文件分类，Key是conv_type，Value是类型为conv_type的XML文件路径
+    private static final Map<String, List<String>> MAP;
 
     static {
-        map = FileUtils.getAllFile(PATH).stream()
+        MAP = FileUtils.getAllFile(PATH).stream()
                 .map(File::getPath)
                 .toList().stream()
                 .filter(file -> Objects.nonNull(getType(file)))
@@ -52,7 +53,7 @@ public class FindType {
     }
 
     public static void main(String[] args) {
-        map.forEach((k, v) -> System.out.println(k));
-        System.out.println(map.get("Straight").size());
+        MAP.forEach((k, v) -> System.out.println(k));
+        System.out.println(MAP.get("Straight").size());
     }
 }
