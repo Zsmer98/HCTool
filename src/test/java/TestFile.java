@@ -1,19 +1,11 @@
 import LoadGenerator.Color;
 import LoadGenerator.Load;
 import Utils.CollectionUtils;
-import Utils.FileUtils;
-import org.apache.batik.gvt.text.ArabicTextHandler;
 import org.junit.Test;
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.swing.text.Utilities;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,7 +13,6 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 
