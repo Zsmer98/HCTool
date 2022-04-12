@@ -11,6 +11,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.swing.text.Utilities;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -54,8 +57,6 @@ public class TestFile {
         final AtomicInteger j = new AtomicInteger();
         list.stream()
                 .peek(i -> System.out.println(i + " " + (j.incrementAndGet())))
-                .skip(1)
-                .limit(4)
                 .forEach(i -> System.out.println("ss"));
     }
 
