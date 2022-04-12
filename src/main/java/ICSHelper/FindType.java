@@ -40,7 +40,8 @@ public class FindType {
 
     public static void main(String[] args) {
         long t1 = System.nanoTime();
-        System.out.println(MAP.get("CURVE").size());
+        MAP.forEach((k, v) -> System.out.println(k));
+        System.out.println(MAP.get("Straight").size());
         System.out.println((System.nanoTime() - t1) / 1000000);
     }
 }
