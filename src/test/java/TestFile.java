@@ -1,6 +1,12 @@
+import ICSHelper.CatalogEntity.Catalog;
+import ICSHelper.CatalogEntity.STRAIGHT;
+import ICSHelper.ExportCatalogXML;
 import LoadGenerator.Color;
 import LoadGenerator.Load;
 import Utils.CollectionUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -210,6 +216,56 @@ public class TestFile {
             NodeList nl = document.getElementsByTagName("OBJECT");
             System.out.println(nl.item(0).getChildNodes().item(3).getChildNodes().item(11).getChildNodes().item(0).getNodeValue());
         } catch (SAXException | IOException | ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testReadCell() {
+        List<String> list = List.of("1", "2", "TRUE", "test");
+
+        get(list, "1");
+        get(list, "2");
+        get(list, 2);
+        get(list, 3);
+        get(list, 2.0D);
+        get(list, true);
+        get(list, false);
+    }
+
+    public static <T> void get(List<String> row, T name) {
+        for (String cell : row) {
+            if (Objects.equals(rreadCell(cell), name)) System.out.println(name);
+        }
+        System.out.println("not found");
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> T rreadCell(String cell) {
+        switch (cell) {
+            case "1" -> {
+                return (T) "1";
+            }
+            case "2" -> {
+                return (T) Integer.valueOf(2);
+            }
+            case "TRUE" -> {
+                return (T) Boolean.TRUE;
+            }
+        }
+        return null;
+    }
+
+    @Test
+    public void testExcelICS() {
+        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.3.xlsx")) {
+            Catalog c = new STRAIGHT(
+                    "66126", "3582", "548",
+                    "60496", "3610", "548",
+                    "0", "850", "LC02.TOL02.TT04", "TRAY_TILTER_PLUS"
+            );
+            c.export();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

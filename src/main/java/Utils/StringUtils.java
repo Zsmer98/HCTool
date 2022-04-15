@@ -2,7 +2,7 @@ package Utils;
 
 import java.util.HashMap;
 
-public class StringUtils {
+public final class StringUtils {
 
     /**
      * 将要获取的key list放进hashMap中返回

@@ -4,7 +4,7 @@ import LogToExcel.Log.LogText;
 
 import java.util.HashMap;
 
-public class LogUtils {
+public final class LogUtils {
     public static LogText addListIntoText(String s, String key, String[] keys, int textlength) {
         LogText logText = new LogText(textlength);
         if (s.contains(key)) {

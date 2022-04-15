@@ -3,7 +3,7 @@ package Utils;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CollectionUtils {
+public final class CollectionUtils {
     public static <T> List<T> releaseAll(List<?> lists) {
         List<T> res = new LinkedList<>();
         CollectionUtils.release(lists, res);

@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class FileUtils {
+public final class FileUtils {
     /*从控制台读取输入，仅限一行输入*/
     public static String getPath(String message) {
         System.out.println(message);
