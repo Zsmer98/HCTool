@@ -4,6 +4,7 @@ import ICSHelper.ExportCatalogXML;
 import LoadGenerator.Color;
 import LoadGenerator.Load;
 import Utils.CollectionUtils;
+import Utils.ExcelUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -258,13 +259,10 @@ public class TestFile {
 
     @Test
     public void testExcelICS() {
-        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.3.xlsx")) {
-            Catalog c = new STRAIGHT(
-                    "66126", "3582", "548",
-                    "60496", "3610", "548",
-                    "0", "850", "LC02.TOL02.TT04", "TRAY_TILTER_PLUS"
-            );
-            c.export();
+        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.4.xlsx")) {
+            XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
+            Map<String, String> map = ExcelUtils.rowToMap(xssfWorkbook.getSheet("LC01").getRow(0));
+            map.forEach((k, v) -> System.out.println("k for: " + k + ", v for " + v));
         } catch (IOException e) {
             e.printStackTrace();
         }

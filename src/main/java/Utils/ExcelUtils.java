@@ -2,8 +2,9 @@ package Utils;
 
 import org.apache.poi.ss.usermodel.*;
 
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class ExcelUtils {
     public static Sheet getSheet(Workbook wb, String sheetname) {
@@ -50,13 +51,11 @@ public class ExcelUtils {
     }
 
     /**
-     * 读取Cell里的值,使用泛型来避免不同的CellType带来的代码代码冗余的问题.
-     *
-     * @throws ClassCastException 当接收的变量使用了错误的类型时会抛出该异常.
+     * 读取Cell里的值,并将其转化成String类型返回
      */
 
     public static String readCell(Cell cell) {
-        if (cell == null) return null;
+        if (cell == null || cell.getCellType() == CellType.BLANK) return "";
         switch (cell.getCellType()) {
             case STRING, FORMULA -> {
                 return cell.getStringCellValue();
@@ -65,6 +64,19 @@ public class ExcelUtils {
                 return String.valueOf(cell.getNumericCellValue());
             }
         }
-        throw new IllegalArgumentException("At Sheet " + cell.getSheet().getSheetName() + " Row " + cell.getRowIndex() + 1 + " Column " + cell.getColumnIndex() + 1 + " has wrong type or bad value");
+        throw new IllegalArgumentException("At Sheet " + cell.getSheet().getSheetName() + " Row " + (cell.getRowIndex() + 1) + " Column " + (cell.getColumnIndex() + 1) + " has wrong type or bad value");
+    }
+
+
+    public static Map<String, String> rowToMap(Row dataSource) {
+        return rowToMapWithTitleRow(dataSource, dataSource.getSheet().getRow(0));
+    }
+
+    public static Map<String, String> rowToMapWithTitleRow(Row dataSource, Row title) {
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(dataSource.cellIterator(), Spliterator.ORDERED), false)
+                .collect(Collectors.toMap(
+                        cell -> ExcelUtils.readCell(title.getCell(cell.getColumnIndex())),
+                        ExcelUtils::readCell
+                ));
     }
 }

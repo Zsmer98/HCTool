@@ -1,5 +1,6 @@
 package ICSHelper;
 
+import ICSHelper.CatalogEntity.CatalogFactory;
 import ICSHelper.CatalogEntity.STRAIGHT;
 import ICSHelper.CatalogEntity.Catalog;
 import ICSHelper.CatalogEntity.TURN;
@@ -10,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.StreamSupport;
 
 public class ExportCatalogXML {
     Set<String> title = Set.of(
@@ -63,7 +65,7 @@ public class ExportCatalogXML {
                 c = new TURN(
                         readMap(row, "X.Start"), readMap(row, "Y.Start"), readMap(row, "Z.Start"),
                         readMap(row, "X.End"), readMap(row, "Y.End"), readMap(row, "Z.End"),
-                        readMap(row, "转弯半径"), readMap(row, "Angle"), readMap(row, "有效宽度mm"), readMap(row, "设备编号")
+                        readMap(row, "转弯半径"), readMap(row, "Angle"), readMap(row, "有效宽度mm"), readMap(row, "设备编号"), ExcelUtils.readCell(row.getCell(map.get("Catalog")))
                 );
             }
 
@@ -74,19 +76,26 @@ public class ExportCatalogXML {
         list.stream().filter(Objects::nonNull).forEach(Catalog::export);
     }
 
+    private void newForeach() {
+        StreamSupport.stream(Spliterators.spliteratorUnknownSize(iterator, Spliterator.ORDERED), false)
+                .map(ExcelUtils::rowToMap)
+                .map(CatalogFactory::getCatalogFromExcel)
+                .forEach(Catalog::export);
+    }
+
     private String readMap(Row row, String key) {
         return ExcelUtils.readCell(row.getCell(map.get(key)));
     }
 
     public static void main(String[] args) {
-        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.3.xlsx")) {
+        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.4.xlsx")) {
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
 
             ExportCatalogXML export = new ExportCatalogXML(xssfWorkbook.getSheet("LC02").iterator());
-            export.foreach();
+            export.newForeach();
 
             export = new ExportCatalogXML(xssfWorkbook.getSheet("LC01").iterator());
-            export.foreach();
+            export.newForeach();
         } catch (IOException e) {
             e.printStackTrace();
         }

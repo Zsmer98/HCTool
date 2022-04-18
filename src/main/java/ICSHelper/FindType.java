@@ -38,10 +38,15 @@ public class FindType {
         return null;
     }
 
+    public static String findSpecificTpye(String type) {
+        return MAP.get(type).stream()
+                .findAny()
+                .orElse(null);
+    }
+
     public static void main(String[] args) {
-        long t1 = System.nanoTime();
         MAP.forEach((k, v) -> System.out.println(k));
-        System.out.println(MAP.get("Straight").size());
-        System.out.println((System.nanoTime() - t1) / 1000000);
+        System.out.println(findSpecificTpye("Merge_Straight"));
+        System.out.println(findSpecificTpye("Merge_Induct"));
     }
 }
