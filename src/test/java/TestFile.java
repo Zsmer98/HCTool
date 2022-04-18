@@ -261,7 +261,7 @@ public class TestFile {
     public void testExcelICS() {
         try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.4.xlsx")) {
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
-            Map<String, String> map = ExcelUtils.rowToMap(xssfWorkbook.getSheet("LC01").getRow(0));
+            Map<String, String> map = ExcelUtils.rowToMap(xssfWorkbook.getSheet("LC02").getRow(2));
             map.forEach((k, v) -> System.out.println("k for: " + k + ", v for " + v));
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package Utils;
 
+import ICSHelper.CatalogEntity.Catalog;
 import org.apache.poi.ss.usermodel.*;
 
 import java.util.*;
@@ -72,8 +73,14 @@ public class ExcelUtils {
         return rowToMapWithTitleRow(dataSource, dataSource.getSheet().getRow(0));
     }
 
+    public static boolean notBlankCell(Cell cell) {
+        return Objects.nonNull(cell) && !readCell(cell).isEmpty();
+    }
+
     public static Map<String, String> rowToMapWithTitleRow(Row dataSource, Row title) {
+        System.out.println(dataSource.getRowNum() + " row start");
         return StreamSupport.stream(Spliterators.spliteratorUnknownSize(dataSource.cellIterator(), Spliterator.ORDERED), false)
+                .filter(ExcelUtils::notBlankCell)
                 .collect(Collectors.toMap(
                         cell -> ExcelUtils.readCell(title.getCell(cell.getColumnIndex())),
                         ExcelUtils::readCell
