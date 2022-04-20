@@ -25,8 +25,8 @@ public class ExportCatalogXML {
         try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.4.xlsx")) {
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
 
-            foreach(xssfWorkbook.getSheet("LC02").iterator());
             foreach(xssfWorkbook.getSheet("LC01").iterator());
+            foreach(xssfWorkbook.getSheet("LC02").iterator());
         } catch (IOException e) {
             e.printStackTrace();
         }

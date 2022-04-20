@@ -22,4 +22,10 @@ public final class StringUtils {
         }
         return  hashMap;
     }
+
+    public static void requireNonNull(String... args) {
+        for(String s : args) {
+            if(s == null || s.isEmpty()) throw new IllegalArgumentException("Input contains empty value");
+        }
+    }
 }

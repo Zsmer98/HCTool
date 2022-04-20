@@ -1,10 +1,12 @@
 package ICSHelper.CatalogEntity;
 
+import Utils.StringUtils;
 import Utils.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class STRAIGHT extends Catalog {
     private final static String BELTXMLNAME = "BELT_STRAIGHT.xml";
@@ -28,12 +30,13 @@ public class STRAIGHT extends Catalog {
             String xEnd, String yEnd, String zEnd,
             String length, String width, String uniqueID, String catalog
     ) {
+        StringUtils.requireNonNull(xStart, yStart, zStart, xEnd, yEnd, zEnd, length, width, uniqueID, catalog);
         //设置读取的XML类型
         document = XMLUtils.getDocumentFromPath(Catalog.XMLRESOURCE + "\\" + getCatalogXML(catalog));
         this.fileName = uniqueID + ".xml";
 
         //设置item_name,将文件名称也设置成item_name
-        XMLUtils.findNodeAndSet(document,"item_name", uniqueID);
+        XMLUtils.findNodeAndSet(document, "item_name", uniqueID);
 
         Node coordinates = XMLUtils.findNode(document, "coordinates");
 
@@ -44,9 +47,9 @@ public class STRAIGHT extends Catalog {
         coordinate = coordinates.getChildNodes().item(3);
         XMLUtils.setCoordinate(coordinate, xEnd, yEnd, zEnd);
         //设置Straight的长度
-        XMLUtils.findNodeAndSet(document,"length", length);
+        XMLUtils.findNodeAndSet(document, "length", length);
         //设置Straight的宽度
-        XMLUtils.findNodeAndSet(document,"width", width);
+        XMLUtils.findNodeAndSet(document, "width", width);
     }
 
     private String getCatalogXML(String catalog) {

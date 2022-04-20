@@ -36,10 +36,12 @@ public final class XMLUtils {
 
     public static void exportXML(Document document, String path) {
         try {
+            Objects.requireNonNull(path);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");    //字符编码
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");        //是否换行
+            System.out.println(path + " export start");
             transformer.transform(new DOMSource(document), new StreamResult(new File(path)));
         } catch (TransformerException e) {
             e.printStackTrace();
