@@ -78,35 +78,22 @@ public final class XMLUtils {
         }
     }
 
+    /**
+     * 广度优先搜索节点,与{@link #findNodeAndSet}不同的是findNodeAndSet是深度优先搜索节点并设置值
+     */
     public static void DFSfindAndSet(Node root, String name, String value) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
+        Node node = CollectionUtils.DFS(root,
+                n -> {
+                    List<Node> list = new LinkedList<>();
+                    for (int i = 0; i < n.getChildNodes().getLength(); ++i) {
+                        list.add(n.getChildNodes().item(i));
+                    }
+                    return list;
+                },
+                n -> n.getNodeName().equals(name)
+        );
 
-        while (root != null && !root.getNodeName().equals(name)) {
-            for (int i = 0; i < root.getChildNodes().getLength(); ++i) {
-                queue.add(root.getChildNodes().item(i));
-            }
-            root = queue.poll();
-        }
-
-        if (root == null) throw new NoSuchElementException();
-        root.getChildNodes().item(0).setNodeValue(value);
-    }
-
-    public static <T> void DFS(T root, T target,
-                               Function<T, ? extends Collection<T>> getChildNodes,
-                               Comparator<? super T> comparator) {
-        Queue<T> queue = new LinkedList<>();
-        queue.add(root);
-
-        while (root != null && (comparator.compare(root, target) == 0)) {
-            for (T t : getChildNodes.apply(root)) {
-                queue.add(t);
-            }
-            root = queue.poll();
-        }
-
-        if (root == null) System.out.println("value did not found");
-        System.out.println();
+        if (node == null) throw new NoSuchElementException();
+        node.getChildNodes().item(0).setNodeValue(value);
     }
 }

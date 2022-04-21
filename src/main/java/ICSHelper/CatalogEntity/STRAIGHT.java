@@ -37,7 +37,7 @@ public class STRAIGHT extends Catalog {
 
         //设置item_name,将文件名称也设置成item_name
         XMLUtils.findNodeAndSet(document, "item_name", uniqueID);
-        XMLUtils.findNodeAndSet(document, "uniqueID", uniqueID);
+        XMLUtils.DFSfindAndSet(document, "uniqueID", uniqueID);
 
         Node coordinates = XMLUtils.findNode(document, "coordinates");
 

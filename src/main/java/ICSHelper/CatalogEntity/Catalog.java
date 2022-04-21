@@ -6,7 +6,7 @@ import org.w3c.dom.Document;
 import java.util.Objects;
 
 public abstract class Catalog {
-    public static final String XMLRESOURCE = "C:\\Users\\Zsm\\Desktop\\XML";
+    public static final String XMLRESOURCE = ".\\src\\Files\\XML";
     public static final String EXPORTPATH = "C:\\test\\data\\test";
 
     public abstract Document getDocument();
