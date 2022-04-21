@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[HAK_BELT_T2L1_Arrival, HAK_BELT_T2L1_Make up, HAK_BELT_T2L1_Transfer, HAK_BELT_T2L2_DEP, HAK_BELT_T2L3_CheckIn, HAK_BELT_T2L3_OOG, HAK_TRAY_T2L2_EBS, HAK_TRAY_T2L2_ETS, HAK_TRAY_T2L2_FinSort, HAK_TRAY_T2L2_PreSort] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>HAK_TRAY_T2L2_FinSort</layout_name>
+    <neighbours>
+      <neighbour>
+        <nr>4</nr>
+        <uniqueID>SP211239513</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>30</gap>
+      </neighbour>
+      <neighbour>
+        <nr>3</nr>
+        <uniqueID>SP211239528</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>29</gap>
+      </neighbour>
+      <neighbour>
+        <nr>2</nr>
+        <uniqueID>SP211155765</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>1</nr>
+        <uniqueID>SP211155750</uniqueID>
+        <nr_neighbour>2</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+    </neighbours>
+    <uniqueID>SP211155763</uniqueID>
+    <objectID>211008</objectID>
+    <sys_type>Tray</sys_type>
+    <conv_type>Tilter_TilterPlus</conv_type>
+    <item_name>CM211.BFS01_HU013</item_name>
+    <mechanical_name>BFS01.013.0000.0</mechanical_name>
+    <hw_outfit_name>TSTT002</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status>16455</HWC_status>
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>3638</length>
+      <width>930</width>
+      <layer_name>TRAY Final sortation +4200 lowwer</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>0</curve_radius>
+      <curve_angle>0</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>3.142</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>IN</cptype>
+          <X>3583861</X>
+          <Y>3406937</Y>
+          <Z>4200</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>OUT</cptype>
+          <X>3587499</X>
+          <Y>3406937</Y>
+          <Z>4200</Z>
+        </coordinate>
+        <coordinate>
+          <nr>3</nr>
+          <cptype>OUT</cptype>
+          <X>3585326</X>
+          <Y>3407577</Y>
+          <Z>3746</Z>
+        </coordinate>
+        <coordinate>
+          <nr>4</nr>
+          <cptype>OUT</cptype>
+          <X>3585326</X>
+          <Y>3406297</Y>
+          <Z>3746</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>3638</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side />
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>2.5</speed>
+      <usage>
+        <function>
+          <id>020</id>
+          <HLC_code>T.N.X</HLC_code>
+        </function>
+        <function>
+          <id>001</id>
+          <text>Primary Operating Area</text>
+          <outfit_name>2. OA</outfit_name>
+          <HLC_code>2</HLC_code>
+        </function>
+      </usage>
+      <area_code>211</area_code>
+      <estop_area />
+      <power_src>PM02_PL04</power_src>
+      <plc_area />
+      <tracking>1</tracking>
+      <vfd />
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">1500</tender>
+        </mode>
+      </throughput>
+      <load_type>80</load_type>
+      <proj_item_name />
+      <power_seq>1</power_seq>
+      <plc_layer_name>TRAY Final sortation +4200 lowwer</plc_layer_name>
+      <plc_blk_color />
+      <brake />
+      <overdrive />
+      <IRD>HAK_Tray</IRD>
+      <power_segm>1</power_segm>
+      <status_M />
+      <cpu_name />
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>Generic</Project_Type>
+      <Spine_Status>200.1 Execution layout work started</Spine_Status>
+      <Spine_date>2019-01-11T04:26:11+01:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="TSTT002" comment="Static Tilter">
+    <IO_baseaddr></IO_baseaddr>
+    <components>
+      <input nr="1">
+        <name>S111</name>
+        <comment>Safety door 1 opened</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>INI</symbol>
+      </input>
+      <input nr="2">
+        <name>S112</name>
+        <comment>Safety door 2 opened</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>INI</symbol>
+      </input>
+      <input nr="3">
+        <name>B267</name>
+        <comment>Proximity sensor lock pin</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>INI</symbol>
+      </input>
+      <input nr="4">
+        <name>B238</name>
+        <comment>Tilting acknowledge from chute, right</comment>
+        <address />
+        <pos_right_offset>
+          <dist speed="2.5">0.2</dist>
+        </pos_right_offset>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="5">
+        <name>B938</name>
+        <comment>Tilting acknowledge from chute, left</comment>
+        <address />
+        <pos_left_offset>
+          <dist speed="2.5">0.2</dist>
+        </pos_left_offset>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="6">
+        <name>X21:1</name>
+        <comment>Spare</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>DI</symbol>
+      </input>
+      <input nr="7">
+        <name>B111</name>
+        <comment>Stop front/left</comment>
+        <address />
+        <pos_end>
+          <dist speed="2.5">1.17</dist>
+        </pos_end>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="8">
+        <name>B141</name>
+        <comment>Gap control</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="9">
+        <name>B142</name>
+        <comment>Gap control position D1</comment>
+        <address />
+        <pos_end>
+          <dist speed="2.5">0.0</dist>
+        </pos_end>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="10">
+        <name>B225</name>
+        <comment>Accurate position</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>INI</symbol>
+      </input>
+      <input nr="11">
+        <name>B311</name>
+        <comment>Stop front/left</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">-1.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="12">
+        <name>B341</name>
+        <comment>Gap control</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">-1.65</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="13">
+        <name>X21:2</name>
+        <comment>Spare</comment>
+        <address />
+        <pos_end>
+          <dist speed="2.5">0.0</dist>
+        </pos_end>
+        <type>DI</type>
+        <symbol>DI</symbol>
+      </input>
+      <drive nr="1">
+        <name>M100</name>
+        <MPOS>Tilter+_Tilting</MPOS>
+        <function>TILTING</function>
+        <power>2.1</power>
+        <current>7.4</current>
+        <sort_no>483</sort_no>
+        <key>200482</key>
+        <conv_code>CM211.BFS01_HU013</conv_code>
+        <SAP_no>81.10788.230-11</SAP_no>
+        <motor_type>SERVO</motor_type>
+        <Cmod_part_no></Cmod_part_no>
+        <Pmod_part_no></Pmod_part_no>
+        <start_stop_req>n.a</start_stop_req>
+        <accel></accel>
+        <decel></decel>
+        <drive_stat></drive_stat>
+        <freq_set></freq_set>
+        <motor_speed></motor_speed>
+        <brake_type></brake_type>
+        <gearbox_type>Z59</gearbox_type>
+        <gearbox_ratio>19.01</gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type></base_type>
+        <power_nom></power_nom>
+        <current_nom></current_nom>
+        <brake_resist></brake_resist>
+        <brake_power></brake_power>
+        <brake_part_no></brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_HAK_T2_Tray_rev2_181226.xlsx; HWC_2129; 2018-12-26 14:47:12; Specific; Rev(Rev2)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection></WindgConnection>
+        <OrderflagGM></OrderflagGM>
+        <OrderflagVFDPM></OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM></OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes>0</OrderflagBRes>
+        <SAPNoBRes></SAPNoBRes>
+        <OrderflagTA></OrderflagTA>
+        <TAtype></TAtype>
+        <SAPNoTA></SAPNoTA>
+        <ColourGmot>7016</ColourGmot>
+        <MLFB1>1FG1105-9UE33-2AN1-Z</MLFB1>
+        <MLFB2>B02+D01+G23+G34+H1G+K07+N23+Y84</MLFB2>
+        <MLFB3>Y84: 81.10788.230-11 </MLFB3>
+      </drive>
+      <drive nr="2">
+        <name>M200</name>
+        <MPOS>Tilter+_Travel</MPOS>
+        <function>TRAVEL</function>
+        <power>2.1</power>
+        <current>7.4</current>
+        <sort_no>484</sort_no>
+        <key>200483</key>
+        <conv_code>CM211.BFS01_HU013</conv_code>
+        <SAP_no>81.10788.230-10</SAP_no>
+        <motor_type>SERVO</motor_type>
+        <Cmod_part_no></Cmod_part_no>
+        <Pmod_part_no></Pmod_part_no>
+        <start_stop_req>n.a</start_stop_req>
+        <accel></accel>
+        <decel></decel>
+        <drive_stat></drive_stat>
+        <freq_set></freq_set>
+        <motor_speed></motor_speed>
+        <brake_type></brake_type>
+        <gearbox_type>FZ49</gearbox_type>
+        <gearbox_ratio>12.4</gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type></base_type>
+        <power_nom></power_nom>
+        <current_nom></current_nom>
+        <brake_resist></brake_resist>
+        <brake_power></brake_power>
+        <brake_part_no></brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_HAK_T2_Tray_rev2_181226.xlsx; HWC_2129; 2018-12-26 14:47:12; Specific; Rev(Rev2)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection></WindgConnection>
+        <OrderflagGM></OrderflagGM>
+        <OrderflagVFDPM></OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM></OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes>0</OrderflagBRes>
+        <SAPNoBRes></SAPNoBRes>
+        <OrderflagTA></OrderflagTA>
+        <TAtype></TAtype>
+        <SAPNoTA></SAPNoTA>
+        <ColourGmot>7016</ColourGmot>
+        <MLFB1>1FG1303-5UE33-2HH1-Z</MLFB1>
+        <MLFB2>B02+D03+G23+G34+G99+K07+N23+Y84</MLFB2>
+        <MLFB3>Y84: 81.10788.230-10 </MLFB3>
+      </drive>
+      <drive nr="3">
+        <name>M300</name>
+        <MPOS>T41E1</MPOS>
+        <function>TRAVEL Infeed</function>
+        <power>1.1</power>
+        <current>2.53</current>
+        <sort_no>485</sort_no>
+        <key>200484</key>
+        <conv_code>CM211.BFS01_HU013</conv_code>
+        <SAP_no>80.1051.099-42</SAP_no>
+        <motor_type>LE90S</motor_type>
+        <Cmod_part_no></Cmod_part_no>
+        <Pmod_part_no></Pmod_part_no>
+        <start_stop_req>n.a</start_stop_req>
+        <accel>4</accel>
+        <decel>4</decel>
+        <drive_stat>n.a.</drive_stat>
+        <freq_set>52.7965916987537</freq_set>
+        <motor_speed>1520.54184092411</motor_speed>
+        <brake_type>NB</brake_type>
+        <gearbox_type>B39</gearbox_type>
+        <gearbox_ratio>6.21</gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type></base_type>
+        <power_nom></power_nom>
+        <current_nom></current_nom>
+        <brake_resist></brake_resist>
+        <brake_power></brake_power>
+        <brake_part_no></brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_HAK_T2_Tray_rev2_181226.xlsx; HWC_2129; 2018-12-26 14:47:12; Specific; Rev(Rev2)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection>220D/380Y</WindgConnection>
+        <OrderflagGM>0</OrderflagGM>
+        <OrderflagVFDPM></OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM></OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes>0</OrderflagBRes>
+        <SAPNoBRes></SAPNoBRes>
+        <OrderflagTA>1</OrderflagTA>
+        <TAtype>Torque arm Simogear standard B39/49</TAtype>
+        <SAPNoTA>80.2000.074-00</SAPNoTA>
+        <ColourGmot>NOT PAINTED</ColourGmot>
+        <MLFB1>2KJ3502-6EK23-9HE1-Z</MLFB1>
+        <MLFB2>+D11+M60+K19+L00+N2C+D09+G23+G34+G60+K01+K07+K41+M12+N54+W13+Y00</MLFB2>
+        <MLFB3>{Y00: *LSF(a)80.1051.003-05*}</MLFB3>
+      </drive>
+      <fieldbus_devices>
+        <PN_device nr="1">
+          <name>A100</name>
+          <type>PN</type>
+          <subtype>PNPN Coupler</subtype>
+          <order_nr></order_nr>
+          <IO_address></IO_address>
+          <PN_address nr="1">
+            <range></range>
+            <ip></ip>
+            <subnetmask></subnetmask>
+            <use_router></use_router>
+            <offset>0.0</offset>
+          </PN_address>
+          <PN_src></PN_src>
+          <PN_slave></PN_slave>
+          <PN_seq></PN_seq>
+          <IO_Bytes>3</IO_Bytes>
+          <input nr="1">
+            <name>S100</name>
+            <type>DI</type>
+            <offset>0.0</offset>
+            <terminal>-X10:7</terminal>
+            <symbol>IN1</symbol>
+            <comment>380V AC healthy</comment>
+          </input>
+          <input nr="2">
+            <type>DI</type>
+            <name>Q801</name>
+            <offset>0.1</offset>
+            <terminal>-X10:8</terminal>
+            <symbol>IN2</symbol>
+            <comment>380V AC OK Infeed Conveyor Brake</comment>
+          </input>
+          <input nr="3">
+            <name>K801</name>
+            <type>DI</type>
+            <offset>0.2</offset>
+            <terminal>-X10:9</terminal>
+            <symbol>IN3</symbol>
+            <comment>Brake Activated Infeed Conveyor</comment>
+          </input>
+          <input nr="4">
+            <name>Q802</name>
+            <type>DI</type>
+            <offset>0.3</offset>
+            <terminal>-X10:10</terminal>
+            <symbol>IN4</symbol>
+            <comment>380V AC OK Outfeed Conveyor Brake</comment>
+          </input>
+          <input nr="5">
+            <name>K802</name>
+            <type>DI</type>
+            <offset>0.4</offset>
+            <terminal>-X10:11</terminal>
+            <symbol>IN5</symbol>
+            <comment>Brake Activated Outfeed Conveyor</comment>
+          </input>
+          <input nr="6">
+            <name>F280</name>
+            <type>DI</type>
+            <offset>0.5</offset>
+            <terminal>-X10:12</terminal>
+            <symbol>IN6</symbol>
+            <comment>220V AC Cabinet Fan, Light, Power Outlet OK</comment>
+          </input>
+          <input nr="7">
+            <name>S111</name>
+            <type>DI</type>
+            <offset>0.6</offset>
+            <terminal>-X10:13</terminal>
+            <symbol>IN7</symbol>
+            <comment>Cabinet door open</comment>
+          </input>
+          <input nr="8">
+            <name>F301</name>
+            <type>DI</type>
+            <offset>0.7</offset>
+            <terminal>-X10:14</terminal>
+            <symbol>IN8</symbol>
+            <comment>24V DC healthy OK</comment>
+          </input>
+          <input nr="9">
+            <name>Q119</name>
+            <type>DI</type>
+            <offset>1.0</offset>
+            <terminal>-X10:15</terminal>
+            <symbol>IN9</symbol>
+            <comment>380V AC Supply signalling Lamp</comment>
+          </input>
+          <input nr="10">
+            <name>XP316</name>
+            <type>DI</type>
+            <offset>1.1</offset>
+            <terminal>-X10:16</terminal>
+            <symbol>IN10</symbol>
+            <comment>Ready Flag</comment>
+          </input>
+          <input nr="11">
+            <name>S902</name>
+            <type>DI</type>
+            <offset>1.2</offset>
+            <terminal>-X10:17</terminal>
+            <symbol>IN11</symbol>
+            <comment>Control Cabinet none Overtemperature</comment>
+          </input>
+          <input nr="12">
+            <name>S401</name>
+            <type>DI</type>
+            <offset>1.3</offset>
+            <terminal>-X10:18</terminal>
+            <symbol>IN12</symbol>
+            <comment>Start</comment>
+          </input>
+          <input nr="13">
+            <name>S402</name>
+            <type>DI</type>
+            <offset>1.4</offset>
+            <terminal>-X10:19</terminal>
+            <symbol>IN13</symbol>
+            <comment>Stop</comment>
+          </input>
+          <input nr="14">
+            <name>S403</name>
+            <type>DI</type>
+            <offset>1.5</offset>
+            <terminal>-X10:20</terminal>
+            <symbol>IN14</symbol>
+            <comment>Tech Fault Reset</comment>
+          </input>
+          <input nr="15">
+            <name>S404</name>
+            <type>DI</type>
+            <offset>2.0</offset>
+            <terminal>-X10:4</terminal>
+            <symbol>IN15</symbol>
+            <comment>E-Stop Reset</comment>
+          </input>
+          <input nr="16">
+            <type>DI</type>
+            <name>S405</name>
+            <offset>2.1</offset>
+            <terminal>-X10:5</terminal>
+            <symbol>IN16</symbol>
+            <comment>Alarm Silence</comment>
+          </input>
+          <input nr="17">
+            <name>S406</name>
+            <type>DI</type>
+            <offset>2.2</offset>
+            <terminal>-X10:6</terminal>
+            <symbol>IN17</symbol>
+            <comment>Lamp Test</comment>
+          </input>
+          <input nr="18">
+            <name>S171</name>
+            <type>DI</type>
+            <offset>2.3</offset>
+            <terminal>-X10:7</terminal>
+            <symbol>IN18</symbol>
+            <comment>Tilter Safety Reset</comment>
+          </input>
+          <input nr="19">
+            <name>K701</name>
+            <type>DI</type>
+            <offset>2.4</offset>
+            <terminal>-X11:4</terminal>
+            <symbol>IN19</symbol>
+            <comment>E-Stop undelayed not activated</comment>
+          </input>
+          <input nr="20">
+            <name></name>
+            <type>DI</type>
+            <offset>2.5</offset>
+            <terminal>-X11:5</terminal>
+            <symbol>IN20</symbol>
+            <comment></comment>
+          </input>
+          <input nr="21">
+            <name></name>
+            <type>DI</type>
+            <offset>2.6</offset>
+            <terminal>-X11:6</terminal>
+            <symbol>IN21</symbol>
+            <comment></comment>
+          </input>
+          <input nr="22">
+            <name></name>
+            <type>DI</type>
+            <offset>2.7</offset>
+            <terminal>-X11:7</terminal>
+            <symbol>IN22</symbol>
+            <comment></comment>
+          </input>
+          <output nr="1">
+            <name>S401</name>
+            <type>DO</type>
+            <offset>0.0</offset>
+            <terminal>-X12:3</terminal>
+            <symbol>OUT1</symbol>
+            <comment>Start</comment>
+          </output>
+          <output nr="2">
+            <name>S402</name>
+            <type>DO</type>
+            <offset>0.1</offset>
+            <terminal>-X12:4</terminal>
+            <symbol>OUT2</symbol>
+            <comment>Stop</comment>
+          </output>
+          <output nr="3">
+            <name>S403</name>
+            <type>DO</type>
+            <offset>0.2</offset>
+            <terminal>-X12:5</terminal>
+            <symbol>OUT3</symbol>
+            <comment>Tech Fault Reset</comment>
+          </output>
+          <output nr="4">
+            <name>S404</name>
+            <type>DO</type>
+            <offset>0.3</offset>
+            <terminal>-X12:6</terminal>
+            <symbol>OUT4</symbol>
+            <comment>E-Stop Reset</comment>
+          </output>
+          <output nr="5">
+            <name>S171</name>
+            <type>DO</type>
+            <offset>0.4</offset>
+            <terminal>-X12:7</terminal>
+            <symbol>OUT5</symbol>
+            <comment>Tilter Safety Activated</comment>
+          </output>
+          <output nr="6">
+            <name>H401</name>
+            <type>DO</type>
+            <offset>0.5</offset>
+            <terminal>-X12:8</terminal>
+            <symbol>OUT6</symbol>
+            <comment>System on / Start-up Warning</comment>
+          </output>
+          <output nr="7">
+            <name>H402</name>
+            <type>DO</type>
+            <offset>0.6</offset>
+            <terminal>-X12:9</terminal>
+            <symbol>OUT7</symbol>
+            <comment>Fault Warning</comment>
+          </output>
+          <output nr="8">
+            <name>H403</name>
+            <type>DO</type>
+            <offset>0.7</offset>
+            <terminal>-X12:10</terminal>
+            <symbol>OUT8</symbol>
+            <comment>E-Stop</comment>
+          </output>
+          <output nr="9">
+            <name>H404</name>
+            <type>DO</type>
+            <offset>1.0</offset>
+            <terminal>-X12:11</terminal>
+            <symbol>OUT9</symbol>
+            <comment>Start up-/ Fault-Warning E-Stop</comment>
+          </output>
+          <output nr="10">
+            <name></name>
+            <type>DO</type>
+            <offset>1.1</offset>
+            <terminal>-X12:12</terminal>
+            <symbol>OUT10</symbol>
+            <comment></comment>
+          </output>
+        </PN_device>
+      </fieldbus_devices>
+    </components>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit />
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>SMTSTR01</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>00.021.006.005_SMTSTR01</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>

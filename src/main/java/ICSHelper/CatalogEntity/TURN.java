@@ -16,7 +16,7 @@ public class TURN extends Catalog {
     public TURN(
             String xStart, String yStart, String zStart,
             String xEnd, String yEnd, String zEnd,
-            String radius, String angle, String width, String uniqueID, String catalog
+            String radius, String angle, String width,  String speed,String uniqueID, String catalog
     ) {
         StringUtils.requireNonNull(xStart, yStart, zStart, xEnd, yEnd, zEnd, radius, angle, width, uniqueID, catalog);
         //设置读取的XML类型
@@ -25,6 +25,8 @@ public class TURN extends Catalog {
 
         //设置item_name,将文件名称也设置成item_name
         XMLUtils.findNodeAndSet(document, "item_name", uniqueID);
+        XMLUtils.findNodeAndSet(document, "uniqueID", uniqueID);
+
 
         Node coordinates = XMLUtils.findNode(document, "coordinates");
 
@@ -34,6 +36,9 @@ public class TURN extends Catalog {
         //设置turn的终止点
         coordinate = coordinates.getChildNodes().item(3);
         XMLUtils.setCoordinate(coordinate, xEnd, yEnd, zEnd);
+
+        //设置速度
+        XMLUtils.findNodeAndSet(document, "speed", speed);
         //设置turn的转弯半径
         XMLUtils.findNodeAndSet(document, "curve_radius", radius);
         //设置turn的转弯角度

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[BKK_BHS_CCD-E-B1, BKK_BHS_CCD-E-B2, BKK_BHS_CCD-W-B1, BKK_BHS_CCD-W-B2, BKK_BHS_NMTB_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT-1_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT1-CHAMBER, BKK_BHS_SAT1-E, BKK_BHS_SAT1-W, BKK_BHS_TUN, BKK_BHS_TUN-N, BKK_BHS_TUN-S] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>BKK_BHS_SAT1-E</layout_name>
+    <neighbours />
+    <uniqueID>SP211382986</uniqueID>
+    <objectID />
+    <sys_type>Steelworks</sys_type>
+    <conv_type>Support</conv_type>
+    <item_name>LP260</item_name>
+    <mechanical_name>SUP_CHUTE_H300.0000.0</mechanical_name>
+    <hw_outfit_name>DEF001</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status />
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>0</length>
+      <width>0</width>
+      <layer_name>_SUP__BHS_CHUTES</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>0</curve_radius>
+      <curve_angle>0</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>0</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>NONE</cptype>
+          <X>-468262</X>
+          <Y>990902</Y>
+          <Z>-7343</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>NONE</cptype>
+          <X>-468262</X>
+          <Y>990902</Y>
+          <Z>-7343</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>0</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side />
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>0</speed>
+      <usage />
+      <area_code>260</area_code>
+      <estop_area />
+      <power_src />
+      <plc_area />
+      <tracking />
+      <vfd />
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">0</tender>
+        </mode>
+      </throughput>
+      <load_type>0</load_type>
+      <proj_item_name />
+      <power_seq />
+      <plc_layer_name>_SUP__BHS_CHUTES</plc_layer_name>
+      <plc_blk_color />
+      <brake />
+      <overdrive />
+      <IRD>SAT1-E</IRD>
+      <power_segm />
+      <status_M />
+      <cpu_name>LP260</cpu_name>
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>User</Project_Type>
+      <Spine_Status>200.2 Mechanical Configuration finished</Spine_Status>
+      <Spine_date>2020-03-24T01:06:25+01:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="DEF001" comment="Default conveyor: 1 Drive ,1 Sensor">
+    <IO_baseaddr />
+    <components>
+      <drive nr="1"></drive>
+      <fieldbus_devices />
+    </components>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit />
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>BKKBH1SUP_CHUTE_H300</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>_BKKBH1SUP_CHUTE_H300</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>

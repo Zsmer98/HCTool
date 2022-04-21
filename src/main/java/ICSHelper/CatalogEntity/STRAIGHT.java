@@ -28,7 +28,7 @@ public class STRAIGHT extends Catalog {
     public STRAIGHT(
             String xStart, String yStart, String zStart,
             String xEnd, String yEnd, String zEnd,
-            String length, String width, String uniqueID, String catalog
+            String length, String width, String speed, String uniqueID, String catalog
     ) {
         StringUtils.requireNonNull(xStart, yStart, zStart, xEnd, yEnd, zEnd, length, width, uniqueID, catalog);
         //设置读取的XML类型
@@ -37,6 +37,7 @@ public class STRAIGHT extends Catalog {
 
         //设置item_name,将文件名称也设置成item_name
         XMLUtils.findNodeAndSet(document, "item_name", uniqueID);
+        XMLUtils.findNodeAndSet(document, "uniqueID", uniqueID);
 
         Node coordinates = XMLUtils.findNode(document, "coordinates");
 
@@ -46,6 +47,9 @@ public class STRAIGHT extends Catalog {
         //设置Straight的终止点
         coordinate = coordinates.getChildNodes().item(3);
         XMLUtils.setCoordinate(coordinate, xEnd, yEnd, zEnd);
+
+        //设置速度
+        XMLUtils.findNodeAndSet(document, "speed", speed);
         //设置Straight的长度
         XMLUtils.findNodeAndSet(document, "length", length);
         //设置Straight的宽度

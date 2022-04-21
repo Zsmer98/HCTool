@@ -17,7 +17,8 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Function;
 
 public final class XMLUtils {
     public static Document getDocumentFromPath(String path) {
@@ -48,6 +49,13 @@ public final class XMLUtils {
         }
     }
 
+    public static void setCoordinate(Node node, String x, String y, String z) {
+        node.getChildNodes().item(5).getChildNodes().item(0).setNodeValue(x);
+        node.getChildNodes().item(7).getChildNodes().item(0).setNodeValue(y);
+        node.getChildNodes().item(9).getChildNodes().item(0).setNodeValue(z);
+    }
+
+
     public static Node findNode(Node rootNode, String name) {
         if (rootNode.getNodeName().equals(name)) return rootNode;
 
@@ -61,18 +69,44 @@ public final class XMLUtils {
         return null;
     }
 
-    public static void setCoordinate(Node node, String x, String y, String z) {
-        node.getChildNodes().item(5).getChildNodes().item(0).setNodeValue(x);
-        node.getChildNodes().item(7).getChildNodes().item(0).setNodeValue(y);
-        node.getChildNodes().item(9).getChildNodes().item(0).setNodeValue(z);
-    }
-
-    public static void findNodeAndSet(Node rootNode, String name, String value) {
-        Node node = findNode(rootNode, name);
+    public static void findNodeAndSet(Node root, String name, String value) {
+        Node node = findNode(root, name);
         if (node != null) {
             node.getChildNodes().item(0).setNodeValue(value);
         } else {
-            System.out.println(rootNode.getNodeName() + "下没有" + name + "节点");
+            throw new NoSuchElementException(root.getNodeName() + "下没有" + name + "节点");
         }
+    }
+
+    public static void DFSfindAndSet(Node root, String name, String value) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (root != null && !root.getNodeName().equals(name)) {
+            for (int i = 0; i < root.getChildNodes().getLength(); ++i) {
+                queue.add(root.getChildNodes().item(i));
+            }
+            root = queue.poll();
+        }
+
+        if (root == null) throw new NoSuchElementException();
+        root.getChildNodes().item(0).setNodeValue(value);
+    }
+
+    public static <T> void DFS(T root, T target,
+                               Function<T, ? extends Collection<T>> getChildNodes,
+                               Comparator<? super T> comparator) {
+        Queue<T> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (root != null && (comparator.compare(root, target) == 0)) {
+            for (T t : getChildNodes.apply(root)) {
+                queue.add(t);
+            }
+            root = queue.poll();
+        }
+
+        if (root == null) System.out.println("value did not found");
+        System.out.println();
     }
 }

@@ -25,7 +25,7 @@ public final class CatalogFactory {
         return new STRAIGHT(
                 dataMap.get("X.Start"), dataMap.get("Y.Start"), dataMap.get("Z.Start"),
                 dataMap.get("X.End"), dataMap.get("Y.End"), dataMap.get("Z.End"),
-                "0", dataMap.get("有效宽度mm"), dataMap.get("设备编号"), dataMap.get("Catalog")
+                "0", dataMap.get("有效宽度mm"), dataMap.get("速度m/s"), dataMap.get("设备编号"), dataMap.get("Catalog")
         );
     }
 
@@ -33,7 +33,7 @@ public final class CatalogFactory {
         return new TURN(
                 dataMap.get("X.Start"), dataMap.get("Y.Start"), dataMap.get("Z.Start"),
                 dataMap.get("X.End"), dataMap.get("Y.End"), dataMap.get("Z.End"),
-                dataMap.get("转弯半径"), dataMap.get("Angle"), dataMap.get("有效宽度mm"), dataMap.get("设备编号"), dataMap.get("Catalog")
+                dataMap.get("转弯半径"), dataMap.get("Angle"), dataMap.get("有效宽度mm"), dataMap.get("速度m/s"), dataMap.get("设备编号"), dataMap.get("Catalog")
         );
     }
 }

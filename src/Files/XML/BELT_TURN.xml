@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[HAK_BELT_T2L1_Arrival, HAK_BELT_T2L1_Make up, HAK_BELT_T2L1_Transfer, HAK_BELT_T2L2_DEP, HAK_BELT_T2L3_CheckIn, HAK_BELT_T2L3_OOG, HAK_TRAY_T2L2_EBS, HAK_TRAY_T2L2_ETS, HAK_TRAY_T2L2_FinSort, HAK_TRAY_T2L2_PreSort] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>HAK_BELT_T2L3_CheckIn</layout_name>
+    <neighbours>
+      <neighbour>
+        <nr>2</nr>
+        <uniqueID>SP211125270</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>1</nr>
+        <uniqueID>SP211125272</uniqueID>
+        <nr_neighbour>2</nr_neighbour>
+        <gap>12</gap>
+      </neighbour>
+    </neighbours>
+    <uniqueID>SP211125271</uniqueID>
+    <objectID>205084</objectID>
+    <sys_type>BELT</sys_type>
+    <conv_type>CURVE</conv_type>
+    <item_name>CM205.BID04_BT019</item_name>
+    <mechanical_name>BID04.019.0000.0</mechanical_name>
+    <hw_outfit_name>BTNC001</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status>16453</HWC_status>
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>2485</length>
+      <width>1050</width>
+      <layer_name>INT CheckIn_9900</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>1550</curve_radius>
+      <curve_angle>90</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>1.571</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>IN</cptype>
+          <X>3757176</X>
+          <Y>3326504</Y>
+          <Z>9950</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>OUT</cptype>
+          <X>3755601</X>
+          <Y>3324929</Y>
+          <Z>9950</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>2485</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side>1</motor_side>
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>1</speed>
+      <usage>
+        <function>
+          <id>020</id>
+          <HLC_code>B.N.X</HLC_code>
+        </function>
+        <function>
+          <id>001</id>
+          <text>Primary Operating Area</text>
+          <outfit_name>2. OA</outfit_name>
+          <HLC_code>2</HLC_code>
+        </function>
+      </usage>
+      <area_code>205</area_code>
+      <estop_area />
+      <power_src>PM02_PL03</power_src>
+      <plc_area />
+      <tracking />
+      <vfd />
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">800</tender>
+        </mode>
+      </throughput>
+      <load_type>50</load_type>
+      <proj_item_name />
+      <power_seq>2</power_seq>
+      <plc_layer_name>INT CheckIn_9900</plc_layer_name>
+      <plc_blk_color />
+      <brake />
+      <overdrive />
+      <IRD>HAK_BELT</IRD>
+      <power_segm>1</power_segm>
+      <status_M />
+      <cpu_name />
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>NonCompanyStandard</Project_Type>
+      <Spine_Status>200.1 Execution layout work started</Spine_Status>
+      <Spine_date>2018-12-13T06:45:09+01:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="BTNC001" comment="Belt curve 45, 60, 90 deg without Tracking">
+    <IO_baseaddr>1156.4</IO_baseaddr>
+    <components>
+      <input nr="1">
+        <name>B111</name>
+        <comment>Stop front / left</comment>
+        <address />
+        <pos_end>
+          <dist speed="1.0">0.315</dist>
+          <dist speed="1.6">0.5</dist>
+        </pos_end>
+        <pos_end_left>
+          <dist speed="1.0">0.21</dist>
+          <dist speed="1.6">0.33</dist>
+        </pos_end_left>
+        <pos_end_right>
+          <dist speed="1.0">0.42</dist>
+          <dist speed="1.6">0.66</dist>
+        </pos_end_right>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <drive nr="1">
+        <name>M100</name>
+        <MPOS></MPOS>
+        <function>TRAVEL</function>
+        <power>1.5</power>
+        <current>3.4</current>
+        <sort_no>2812</sort_no>
+        <key>202812</key>
+        <conv_code>CM205.BID04_BT019</conv_code>
+        <SAP_no></SAP_no>
+        <motor_type></motor_type>
+        <Cmod_part_no>6SL3555-0PL00-2AA0</Cmod_part_no>
+        <Pmod_part_no>6SL3511-1PE21-5AM0</Pmod_part_no>
+        <start_stop_req></start_stop_req>
+        <accel></accel>
+        <decel></decel>
+        <drive_stat></drive_stat>
+        <freq_set></freq_set>
+        <motor_speed></motor_speed>
+        <brake_type></brake_type>
+        <gearbox_type></gearbox_type>
+        <gearbox_ratio></gearbox_ratio>
+        <motor_orient></motor_orient>
+        <base_type>G110D</base_type>
+        <power_nom>1.5</power_nom>
+        <current_nom>4.3</current_nom>
+        <brake_resist>200</brake_resist>
+        <brake_power>200</brake_power>
+        <brake_part_no>10058101</brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_HAK_T2_Belt_rev2_181226.xlsx; HWC_2129; 2018-12-27 10:44:24; Specific; Rev(Rev2)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection></WindgConnection>
+        <OrderflagGM></OrderflagGM>
+        <OrderflagVFDPM>1</OrderflagVFDPM>
+        <SAPNoVFDPM>320.923666</SAPNoVFDPM>
+        <OrderflagVFDCM>1</OrderflagVFDCM>
+        <SAPNoVFDCM>320.923731</SAPNoVFDCM>
+        <OrderflagBRes>1</OrderflagBRes>
+        <SAPNoBRes>320.935124</SAPNoBRes>
+        <OrderflagTA></OrderflagTA>
+        <TAtype></TAtype>
+        <SAPNoTA></SAPNoTA>
+        <ColourGmot></ColourGmot>
+        <MLFB1></MLFB1>
+        <MLFB2></MLFB2>
+        <MLFB3></MLFB3>
+      </drive>
+      <fieldbus_devices>
+        <ASI_device nr="1">
+          <name>A100</name>
+          <!-- <type>ASI</type> -->
+          <subtype>G110D</subtype>
+          <order_nr>6SL3511-1PE21-5AM0</order_nr>
+          <IO_address>1156.4</IO_address>
+          <ASI_nibbles>4</ASI_nibbles>
+          <ASI_src>2</ASI_src>
+          <ASI_slave>8</ASI_slave>
+          <ASI_seq>8</ASI_seq>
+          <input nr="1">
+            <type>DI</type>
+            <offset>0.0</offset>
+            <terminal>IN1</terminal>
+            <symbol>Ready</symbol>
+            <comment>Ready</comment>
+          </input>
+          <input nr="2">
+            <type>DI</type>
+            <offset>0.1</offset>
+            <terminal>IN2</terminal>
+            <symbol>Auto</symbol>
+            <comment>G110D Remote-Auto 1/Manual Local 0</comment>
+          </input>
+          <input nr="3">
+            <type>DI</type>
+            <offset>0.2</offset>
+            <terminal>IN3</terminal>
+            <symbol>LS</symbol>
+            <comment>Stop front / left</comment>
+            <name>B111</name>
+          </input>
+          <input nr="4">
+            <type>DI</type>
+            <offset>0.3</offset>
+            <terminal>IN4</terminal>
+            <symbol>IN4</symbol>
+            <comment>IN4 (Sensor 2)</comment>
+          </input>
+          <input nr="5">
+            <type>DI</type>
+            <offset>16.0</offset>
+            <terminal>IN5</terminal>
+            <symbol>IN5</symbol>
+            <comment>IN5 (Sensor 3)</comment>
+          </input>
+          <input nr="6">
+            <type>DI</type>
+            <offset>16.1</offset>
+            <terminal>IN6</terminal>
+            <symbol>IN6</symbol>
+            <comment>IN6 (Sensor 4)</comment>
+          </input>
+          <output nr="1">
+            <type>DO</type>
+            <offset>0.0</offset>
+            <terminal>OUT1</terminal>
+            <symbol>OUT1-BC</symbol>
+            <comment>Motorcontrol bit 1</comment>
+          </output>
+          <output nr="2">
+            <type>DO</type>
+            <offset>0.1</offset>
+            <terminal>OUT2</terminal>
+            <symbol>OUT2-BC</symbol>
+            <comment>Motorcontrol bit 2</comment>
+          </output>
+          <output nr="3">
+            <type>DO</type>
+            <offset>0.2</offset>
+            <terminal>OUT3</terminal>
+            <symbol>OUT3-BC</symbol>
+            <comment>Motorcontrol bit 3</comment>
+          </output>
+          <output nr="4">
+            <type>DO</type>
+            <offset>0.3</offset>
+            <terminal>OUT4</terminal>
+            <symbol>OUT4-BC</symbol>
+            <comment>Motorcontrol bit 4</comment>
+          </output>
+          <output nr="5">
+            <type>DO</type>
+            <offset>16.0</offset>
+            <terminal>OUT5</terminal>
+            <symbol>OUT5</symbol>
+            <comment>OUT5</comment>
+          </output>
+          <output nr="6">
+            <type>DO</type>
+            <offset>16.1</offset>
+            <terminal>OUT6</terminal>
+            <symbol>OUT6</symbol>
+            <comment>OUT6</comment>
+          </output>
+          <output nr="7">
+            <type>DO</type>
+            <offset>16.2</offset>
+            <terminal>OUT7</terminal>
+            <symbol>NQSTP</symbol>
+            <comment>Disable quickstop</comment>
+          </output>
+          <output nr="8">
+            <type>DO</type>
+            <offset>16.3</offset>
+            <terminal>OUT8</terminal>
+            <symbol>OUT8</symbol>
+            <comment>OUT8</comment>
+          </output>
+          <ASI_segm>1</ASI_segm>
+        </ASI_device>
+      </fieldbus_devices>
+    </components>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit />
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>H56902SMVBGK01130010</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>00.014.011.003_SMVBGK01</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>

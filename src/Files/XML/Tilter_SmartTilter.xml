@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[BKK_BHS_CCD-E-B1, BKK_BHS_CCD-E-B2, BKK_BHS_CCD-W-B1, BKK_BHS_CCD-W-B2, BKK_BHS_NMTB_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT-1_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT1-CHAMBER, BKK_BHS_SAT1-E, BKK_BHS_SAT1-W, BKK_BHS_TUN, BKK_BHS_TUN-N, BKK_BHS_TUN-S] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>BKK_BHS_SAT1-E</layout_name>
+    <neighbours>
+      <neighbour>
+        <nr>1</nr>
+        <uniqueID>SP211187790</uniqueID>
+        <nr_neighbour>2</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>2</nr>
+        <uniqueID>SP211107817</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>3</nr>
+        <uniqueID>SP211382995</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+    </neighbours>
+    <uniqueID>SP211107820</uniqueID>
+    <objectID>262025</objectID>
+    <sys_type>Tray</sys_type>
+    <conv_type>Tilter_SmartTilter</conv_type>
+    <item_name>LP262.BED61_HU017</item_name>
+    <mechanical_name>EBS041.SAT1-E.1450.0000.0</mechanical_name>
+    <hw_outfit_name>TSMT001</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status>131328</HWC_status>
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>6000</length>
+      <width>930</width>
+      <layer_name>_BHS_TRAY_EBS041</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>0</curve_radius>
+      <curve_angle>0</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>4.712</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>IN</cptype>
+          <X>-472830</X>
+          <Y>988744</Y>
+          <Z>-4200</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>OUT</cptype>
+          <X>-472830</X>
+          <Y>994845</Y>
+          <Z>-4200</Z>
+        </coordinate>
+        <coordinate>
+          <nr>3</nr>
+          <cptype>OUT</cptype>
+          <X>-473468</X>
+          <Y>992364</Y>
+          <Z>-4649</Z>
+        </coordinate>
+        <coordinate>
+          <nr>4</nr>
+          <cptype>NONE</cptype>
+          <X>-472193</X>
+          <Y>992364</Y>
+          <Z>-4649</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>6000</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side />
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>1.8</speed>
+      <usage>
+        <function>
+          <id>020</id>
+          <HLC_code>T.N.X</HLC_code>
+        </function>
+        <function>
+          <id>001</id>
+          <text>Primary Operating Area</text>
+          <outfit_name>2. OA</outfit_name>
+          <HLC_code>2</HLC_code>
+        </function>
+      </usage>
+      <area_code>262</area_code>
+      <estop_area />
+      <power_src>PM01_PL03</power_src>
+      <plc_area />
+      <tracking>1</tracking>
+      <vfd>FI</vfd>
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">1800</tender>
+        </mode>
+      </throughput>
+      <load_type>70</load_type>
+      <proj_item_name />
+      <power_seq>7</power_seq>
+      <plc_layer_name>_BHS_TRAY_EBS041</plc_layer_name>
+      <plc_blk_color>-16711936</plc_blk_color>
+      <brake />
+      <overdrive />
+      <IRD>SAT1-E</IRD>
+      <power_segm />
+      <status_M />
+      <cpu_name>LP262</cpu_name>
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>Generic</Project_Type>
+      <Spine_Status>200.3 Drives dimensioned</Spine_Status>
+      <Spine_date>2020-04-02T09:56:46+02:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="TSMT001" comment="Tray Smart Tilter">
+    <IO_baseaddr />
+    <components>
+      <drive nr="1">
+        <name>M100</name>
+        <MPOS></MPOS>
+        <function>TILTING</function>
+        <power>1.15</power>
+        <current>15.6</current>
+        <sort_no>615</sort_no>
+        <key>200902</key>
+        <conv_code>200902_1</conv_code>
+        <SAP_no>32.1898.437-00</SAP_no>
+        <motor_type>SERVO</motor_type>
+        <Cmod_part_no></Cmod_part_no>
+        <Pmod_part_no></Pmod_part_no>
+        <start_stop_req>1500</start_stop_req>
+        <accel></accel>
+        <decel></decel>
+        <drive_stat></drive_stat>
+        <freq_set></freq_set>
+        <motor_speed>4100</motor_speed>
+        <brake_type></brake_type>
+        <gearbox_type></gearbox_type>
+        <gearbox_ratio>16.8</gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type></base_type>
+        <power_nom></power_nom>
+        <current_nom></current_nom>
+        <brake_resist></brake_resist>
+        <brake_power></brake_power>
+        <brake_part_no></brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_V04_BKK_CC05_Tray_Rev3.36.xlsx; HWC_2210; 2020-06-18 11:16:53; Update; Rev(20200618_W.Glaser_update drive data with cos)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection></WindgConnection>
+        <OrderflagGM>0</OrderflagGM>
+        <OrderflagVFDPM>0</OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM>0</OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes>0</OrderflagBRes>
+        <SAPNoBRes></SAPNoBRes>
+        <OrderflagTA>0</OrderflagTA>
+        <TAtype></TAtype>
+        <SAPNoTA></SAPNoTA>
+        <ColourGmot></ColourGmot>
+        <MLFB1>BG75x75</MLFB1>
+        <MLFB2>8857503967</MLFB2>
+        <MLFB3></MLFB3>
+        <N1FLine></N1FLine>
+        <CosPhi></CosPhi>
+        <EtaMotor>0</EtaMotor>
+      </drive>
+      <fieldbus_devices>
+        <PN_device nr="1">
+          <name>K311</name>
+          <type>PN</type>
+          <subtype>PNPN_Tilter</subtype>
+          <order_nr>6ES7 158-3AD01-0XA0</order_nr>
+          <IO_address>11120</IO_address>
+          <PN_address nr="1">
+            <ip>192.168.0.24</ip>
+            <subnetmask>255.255.255.0</subnetmask>
+          </PN_address>
+          <PN_src>1</PN_src>
+          <PN_slave>24</PN_slave>
+          <PN_seq>1</PN_seq>
+          <IO_Bytes>130</IO_Bytes>
+          <controls></controls>
+          <network_device />
+          <periph_addr></periph_addr>
+          <diag_addr></diag_addr>
+          <master></master>
+        </PN_device>
+      </fieldbus_devices>
+    </components>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit>
+    <InfoView>
+      <geometry>
+        <rotation_angle>1.5704</rotation_angle>
+        <coordinate>
+          <nr>1</nr>
+          <X>-471432.1042</X>
+          <Y>992216.3714</Y>
+          <Z>-4200</Z>
+        </coordinate>
+      </geometry>
+    </InfoView>
+  </AO_outfit>
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>SMTSTR02</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>00.021.006.006_SMTSTR02</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>

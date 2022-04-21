@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[HAK_BELT_T2L1_Arrival, HAK_BELT_T2L1_Make up, HAK_BELT_T2L1_Transfer, HAK_BELT_T2L2_DEP, HAK_BELT_T2L3_CheckIn, HAK_BELT_T2L3_OOG, HAK_TRAY_T2L2_EBS, HAK_TRAY_T2L2_ETS, HAK_TRAY_T2L2_FinSort, HAK_TRAY_T2L2_PreSort] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>HAK_BELT_T2L2_DEP</layout_name>
+    <neighbours>
+      <neighbour>
+        <nr>2</nr>
+        <uniqueID>SP211154777</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>1</nr>
+        <uniqueID>SP211154783</uniqueID>
+        <nr_neighbour>2</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+    </neighbours>
+    <uniqueID>SP211154779</uniqueID>
+    <objectID>0</objectID>
+    <sys_type>SCANNER</sys_type>
+    <conv_type>ATR 360</conv_type>
+    <item_name>CM205</item_name>
+    <mechanical_name>BID03.079.0000.0</mechanical_name>
+    <hw_outfit_name>DEF000</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status>69</HWC_status>
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>0</length>
+      <width>1000</width>
+      <layer_name>INT_DEP_2</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>0</curve_radius>
+      <curve_angle>0</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>0</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>NONE</cptype>
+          <X>3679926</X>
+          <Y>3370040</Y>
+          <Z>4999</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>NONE</cptype>
+          <X>3679876</X>
+          <Y>3370040</Y>
+          <Z>4999</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>0</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side />
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>0</speed>
+      <usage>
+        <function>
+          <id>001</id>
+          <text>Primary Operating Area</text>
+          <outfit_name>3. OA</outfit_name>
+          <HLC_code>3</HLC_code>
+        </function>
+      </usage>
+      <area_code>205</area_code>
+      <estop_area />
+      <power_src>PM03_PL04</power_src>
+      <plc_area />
+      <tracking />
+      <vfd />
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">1500</tender>
+        </mode>
+      </throughput>
+      <load_type>50</load_type>
+      <proj_item_name />
+      <power_seq />
+      <plc_layer_name>INT_DEP_2</plc_layer_name>
+      <plc_blk_color />
+      <brake />
+      <overdrive />
+      <IRD>HAK_BELT</IRD>
+      <power_segm />
+      <status_M />
+      <cpu_name />
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>NonCompanyStandard</Project_Type>
+      <Spine_Status>200.1 Execution layout work started</Spine_Status>
+      <Spine_date>2019-01-18T13:50:29+01:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="DEF000" comment="No Motor Drive Device">
+    <IO_baseaddr></IO_baseaddr>
+    <components>
+      <fieldbus_devices />
+    </components>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit />
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>H56902SMNSSCSC01150</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>00.042.001.002_SMNSSCSC01</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>

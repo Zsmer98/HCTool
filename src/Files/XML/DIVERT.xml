@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OBJECT xmlns="http://bagos.las.siemens.com/schema/V2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bagos.las.siemens.com/schema/V2 ../../schema/V2/ObjectXML.xsd">
+  <metadata>
+    <!-- BoM Viewer filtering type:Drawing groups:[BKK_BHS_CCD-E-B1, BKK_BHS_CCD-E-B2, BKK_BHS_CCD-W-B1, BKK_BHS_CCD-W-B2, BKK_BHS_NMTB_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT-1_BELT_NON-SPPAL-SCOPE, BKK_BHS_SAT1-CHAMBER, BKK_BHS_SAT1-E, BKK_BHS_SAT1-W, BKK_BHS_TUN, BKK_BHS_TUN-N, BKK_BHS_TUN-S] -->
+    <Tag>1</Tag>
+    <Version>$Revision$</Version>
+    <Release>DEVELOPMENT</Release>
+    <ArtifactNr></ArtifactNr>
+    <Document></Document>
+    <Author>$Author$</Author>
+    <Timestamp>$Date$</Timestamp>
+    <URL>$URL$</URL>
+  </metadata>
+  <header>
+    <layout_name>BKK_BHS_SAT1-E</layout_name>
+    <neighbours>
+      <neighbour>
+        <nr>1</nr>
+        <uniqueID>SP211107860</uniqueID>
+        <nr_neighbour>2</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>2</nr>
+        <uniqueID>SP211107858</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+      <neighbour>
+        <nr>3</nr>
+        <uniqueID>SP211107868</uniqueID>
+        <nr_neighbour>1</nr_neighbour>
+        <gap>0</gap>
+      </neighbour>
+    </neighbours>
+    <uniqueID>SP211107867</uniqueID>
+    <objectID>261038</objectID>
+    <sys_type>Tray</sys_type>
+    <conv_type>Divert_Straight</conv_type>
+    <item_name>LP261.BET61_HD021</item_name>
+    <mechanical_name>ES042.SAT1-E.1055.0000.0</mechanical_name>
+    <hw_outfit_name>TDIV001</hw_outfit_name>
+    <sw_outfit_name />
+    <HWC_status>131328</HWC_status>
+  </header>
+  <LC_outfit>
+    <geometry>
+      <level_start />
+      <level_end />
+      <line />
+      <length>2800</length>
+      <width>970</width>
+      <layer_name>_BHS_TRAY_ES042</layer_name>
+      <inf_angle>0</inf_angle>
+      <inf_dist>0</inf_dist>
+      <inf_insertion />
+      <inf_length>0</inf_length>
+      <inf_zoom>0</inf_zoom>
+      <climb_angle>0</climb_angle>
+      <curve_radius>0</curve_radius>
+      <curve_angle>-1</curve_angle>
+      <angle_corr>0</angle_corr>
+      <left_right />
+      <rotation_angle>0.524</rotation_angle>
+      <coordinates>
+        <coordinate>
+          <nr>1</nr>
+          <cptype>IN</cptype>
+          <X>3666456</X>
+          <Y>3370028</Y>
+          <Z>6999</Z>
+        </coordinate>
+        <coordinate>
+          <nr>2</nr>
+          <cptype>OUT</cptype>
+          <X>3663656</X>
+          <Y>3370028</Y>
+          <Z>6999</Z>
+        </coordinate>
+        <coordinate>
+          <nr>3</nr>
+          <cptype>OUT</cptype>
+          <X>3644456</X>
+          <Y>3350028</Y>
+          <Z>6999</Z>
+        </coordinate>
+      </coordinates>
+      <nominal_length>2800</nominal_length>
+      <drives>
+        <drive key="1">
+          <motor_side>1</motor_side>
+          <motor_position />
+        </drive>
+      </drives>
+      <fillers />
+      <sideguard_height />
+      <height_ground />
+      <arm_length />
+      <arm_angle />
+      <arm_velocity />
+      <arm_motor_side />
+      <upstream_length />
+      <downstream_length />
+      <related_blocks />
+    </geometry>
+    <data>
+      <speed>1.5</speed>
+      <usage>
+        <function>
+          <id>020</id>
+          <HLC_code>T.N.E</HLC_code>
+        </function>
+        <function>
+          <id>001</id>
+          <text>Primary Operating Area</text>
+          <outfit_name>5. OA</outfit_name>
+          <HLC_code>5</HLC_code>
+        </function>
+      </usage>
+      <area_code>261</area_code>
+      <estop_area />
+      <power_src>PM04_PL01</power_src>
+      <plc_area />
+      <tracking />
+      <vfd>FI</vfd>
+      <div1 />
+      <block_name />
+      <throughput>
+        <mode>
+          <nr>1</nr>
+          <tender xsi:type="xsd:string">2400</tender>
+        </mode>
+      </throughput>
+      <load_type>40</load_type>
+      <proj_item_name />
+      <power_seq>5</power_seq>
+      <plc_layer_name>_BHS_TRAY_ES042</plc_layer_name>
+      <plc_blk_color>-65536</plc_blk_color>
+      <brake />
+      <overdrive />
+      <IRD>SAT1-E</IRD>
+      <power_segm />
+      <status_M />
+      <cpu_name>LP261</cpu_name>
+      <User1 />
+      <User2 />
+      <User3 />
+      <User4 />
+      <User5 />
+      <Project_Type>Generic</Project_Type>
+      <Spine_Status>200.3 Drives dimensioned</Spine_Status>
+      <Spine_date>2020-04-02T09:56:52+02:00</Spine_date>
+    </data>
+    <mechanical_details />
+  </LC_outfit>
+  <HW_outfit name="TDIV001" comment="Tray Divert with Asi-module for switching">
+    <IO_baseaddr>14022.0</IO_baseaddr>
+    <components>
+      <input nr="1">
+        <name>B111</name>
+        <comment>Stop sensor straight direction</comment>
+        <address />
+        <pos_end>
+          <dist speed="2.5">1.18</dist>
+        </pos_end>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="2">
+        <name>B113</name>
+        <comment>Stop sensor divert direction</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">1.0</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="3">
+        <name>B141</name>
+        <comment>Slip in detection</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.165</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="4">
+        <name>B142</name>
+        <comment>Flap end</comment>
+        <address />
+        <pos_start_left>
+          <dist speed="2.5">0.9</dist>
+        </pos_start_left>
+        <pos_start_right>
+          <dist speed="2.5">0.7</dist>
+        </pos_start_right>
+        <type>DI</type>
+        <symbol>LS</symbol>
+      </input>
+      <input nr="5">
+        <name>Ready</name>
+        <comment>Drive Status Ready</comment>
+        <address />
+        <type>DI</type>
+        <symbol>Ready</symbol>
+      </input>
+      <input nr="6">
+        <name>Move</name>
+        <comment>Drive Status Moving</comment>
+        <address />
+        <type>DI</type>
+        <symbol>Move</symbol>
+      </input>
+      <input nr="7">
+        <name>B221</name>
+        <comment>Proximity sensor top / right</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.2</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LT</symbol>
+      </input>
+      <input nr="8">
+        <name>B222</name>
+        <comment>Proximity sensor bottom / left</comment>
+        <address />
+        <pos_start>
+          <dist speed="2.5">0.8</dist>
+        </pos_start>
+        <type>DI</type>
+        <symbol>LT</symbol>
+      </input>
+      <input nr="9">
+        <name>Fault</name>
+        <comment>Cabinet Fault</comment>
+        <address />
+        <type>DI</type>
+        <symbol>Fault</symbol>
+      </input>
+      <input nr="10">
+        <name>S411</name>
+        <comment>Auto/Manual</comment>
+        <address />
+        <type>DI</type>
+        <symbol>S411</symbol>
+      </input>
+      <input nr="11">
+        <name>S412</name>
+        <comment>Reset</comment>
+        <address />
+        <type>DI</type>
+        <symbol>S412</symbol>
+      </input>
+      <input nr="12">
+        <name>S406</name>
+        <comment>Lamp Test</comment>
+        <address />
+        <type>DI</type>
+        <symbol>S406</symbol>
+      </input>
+      <output nr="1">
+        <name>Bit1</name>
+        <comment>Homing Mode</comment>
+        <address />
+        <type>DO</type>
+        <symbol>Bit1</symbol>
+      </output>
+      <output nr="2">
+        <name>Bit2</name>
+        <comment>Merge/Diver Straight</comment>
+        <address />
+        <type>DO</type>
+        <symbol>Bit2</symbol>
+      </output>
+      <output nr="3">
+        <name>Bit3</name>
+        <comment>Merge/Diver Side</comment>
+        <address />
+        <type>DO</type>
+        <symbol>Bit3</symbol>
+      </output>
+      <output nr="4">
+        <name>Enable</name>
+        <comment>Mode enabled</comment>
+        <address />
+        <type>DO</type>
+        <symbol>Enable</symbol>
+      </output>
+      <output nr="5">
+        <name>H412</name>
+        <comment>Fault Jam</comment>
+        <address />
+        <type>DO</type>
+        <symbol>H412</symbol>
+      </output>
+      <output nr="6">
+        <name>H221</name>
+        <comment>Position Straight</comment>
+        <address />
+        <type>DO</type>
+        <symbol>H221</symbol>
+      </output>
+      <output nr="7">
+        <name>H222</name>
+        <comment>Position Side</comment>
+        <address />
+        <type>DO</type>
+        <symbol>H222</symbol>
+      </output>
+      <output nr="8">
+        <name>H411</name>
+        <comment>Manual</comment>
+        <address />
+        <type>DO</type>
+        <symbol>H411</symbol>
+      </output>
+      <drive nr="1">
+        <name>M100</name>
+        <MPOS>T51H1</MPOS>
+        <function>TRAVEL</function>
+        <power>1.5</power>
+        <current>3.15</current>
+        <sort_no>449</sort_no>
+        <key>200517</key>
+        <conv_code>200517_2</conv_code>
+        <SAP_no>80.1051.403-08</SAP_no>
+        <motor_type>LE90L</motor_type>
+        <Cmod_part_no>6SL3555-0PL00-2AA0</Cmod_part_no>
+        <Pmod_part_no>6SL3511-1PE21-5AM0</Pmod_part_no>
+        <start_stop_req>300</start_stop_req>
+        <accel>4</accel>
+        <decel>4</decel>
+        <drive_stat>n.a.</drive_stat>
+        <freq_set>46.6154110668942</freq_set>
+        <motor_speed>1347.18537983324</motor_speed>
+        <brake_type>NB</brake_type>
+        <gearbox_type>B39</gearbox_type>
+        <gearbox_ratio>9.17</gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type>G110D</base_type>
+        <power_nom>1.5</power_nom>
+        <current_nom>4.3</current_nom>
+        <brake_resist>200</brake_resist>
+        <brake_power>100</brake_power>
+        <brake_part_no>10058131</brake_part_no>
+        <I_eff>0.901566157528043</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_V04_BKK_CC05_Tray_Rev3.36.xlsx; HWC_2210; 2020-06-18 11:16:53; Update; Rev(20200618_W.Glaser_update drive data with cos)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection>230D/400Y</WindgConnection>
+        <OrderflagGM>1</OrderflagGM>
+        <OrderflagVFDPM>1</OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM>1</OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes>1</OrderflagBRes>
+        <SAPNoBRes>320.935125</SAPNoBRes>
+        <OrderflagTA>1</OrderflagTA>
+        <TAtype>B39/B49</TAtype>
+        <SAPNoTA>80.2000.184-00</SAPNoTA>
+        <ColourGmot>NOT PAINTED</ColourGmot>
+        <MLFB1>2KJ3502-6EM23-2HH1-Z</MLFB1>
+        <MLFB2>+D11+M60+K19+L00+D09+G23+G34+G60+K01+K07+K41+M12+N54+W13+Y00</MLFB2>
+        <MLFB3>{Y00: *LSF(a)80.1051.403-08*}</MLFB3>
+        <N1FLine>1347.18537983324</N1FLine>
+        <CosPhi>0.8</CosPhi>
+        <EtaMotor>0.853</EtaMotor>
+      </drive>
+      <drive nr="2">
+        <name>M200</name>
+        <MPOS>Divert StraightSwitch</MPOS>
+        <function>SWITCH</function>
+        <power>0.09</power>
+        <current>1.2</current>
+        <sort_no>462</sort_no>
+        <key>200523</key>
+        <conv_code>200517_2</conv_code>
+        <SAP_no>80.2004.101-43</SAP_no>
+        <motor_type>Dunker</motor_type>
+        <Cmod_part_no></Cmod_part_no>
+        <Pmod_part_no></Pmod_part_no>
+        <start_stop_req>300</start_stop_req>
+        <accel></accel>
+        <decel></decel>
+        <drive_stat></drive_stat>
+        <freq_set></freq_set>
+        <motor_speed></motor_speed>
+        <brake_type></brake_type>
+        <gearbox_type></gearbox_type>
+        <gearbox_ratio></gearbox_ratio>
+        <motor_orient>horizontal</motor_orient>
+        <base_type></base_type>
+        <power_nom></power_nom>
+        <current_nom></current_nom>
+        <brake_resist></brake_resist>
+        <brake_power></brake_power>
+        <brake_part_no></brake_part_no>
+        <I_eff>0</I_eff>
+        <I_const>0</I_const>
+        <CDC_revision>CDC_V04_BKK_CC05_Tray_Rev3.30.xlsx; HWC_2209; 2019-11-06 17:02:54; Phase(1); Rev(20191106_W.Glaser_new CDC assignment)</CDC_revision>
+        <F_line>50</F_line>
+        <WindgConnection></WindgConnection>
+        <OrderflagGM>0</OrderflagGM>
+        <OrderflagVFDPM>0</OrderflagVFDPM>
+        <SAPNoVFDPM></SAPNoVFDPM>
+        <OrderflagVFDCM>0</OrderflagVFDCM>
+        <SAPNoVFDCM></SAPNoVFDCM>
+        <OrderflagBRes></OrderflagBRes>
+        <SAPNoBRes></SAPNoBRes>
+        <OrderflagTA>0</OrderflagTA>
+        <TAtype></TAtype>
+        <SAPNoTA></SAPNoTA>
+        <ColourGmot></ColourGmot>
+        <MLFB1>BG62x25PI</MLFB1>
+        <MLFB2></MLFB2>
+        <MLFB3></MLFB3>
+        <N1FLine></N1FLine>
+        <CosPhi></CosPhi>
+        <EtaMotor>0</EtaMotor>
+      </drive>
+      <fieldbus_devices>
+        <ASI_device nr="1">
+          <name>A100</name>
+          <!-- <type>ASI</type> -->
+          <subtype>G110D</subtype>
+          <order_nr>6SL3511-1PE21-5AM0</order_nr>
+          <IO_address>14022.0</IO_address>
+          <ASI_nibbles>4</ASI_nibbles>
+          <ASI_src>1</ASI_src>
+          <ASI_slave>5</ASI_slave>
+          <ASI_seq>5</ASI_seq>
+          <input nr="1">
+            <type>DI</type>
+            <offset>0.0</offset>
+            <terminal>IN1</terminal>
+            <symbol>Ready</symbol>
+            <comment>Ready</comment>
+          </input>
+          <input nr="2">
+            <type>DI</type>
+            <offset>0.1</offset>
+            <terminal>IN2</terminal>
+            <symbol>Auto</symbol>
+            <comment>Drive Key in Auto</comment>
+          </input>
+          <input nr="3">
+            <type>DI</type>
+            <offset>0.2</offset>
+            <terminal>IN3</terminal>
+            <symbol>LS</symbol>
+            <comment>Stop sensor straight direction</comment>
+            <name>B111</name>
+          </input>
+          <input nr="4">
+            <type>DI</type>
+            <offset>0.3</offset>
+            <terminal>IN4</terminal>
+            <symbol>LS</symbol>
+            <comment>Stop sensor divert direction</comment>
+            <name>B113</name>
+          </input>
+          <input nr="5">
+            <type>DI</type>
+            <offset>16.0</offset>
+            <terminal>IN5</terminal>
+            <symbol>LS</symbol>
+            <comment>Slip in detection</comment>
+            <name>B141</name>
+          </input>
+          <input nr="6">
+            <type>DI</type>
+            <offset>16.1</offset>
+            <terminal>IN6</terminal>
+            <symbol>LS</symbol>
+            <comment>Flap end</comment>
+            <name>B142</name>
+          </input>
+          <output nr="1">
+            <type>DO</type>
+            <offset>0.0</offset>
+            <terminal>OUT1</terminal>
+            <symbol>OUT1-BC</symbol>
+            <comment>Motorcontrol bit 1</comment>
+          </output>
+          <output nr="2">
+            <type>DO</type>
+            <offset>0.1</offset>
+            <terminal>OUT2</terminal>
+            <symbol>OUT2-BC</symbol>
+            <comment>Motorcontrol bit 2</comment>
+          </output>
+          <output nr="3">
+            <type>DO</type>
+            <offset>0.2</offset>
+            <terminal>OUT3</terminal>
+            <symbol>OUT3-BC</symbol>
+            <comment>Motorcontrol bit 3</comment>
+          </output>
+          <output nr="4">
+            <type>DO</type>
+            <offset>0.3</offset>
+            <terminal>OUT4</terminal>
+            <symbol>OUT4-BC</symbol>
+            <comment>Motorcontrol bit 4</comment>
+          </output>
+          <output nr="5">
+            <type>DO</type>
+            <offset>16.0</offset>
+            <terminal>OUT5</terminal>
+            <symbol>OUT5</symbol>
+            <comment>OUT5</comment>
+          </output>
+          <output nr="6">
+            <type>DO</type>
+            <offset>16.1</offset>
+            <terminal>OUT6</terminal>
+            <symbol>OUT6</symbol>
+            <comment>OUT6</comment>
+          </output>
+          <output nr="7">
+            <type>DO</type>
+            <offset>16.2</offset>
+            <terminal>OUT7</terminal>
+            <symbol>NQSTP</symbol>
+            <comment>Disable quickstop</comment>
+          </output>
+          <output nr="8">
+            <type>DO</type>
+            <offset>16.3</offset>
+            <terminal>OUT8</terminal>
+            <symbol>OUT8</symbol>
+            <comment>OUT8</comment>
+          </output>
+          <ASI_segm></ASI_segm>
+        </ASI_device>
+        <ASI_device nr="2">
+          <name>A200</name>
+          <type>ASI</type>
+          <subtype>4DI/4DO</subtype>
+          <order_nr>3RK1402-3CE01-0AA2</order_nr>
+          <IO_address>14023.4</IO_address>
+          <ASI_nibbles>1</ASI_nibbles>
+          <ASI_src>1</ASI_src>
+          <ASI_slave>6</ASI_slave>
+          <ASI_seq>6</ASI_seq>
+          <input nr="1">
+            <type>DI</type>
+            <offset>0.0</offset>
+            <terminal>IN1</terminal>
+            <symbol>Ready</symbol>
+            <comment>Drive Status Ready</comment>
+            <name>Ready</name>
+          </input>
+          <input nr="2">
+            <type>DI</type>
+            <offset>0.1</offset>
+            <terminal>IN2</terminal>
+            <symbol>Move</symbol>
+            <comment>Drive Status Moving</comment>
+            <name>Move</name>
+          </input>
+          <input nr="3">
+            <type>DI</type>
+            <offset>0.2</offset>
+            <terminal>IN3</terminal>
+            <symbol>LT</symbol>
+            <comment>Proximity sensor top / right</comment>
+            <name>B221</name>
+          </input>
+          <input nr="4">
+            <type>DI</type>
+            <offset>0.3</offset>
+            <terminal>IN4</terminal>
+            <symbol>LT</symbol>
+            <comment>Proximity sensor bottom / left</comment>
+            <name>B222</name>
+          </input>
+          <output nr="1">
+            <type>DO</type>
+            <offset>0.0</offset>
+            <terminal>OUT1</terminal>
+            <symbol>Bit1</symbol>
+            <comment>Homing Mode</comment>
+            <name>Bit1</name>
+          </output>
+          <output nr="2">
+            <type>DO</type>
+            <offset>0.1</offset>
+            <terminal>OUT2</terminal>
+            <symbol>Bit2</symbol>
+            <comment>Merge/Diver Straight</comment>
+            <name>Bit2</name>
+          </output>
+          <output nr="3">
+            <type>DO</type>
+            <offset>0.2</offset>
+            <terminal>OUT3</terminal>
+            <symbol>Bit3</symbol>
+            <comment>Merge/Diver Side</comment>
+            <name>Bit3</name>
+          </output>
+          <output nr="4">
+            <type>DO</type>
+            <offset>0.3</offset>
+            <terminal>OUT4</terminal>
+            <symbol>Enable</symbol>
+            <comment>Mode enabled</comment>
+            <name>Enable</name>
+          </output>
+          <ASI_segm></ASI_segm>
+        </ASI_device>
+        <ASI_device nr="3">
+          <name>A300</name>
+          <type>ASI</type>
+          <subtype>4DI/4DO</subtype>
+          <order_nr>3RK1402-3CE01-0AA2</order_nr>
+          <IO_address>14023.0</IO_address>
+          <ASI_nibbles>1</ASI_nibbles>
+          <ASI_src>1</ASI_src>
+          <ASI_slave>7</ASI_slave>
+          <ASI_seq>7</ASI_seq>
+          <input nr="1">
+            <type>DI</type>
+            <offset>0.0</offset>
+            <terminal>IN1</terminal>
+            <symbol>Fault</symbol>
+            <comment>Cabinet Fault</comment>
+            <name>Fault</name>
+          </input>
+          <input nr="2">
+            <type>DI</type>
+            <offset>0.1</offset>
+            <terminal>IN2</terminal>
+            <symbol>S411</symbol>
+            <comment>Auto/Manual</comment>
+            <name>S411</name>
+          </input>
+          <input nr="3">
+            <type>DI</type>
+            <offset>0.2</offset>
+            <terminal>IN3</terminal>
+            <symbol>S412</symbol>
+            <comment>Reset</comment>
+            <name>S412</name>
+          </input>
+          <input nr="4">
+            <type>DI</type>
+            <offset>0.3</offset>
+            <terminal>IN4</terminal>
+            <symbol>S406</symbol>
+            <comment>Lamp Test</comment>
+            <name>S406</name>
+          </input>
+          <output nr="1">
+            <type>DO</type>
+            <offset>0.0</offset>
+            <terminal>OUT1</terminal>
+            <symbol>H412</symbol>
+            <comment>Fault Jam</comment>
+            <name>H412</name>
+          </output>
+          <output nr="2">
+            <type>DO</type>
+            <offset>0.1</offset>
+            <terminal>OUT2</terminal>
+            <symbol>H221</symbol>
+            <comment>Position Straight</comment>
+            <name>H221</name>
+          </output>
+          <output nr="3">
+            <type>DO</type>
+            <offset>0.2</offset>
+            <terminal>OUT3</terminal>
+            <symbol>H222</symbol>
+            <comment>Position Side</comment>
+            <name>H222</name>
+          </output>
+          <output nr="4">
+            <type>DO</type>
+            <offset>0.3</offset>
+            <terminal>OUT4</terminal>
+            <symbol>H411</symbol>
+            <comment>Manual</comment>
+            <name>H411</name>
+          </output>
+          <ASI_segm></ASI_segm>
+        </ASI_device>
+      </fieldbus_devices>
+    </components>
+    <e_device>
+      <IO_baseaddr></IO_baseaddr>
+      <item_name>LP261.BET61_CS021</item_name>
+      <layer_name>_BHSS_HW_ED</layer_name>
+      <hw_outfit_name>CS31</hw_outfit_name>
+      <drawing>HW_AP-BK</drawing>
+      <comment>Fault Reset CS</comment>
+      <geometry>
+        <rotation_angle>0.52359877559831</rotation_angle>
+        <coordinate>
+          <nr>1</nr>
+          <X>3666456</X>
+          <Y>3365028</Y>
+          <Z>2000</Z>
+        </coordinate>
+      </geometry>
+      <components>
+        <input nr="1">
+          <name>Reset</name>
+          <comment>Reset</comment>
+          <type>PB</type>
+          <symbol>E01-A10-IN1</symbol>
+        </input>
+        <output nr="1">
+          <name>Fault</name>
+          <comment>Fault</comment>
+          <type>YL</type>
+          <symbol>E01-A10-OUT1</symbol>
+        </output>
+        <fieldbus_devices>
+          <ASI_device nr="1">
+            <name>E01-A010</name>
+            <type>ASI</type>
+            <subtype>4DI/3DO</subtype>
+            <order_nr>3SU1400-2EJ10-6AA0</order_nr>
+            <IO_address>14024.4</IO_address>
+            <ASI_nibbles>1</ASI_nibbles>
+            <ASI_src>1</ASI_src>
+            <ASI_slave>8</ASI_slave>
+            <ASI_seq>8</ASI_seq>
+            <input nr="1">
+              <type>DI</type>
+              <offset>0.0</offset>
+              <terminal>IN1</terminal>
+              <symbol>E01-A10-IN1</symbol>
+              <comment>Reset</comment>
+              <name>Reset</name>
+            </input>
+            <input nr="2">
+              <type>DI</type>
+              <offset>0.1</offset>
+              <terminal>IN2</terminal>
+              <symbol>IN2</symbol>
+              <comment>IN2</comment>
+            </input>
+            <input nr="3">
+              <type>DI</type>
+              <offset>0.2</offset>
+              <terminal>IN3</terminal>
+              <symbol>IN3</symbol>
+              <comment>IN3</comment>
+            </input>
+            <input nr="4">
+              <type>DI</type>
+              <offset>0.3</offset>
+              <terminal>IN4</terminal>
+              <symbol>IN4</symbol>
+              <comment>IN4</comment>
+            </input>
+            <output nr="1">
+              <type>DO</type>
+              <offset>0.0</offset>
+              <terminal>OUT1</terminal>
+              <symbol>E01-A10-OUT1</symbol>
+              <comment>Fault</comment>
+              <name>Fault</name>
+            </output>
+            <output nr="2">
+              <type>DO</type>
+              <offset>0.1</offset>
+              <terminal>OUT2</terminal>
+              <symbol>OUT2</symbol>
+              <comment>OUT2</comment>
+            </output>
+            <output nr="3">
+              <type>DO</type>
+              <offset>0.2</offset>
+              <terminal>OUT3</terminal>
+              <symbol>OUT3</symbol>
+              <comment>OUT3</comment>
+            </output>
+            <ASI_segm></ASI_segm>
+          </ASI_device>
+        </fieldbus_devices>
+      </components>
+      <text>CS31</text>
+      <plc_layer_name>_BHS_HW_ED_Part2</plc_layer_name>
+      <plc_blk_color>-16711936</plc_blk_color>
+    </e_device>
+    <e_device>
+      <IO_baseaddr></IO_baseaddr>
+      <item_name>LP261.BET61_LB021</item_name>
+      <layer_name>_BHSS_HW_ED</layer_name>
+      <hw_outfit_name>LB12</hw_outfit_name>
+      <drawing>HW_AP-SI</drawing>
+      <comment>Fault/Startup Beacon</comment>
+      <geometry>
+        <rotation_angle>0.52359877559831</rotation_angle>
+        <coordinate>
+          <nr>1</nr>
+          <X>3664456</X>
+          <Y>3365028</Y>
+          <Z>2000</Z>
+        </coordinate>
+      </geometry>
+      <components>
+        <output nr="1">
+          <name>-A060-H1</name>
+          <comment>FAULT</comment>
+          <type>YL</type>
+          <symbol>-A060-H1</symbol>
+        </output>
+        <output nr="2">
+          <name>-A060-H2</name>
+          <comment>SYSTEM ON_STARTUP WARNING</comment>
+          <type>GL</type>
+          <symbol>-A060-H2</symbol>
+        </output>
+        <output nr="3">
+          <name>-A060-H3</name>
+          <comment>STARTUP</comment>
+          <type>HN</type>
+          <symbol>-A060-H3</symbol>
+        </output>
+        <fieldbus_devices>
+          <ASI_device nr="1">
+            <name>A060</name>
+            <type>ASI</type>
+            <subtype>4DO</subtype>
+            <order_nr>8WD4428-0BE</order_nr>
+            <IO_address>14024.0</IO_address>
+            <ASI_nibbles>1</ASI_nibbles>
+            <ASI_src>1</ASI_src>
+            <ASI_slave>9</ASI_slave>
+            <ASI_seq>9</ASI_seq>
+            <output nr="1">
+              <type>DO</type>
+              <offset>0.0</offset>
+              <terminal>OUT1</terminal>
+              <symbol>-A060-H1</symbol>
+              <comment>FAULT</comment>
+              <name>FAULT</name>
+            </output>
+            <output nr="2">
+              <type>DO</type>
+              <offset>0.1</offset>
+              <terminal>OUT2</terminal>
+              <symbol>-A060-H2</symbol>
+              <comment>SYSTEM ON_STARTUP WARNING</comment>
+              <name>SYSTEM ON_STARTUP WARNING</name>
+            </output>
+            <output nr="3">
+              <type>DO</type>
+              <offset>0.2</offset>
+              <terminal>OUT3</terminal>
+              <symbol>-A060-H3</symbol>
+              <comment>STARTUP</comment>
+              <name>STARTUP</name>
+            </output>
+            <output nr="4">
+              <type>DO</type>
+              <offset>0.3</offset>
+              <terminal>OUT4</terminal>
+              <symbol>OUT4</symbol>
+              <comment>OUT4</comment>
+            </output>
+            <ASI_segm></ASI_segm>
+          </ASI_device>
+        </fieldbus_devices>
+      </components>
+      <text>LB12</text>
+      <plc_layer_name>_BHS_HW_ED_Part2</plc_layer_name>
+      <plc_blk_color>-16711936</plc_blk_color>
+    </e_device>
+  </HW_outfit>
+  <SW_outfit />
+  <AO_outfit>
+    <InfoView>
+      <geometry>
+        <rotation_angle>0.524</rotation_angle>
+        <coordinate>
+          <nr>1</nr>
+          <X>-364539.5068</X>
+          <Y>965904.9455</Y>
+          <Z>-6100</Z>
+        </coordinate>
+      </geometry>
+    </InfoView>
+  </AO_outfit>
+  <EXT_outfit>
+    <sGroupCode />
+    <sBBSFunctionKey>SMTSDV01</sBBSFunctionKey>
+    <sBBSFunctionDesignKey>00.021.002.017_SMTSDV01</sBBSFunctionDesignKey>
+  </EXT_outfit>
+</OBJECT>
