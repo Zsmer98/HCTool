@@ -6,7 +6,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 public class STRAIGHT extends Catalog {
     private final static String BELTXMLNAME = "BELT_STRAIGHT.xml";
@@ -30,14 +29,14 @@ public class STRAIGHT extends Catalog {
             String xEnd, String yEnd, String zEnd,
             String length, String width, String speed, String uniqueID, String catalog
     ) {
-        StringUtils.requireNonNull(xStart, yStart, zStart, xEnd, yEnd, zEnd, length, width, uniqueID, catalog);
+        StringUtils.requireNonEmpty(xStart, yStart, zStart, xEnd, yEnd, zEnd, length, width, uniqueID, catalog);
         //设置读取的XML类型
         document = XMLUtils.getDocumentFromPath(Catalog.XMLRESOURCE + "\\" + getCatalogXML(catalog));
         this.fileName = uniqueID + ".xml";
 
         //设置item_name,将文件名称也设置成item_name
         XMLUtils.findNodeAndSet(document, "item_name", uniqueID);
-        XMLUtils.DFSfindAndSet(document, "uniqueID", uniqueID);
+        XMLUtils.BFSfindAndSet(document, "uniqueID", uniqueID);
 
         Node coordinates = XMLUtils.findNode(document, "coordinates");
 

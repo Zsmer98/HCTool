@@ -1,21 +1,14 @@
-import ICSHelper.CatalogEntity.Catalog;
-import ICSHelper.CatalogEntity.STRAIGHT;
-import ICSHelper.ExportCatalogXML;
 import LoadGenerator.Color;
 import LoadGenerator.Load;
 import Utils.CollectionUtils;
 import Utils.ExcelUtils;
 import Utils.XMLUtils;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -274,7 +267,7 @@ public class TestFile {
     @Test
     public void testDFS() {
         Document node = XMLUtils.getDocumentFromPath("C:\\Users\\Zsm\\Desktop\\TRAY_STRAIGHT.xml");
-        XMLUtils.DFSfindAndSet(node, "uniqueID", "newID");
+        XMLUtils.BFSfindAndSet(node, "uniqueID", "newID");
         XMLUtils.exportXML(node,"C:\\Users\\Zsm\\Desktop\\nwe.xml");
     }
 }

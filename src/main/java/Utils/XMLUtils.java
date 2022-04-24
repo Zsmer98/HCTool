@@ -15,10 +15,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
-import java.util.function.Function;
 
 public final class XMLUtils {
     public static Document getDocumentFromPath(String path) {
@@ -37,12 +35,11 @@ public final class XMLUtils {
 
     public static void exportXML(Document document, String path) {
         try {
-            Objects.requireNonNull(path);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");    //字符编码
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");        //是否换行
-            System.out.println(path + " export start");
+            System.out.println(Objects.requireNonNull(path) + " export start");
             transformer.transform(new DOMSource(document), new StreamResult(new File(path)));
         } catch (TransformerException e) {
             e.printStackTrace();
@@ -78,11 +75,19 @@ public final class XMLUtils {
         }
     }
 
+
+    public static void BFSfindAndSet(Node root, String name, String value) {
+        Node node = BFSfindNode(root, name);
+
+        if (node == null) throw new NoSuchElementException();
+        node.getChildNodes().item(0).setNodeValue(value);
+    }
+
     /**
-     * 广度优先搜索节点,与{@link #findNodeAndSet}不同的是findNodeAndSet是深度优先搜索节点并设置值
+     * 广度优先搜索节点,与{@link #findNode}不同的是findNode是深度优先搜索节点
      */
-    public static void DFSfindAndSet(Node root, String name, String value) {
-        Node node = CollectionUtils.DFS(root,
+    public static Node BFSfindNode(Node root, String name) {
+        return CollectionUtils.BFS(root,
                 n -> {
                     List<Node> list = new LinkedList<>();
                     for (int i = 0; i < n.getChildNodes().getLength(); ++i) {
@@ -92,8 +97,5 @@ public final class XMLUtils {
                 },
                 n -> n.getNodeName().equals(name)
         );
-
-        if (node == null) throw new NoSuchElementException();
-        node.getChildNodes().item(0).setNodeValue(value);
     }
 }

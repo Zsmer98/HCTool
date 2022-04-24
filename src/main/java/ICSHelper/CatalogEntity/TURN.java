@@ -18,7 +18,7 @@ public class TURN extends Catalog {
             String xEnd, String yEnd, String zEnd,
             String radius, String angle, String width,  String speed,String uniqueID, String catalog
     ) {
-        StringUtils.requireNonNull(xStart, yStart, zStart, xEnd, yEnd, zEnd, radius, angle, width, uniqueID, catalog);
+        StringUtils.requireNonEmpty(xStart, yStart, zStart, xEnd, yEnd, zEnd, radius, angle, width, uniqueID, catalog);
         //设置读取的XML类型
         document = XMLUtils.getDocumentFromPath(Catalog.XMLRESOURCE + "\\" + getCatalogXML(catalog));
         this.fileName = uniqueID + ".xml";

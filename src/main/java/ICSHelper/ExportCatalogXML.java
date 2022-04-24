@@ -22,7 +22,7 @@ public class ExportCatalogXML {
 
 
     public static void main(String[] args) {
-        try (FileInputStream file = new FileInputStream("C:\\Users\\Zsm\\Desktop\\ICS测试环 allocationmap_V0.4.xlsx")) {
+        try (FileInputStream file = new FileInputStream(".\\src\\Files\\ICS测试环 allocationmap_V0.5.xlsx")) {
             XSSFWorkbook xssfWorkbook = new XSSFWorkbook(file);
 
             foreach(xssfWorkbook.getSheet("LC01").iterator());

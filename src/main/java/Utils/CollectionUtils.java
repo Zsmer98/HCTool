@@ -22,9 +22,9 @@ public final class CollectionUtils {
         }
     }
 
-    public static <T> T DFS(T root,
-                               Function<T, ? extends Collection<T>> getChildNodes,
-                               Predicate<T> predicate) {
+    public static <T> T BFS(T root,
+                            Function<T, ? extends Collection<T>> getChildNodes,
+                            Predicate<T> predicate) {
         Queue<T> queue = new LinkedList<>();
         queue.add(root);
 
