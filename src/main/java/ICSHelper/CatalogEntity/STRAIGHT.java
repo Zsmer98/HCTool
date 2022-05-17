@@ -31,7 +31,7 @@ public class STRAIGHT extends Catalog {
     ) {
         StringUtils.requireNonEmpty(xStart, yStart, zStart, xEnd, yEnd, zEnd, length, width, uniqueID, catalog);
         //设置读取的XML类型
-        document = XMLUtils.getDocumentFromPath(Catalog.XMLRESOURCE + "\\" + getCatalogXML(catalog));
+        document = XMLUtils.getDocumentFromPath(Catalog.XML_RESOURCE_PATH + "\\" + getCatalogXML(catalog));
         this.fileName = uniqueID + ".xml";
 
         //设置item_name,将文件名称也设置成item_name

@@ -3,6 +3,7 @@ package Utils;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.StreamSupport;
 
 public final class CollectionUtils {
     public static <T> List<T> releaseAll(List<?> lists) {
@@ -36,5 +37,9 @@ public final class CollectionUtils {
         }
 
         return root;
+    }
+
+    public static long getIterableSize(Iterable<?> iterable) {
+        return StreamSupport.stream(iterable.spliterator(), false).count();
     }
 }

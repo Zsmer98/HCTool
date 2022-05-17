@@ -8,8 +8,8 @@ import org.w3c.dom.Node;
 import java.util.NoSuchElementException;
 
 public class TURN extends Catalog {
-    private final static String TRAYTURNXMLNAME = "TRAY_TURN.xml";
-    private final static String BELTTURNXMLNAME = "BELT_TURN.xml";
+    private final static String TRAY_TURN_XML = "TRAY_TURN.xml";
+    private final static String BELT_TURN_XML = "BELT_TURN.xml";
     private final Document document;
     private final String fileName;
 
@@ -20,7 +20,7 @@ public class TURN extends Catalog {
     ) {
         StringUtils.requireNonEmpty(xStart, yStart, zStart, xEnd, yEnd, zEnd, radius, angle, width, uniqueID, catalog);
         //设置读取的XML类型
-        document = XMLUtils.getDocumentFromPath(Catalog.XMLRESOURCE + "\\" + getCatalogXML(catalog));
+        document = XMLUtils.getDocumentFromPath(Catalog.XML_RESOURCE_PATH + "\\" + getCatalogXML(catalog));
         this.fileName = uniqueID + ".xml";
 
         //设置item_name,将文件名称也设置成item_name
@@ -59,8 +59,8 @@ public class TURN extends Catalog {
 
     private String getCatalogXML(String catalog) {
         return switch (catalog) {
-            case "BELT_TURN" -> BELTTURNXMLNAME;
-            case "TRAY_TURN" -> TRAYTURNXMLNAME;
+            case "BELT_TURN" -> BELT_TURN_XML;
+            case "TRAY_TURN" -> TRAY_TURN_XML;
             default -> throw new NoSuchElementException(catalog + " didn't found");
         };
     }

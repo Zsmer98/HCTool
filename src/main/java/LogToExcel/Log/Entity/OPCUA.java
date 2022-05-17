@@ -81,6 +81,7 @@ public class OPCUA extends Log implements LogToExcel {
     }
 
     public static void main(String[] args) {
+        String[] pes = {"PE20"};
         String path = "C:\\Users\\Zsm\\Desktop";
         XSSFWorkbook book = new XSSFWorkbook();
 

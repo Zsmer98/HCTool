@@ -6,15 +6,15 @@ import org.w3c.dom.Document;
 import java.util.Objects;
 
 public abstract class Catalog {
-    public static final String XMLRESOURCE = ".\\src\\Files\\XML";
-    public static final String EXPORTPATH = "C:\\test\\data\\test";
+    public static final String XML_RESOURCE_PATH = ".\\src\\Files\\XML";
+    public static final String EXPORT_PATH = "C:\\test\\data\\test";
 
     public abstract Document getDocument();
 
     public abstract String getFileName();
 
     public void export() {
-        XMLUtils.exportXML(getDocument(), EXPORTPATH + "\\" + getFileName());
+        XMLUtils.exportXML(getDocument(), EXPORT_PATH + "\\" + getFileName());
         System.out.println(getFileName() + " export complete");
     }
 

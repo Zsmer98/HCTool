@@ -2,6 +2,8 @@ package Utils;
 
 import LogToExcel.Log.LogText;
 
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public final class LogUtils {
@@ -17,5 +19,12 @@ public final class LogUtils {
         }
 
         return logText;
+    }
+
+    public static String millsToDate(String mills) {
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//将毫秒级long值转换成日期格式
+        GregorianCalendar gc = new GregorianCalendar();
+        gc.setTimeInMillis(Long.parseLong(mills));
+        return dateformat.format(gc.getTime());
     }
 }

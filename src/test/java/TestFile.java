@@ -2,6 +2,7 @@ import LoadGenerator.Color;
 import LoadGenerator.Load;
 import Utils.CollectionUtils;
 import Utils.ExcelUtils;
+import Utils.FileUtils;
 import Utils.XMLUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
@@ -268,6 +269,54 @@ public class TestFile {
     public void testDFS() {
         Document node = XMLUtils.getDocumentFromPath("C:\\Users\\Zsm\\Desktop\\TRAY_STRAIGHT.xml");
         XMLUtils.BFSfindAndSet(node, "uniqueID", "newID");
-        XMLUtils.exportXML(node,"C:\\Users\\Zsm\\Desktop\\nwe.xml");
+        XMLUtils.exportXML(node, "C:\\Users\\Zsm\\Desktop\\nwe.xml");
+    }
+
+    @Test
+    public void testCurrentMills() {
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//将毫秒级long值转换成日期格式
+        GregorianCalendar gc = new GregorianCalendar();
+        long mills = Long.parseLong("1652332520888");
+        gc.setTimeInMillis(mills);
+        String dateStr = dateformat.format(gc.getTime());
+        System.out.println(dateStr);
+    }
+
+    @Test
+    public void testPE() throws FileNotFoundException {
+        FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\opcua-logger.log")
+                .stream()
+                .filter(s -> s.contains("PE"))
+                .map(s -> s.split(",")[0])
+                .map(s -> s.substring(s.indexOf("P")))
+                .collect(Collectors.toSet())
+                .stream()
+                .sorted()
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testSubString() {
+        String s = "2022-05-16 16:48:44.218 [milo-shared-thread-pool-2] INFO  gLogBuffer.fifo651 - PE14";
+        System.out.println(s.substring(s.indexOf("E") + 1));
+    }
+
+    @Test
+    public void printMatrixDemo() {
+        List<String> nodeUnitList = Arrays.asList(
+                "MS01.BC1002", "MS01.BV1004", "MS01.BC1006", "MS01.BC1008", "MS01.BC1010", "MS01.BV1012",
+                "MS01.BC1014", "MS01.BC1016", "MS01.BC1018", "MS01.BV1020", "MS01.BC1022", "MS01.BC1024",
+                "MS01.BC1026", "MS01.BV1028", "MS01.BC1030", "MS01.BC1032", "MS01.BC1034", "MS01.BC1036",
+                "MS01.BC1038", "MS01.BC1039", "MS01.BC1040", "MS01.BC1042", "MS01.BC1044", "MS01.VR1046",
+                "MS01.BC1048", "MS01.DV1050", "MS01.BC1052", "MS01.DV1054", "MS01.BC1056", "MS01.BC1058",
+                "MS01.BV1060", "MS01.BC1062", "MS01.BC1064", "MS01.BV1066", "MS01.BC1068", "MS01.BC1070",
+                "MS01.BV1072", "MS01.BC1074", "MS01.BC1076", "MS01.BV1078", "MS01.BC1080", "MS01.BC1082",
+                "MS01.BV1084", "MS01.BC1086", "MS01.BC1088", "MS01.BV1090", "MS01.BC1092"
+        );
+
+        nodeUnitList
+                .stream()
+                .map(s -> s.split("\\.")[1])
+                .forEach(System.out::println);
     }
 }

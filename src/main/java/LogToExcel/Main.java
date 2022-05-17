@@ -39,11 +39,11 @@ public class Main {
         List<LogToExcel> list = new ArrayList<>();
 
         for (File f : FileUtils.getAllDirectory(path)) {
-            list.add(new Demo3D("PE20", f.getPath()));
-            list.add(new Demo3D("PE21", f.getPath()));
+            //list.add(new Demo3D("PE20", f.getPath()));
+            //list.add(new Demo3D("PE21", f.getPath()));
             list.add(new OPCUA("PE20", f.getPath()));
             list.add(new OPCUA("PE21", f.getPath()));
-            list.add(new Master("StatCSV", f.getPath()));
+            //list.add(new Master("StatCSV", f.getPath()));
 
             new Main().process(list, f.getPath());
             list.clear();

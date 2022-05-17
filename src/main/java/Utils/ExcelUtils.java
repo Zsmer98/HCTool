@@ -1,6 +1,5 @@
 package Utils;
 
-import ICSHelper.CatalogEntity.Catalog;
 import org.apache.poi.ss.usermodel.*;
 
 import java.util.*;
@@ -14,6 +13,15 @@ public class ExcelUtils {
 
     public static Row getRow(Sheet sheet, int row) {
         return (sheet.getRow(row) == null) ? sheet.createRow(row) : sheet.getRow(row);
+    }
+
+    public static Cell getCell(Row row, int cell) {
+        return (row.getCell(cell) == null) ? row.createCell(cell) : row.getCell(cell);
+    }
+
+    public static Cell getCell(Sheet sheet, int row, int cell) {
+        Row row1 = ExcelUtils.getRow(sheet, row);
+        return ExcelUtils.getCell(row1, cell);
     }
 
     /**
@@ -36,17 +44,30 @@ public class ExcelUtils {
      * @param sheet 待查询的sheet
      * @return 行号，从0开始
      */
-    public static int getLastRow(Sheet sheet) {
-        int res = 0;
-        while (sheet.getRow(res) != null) {
-            ++res;
-        }
-        return res;
+    public static long getSheetSize(Sheet sheet) {
+        return CollectionUtils.getIterableSize(sheet);
+    }
+
+    public static long getRowSize(Row row) {
+        return CollectionUtils.getIterableSize(row);
+    }
+
+    public static void setCellValue(Row row, int loc, String value) {
+        Cell cell = ExcelUtils.getCell(row, loc);
+        cell.setCellValue(value);
+    }
+
+    public static void setCellValue(Row row, int loc, String value, int width) {
+        Cell cell = ExcelUtils.getCell(row, loc);
+        cell.setCellValue(value);
+
     }
 
     public static <T> int getIndexWithSpecifiedName(Row row, T name) {
         for (Cell cell : row) {
-            if (Objects.equals(readCell(cell), name)) return cell.getColumnIndex();
+            if (Objects.equals(readCell(cell), name)) {
+                return cell.getColumnIndex();
+            }
         }
         throw new NoSuchElementException();
     }
@@ -56,7 +77,9 @@ public class ExcelUtils {
      */
 
     public static String readCell(Cell cell) {
-        if (cell == null || cell.getCellType() == CellType.BLANK) return "";
+        if (cell == null || cell.getCellType() == CellType.BLANK) {
+            return "";
+        }
         switch (cell.getCellType()) {
             case STRING, FORMULA -> {
                 return cell.getStringCellValue();
