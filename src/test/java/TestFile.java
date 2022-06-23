@@ -17,7 +17,9 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class TestFile {
@@ -40,7 +42,7 @@ public class TestFile {
     @Test
     public void testCUtils() {
         Load l = new Load(2, 1, 1, 1);
-        l.setPNColor();
+        l.resetPNColor();
         System.out.println(l.getColor());
         Load clone = l.clone();
         System.out.println(clone.getColor());
@@ -317,6 +319,51 @@ public class TestFile {
         nodeUnitList
                 .stream()
                 .map(s -> s.split("\\.")[1])
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testInt() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println(new Random().nextInt(2));
+        }
+    }
+
+    @Test
+    public void collectdsi_waybill_no() throws FileNotFoundException {
+        Map<CharSequence, Long> map =
+                FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\低流量测试\\test\\BarcodeSQL.txt")
+                        .stream()
+                        .map(s -> s.subSequence(s.indexOf("PN") + 2, s.indexOf("PN") + 5))
+                        .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(map);
+    }
+
+    @Test
+    public void filter() throws FileNotFoundException {
+        List<String> file = FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\opcua-logger.log")
+                .stream().skip(8238).toList();
+        FileUtils.writeFile("C:\\Users\\Zsm\\Desktop\\test\\newopcua-logger.log", file);
+    }
+
+    @Test
+    public void sout() {
+        String s = "    private Integer id;\n" +
+                "    private String bagTagState;\n" +
+                "    private Timestamp timeAtLastNp;\n" +
+                "    private String lastNp;\n" +
+                "    private String timeStatus;\n" +
+                "    private String trackingStatus;\n" +
+                "    private String currentDestination;\n" +
+                "    private String finalSortDestination;\n" +
+                "    private String flightStatus;\n" +
+                "    private String bsmFlightNumber;\n" +
+                "    private Timestamp flightEtd;\n" +
+                "    private String actualScreeningLevel;\n" +
+                "    private String requiredScreeningLevel;";
+        Arrays.stream(s.split("\n"))
+                .map(v -> v.trim().split(" ")[2].replace(";",""))
+                .map(v ->"<td th:text=\"${item." + v + "}\"></td>")
                 .forEach(System.out::println);
     }
 }

@@ -22,7 +22,7 @@ public class Main {
         LoadFactory factory = new LoadFactory();
         for (int l = 0; l < Main.LINENUMBER; ++l) {
             List<LoadInfo> list = new LinkedList<>();
-            for (int i = 0; i < number; ++i) {
+            for (int i = 0; i < pkgnumber; ++i) {
                 list.add(new LoadInfo(l + 1, String.format("%05d", i + 1), factory.getRandomLoad()));
             }
             lists.add(list);
@@ -81,7 +81,7 @@ public class Main {
             return;
         }
 
-        Main m = new Main(pkgnumber, "C:\\Users\\Zsm\\Desktop");
+        Main m = new Main(pkgnumber, "C:\\Users\\Zsm\\Desktop\\test");
         m.createLoadTXT();
         m.createLoadExcel();
         m.createBarcodeSQL();

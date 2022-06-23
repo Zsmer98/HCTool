@@ -79,19 +79,4 @@ public class OPCUA extends Log implements LogToExcel {
                                 .setCellFormula(startcolumn + atomicrow.get() + "-" + endcolumn + (atomicrow.get() - 1))
                 );
     }
-
-    public static void main(String[] args) {
-        String[] pes = {"PE20"};
-        String path = "C:\\Users\\Zsm\\Desktop";
-        XSSFWorkbook book = new XSSFWorkbook();
-
-        new OPCUA("PE20", path).setText(book, 0, 0);
-        new OPCUA("PE21", path).setText(book, 0, 5);
-
-        try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
-            book.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

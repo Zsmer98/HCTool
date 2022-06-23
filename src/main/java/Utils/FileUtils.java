@@ -1,5 +1,7 @@
 package Utils;
 
+import org.apache.poi.ss.usermodel.Workbook;
+
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -85,6 +87,19 @@ public final class FileUtils {
             System.out.printf("The file located in the %s was created successful\n", newfilename);
         } catch (IOException e) {
             System.out.println("Write failed. Please try again");
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 导出Excel至指定路径
+     */
+    public static void exportExcel(Workbook workbook, String exportPath) {
+        try (FileOutputStream out = new FileOutputStream(exportPath)) {
+            workbook.write(out);
+            System.out.println("Excel文件写入成功");
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

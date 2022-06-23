@@ -45,9 +45,12 @@ public class ICSRedisTest {
 //    }
 
     public static void main(String[] args) {
-        JedisPool pool = new JedisPool("192.168.0.192", 6379);
+        JedisPool pool = new JedisPool("192.168.62.128", 6379);
         Jedis jedis = pool.getResource();
         jedis.auth("test");
-        nodeUnitList.forEach(s -> jedis.hset(s + "_status", Map.of("OldStatus", String.valueOf(1 << 30))));
+        //nodeUnitList.forEach(s -> jedis.hset(s + "_status", Map.of("OldStatus", String.valueOf(1 << 30))));
+
+        String s = "LC01.THL01.TC10";
+        jedis.hset(s + "_status", Map.of("OldStatus", String.valueOf(1 << 1)));
     }
 }

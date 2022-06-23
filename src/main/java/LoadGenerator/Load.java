@@ -36,10 +36,24 @@ public class Load implements Cloneable {
         return probability;
     }
 
-    public void setPNColor() {
+    public void resetPNColor() {
         PN = random.nextLong((long) Math.pow(10,10));
-        color = Color.values()[Math.floorMod(PN, Color.values().length)];
+        setNewColor();
         PN += (color.ordinal() + 191) * ((long) Math.pow(10,10));
+    }
+
+    public void setColor(int loc) {
+        color = Color.values()[loc];
+    }
+
+    /**
+     * 设置指定比例的出口
+     */
+    public void setNewColor() {
+        int random = new Random().nextInt(9);
+        random = random > 5 ? 0 : random;
+
+        color = Color.values()[random];
     }
 
     public Load(double length, double width, double depth, int probability) {
@@ -53,10 +67,12 @@ public class Load implements Cloneable {
     public Load clone() {
         try {
             Load l = (Load) super.clone();
-            l.setPNColor();
+            l.resetPNColor();
             return l;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
     }
+
+
 }

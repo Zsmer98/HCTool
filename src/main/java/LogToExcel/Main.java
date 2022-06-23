@@ -26,11 +26,7 @@ public class Main {
             list.get(i).setText(book,0,  (i % 2) * 5);
         }
 
-        try (FileOutputStream out = new FileOutputStream(path + "\\log.xlsx")) {
-            book.write(out);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.exportExcel(book, path + "\\log.xlsx");
         System.out.println(path + "文件夹下日志处理完成");
     }
 

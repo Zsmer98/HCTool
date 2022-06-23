@@ -1,6 +1,7 @@
 package LogToExcel.Log.Entity;
 
 import Utils.ExcelUtils;
+import Utils.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -52,12 +53,7 @@ public class LoopLineOPCUA {
         new OPCUA("PE02", path, "spring-boot-logger.log").setText(book, 0, 5);
 
         String newname = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒").format(new Date());
-        try (FileOutputStream out = new FileOutputStream(path + "\\" + newname + "log.xlsx")) {
-            book.write(out);
-            System.out.println("Excel文件写入成功");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.exportExcel(book, path + "\\" + newname + "log.xlsx");
 
         File file = new File(path + "\\spring-boot-logger.log");
         if(file.renameTo(new File(path + "\\" + newname + "log.log"))){

@@ -2,11 +2,23 @@ package Utils;
 
 import org.apache.poi.ss.usermodel.*;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 public class ExcelUtils {
+
+    public static void exportExcel(String path, Workbook book) {
+        try (FileOutputStream out = new FileOutputStream(path)) {
+            book.write(out);
+            System.out.printf("The file located in the %s was created successfull\n", path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static Sheet getSheet(Workbook wb, String sheetname) {
         return (wb.getSheet(sheetname) == null) ? wb.createSheet(sheetname) : wb.getSheet(sheetname);
     }
@@ -75,7 +87,6 @@ public class ExcelUtils {
     /**
      * 读取Cell里的值,并将其转化成String类型返回
      */
-
     public static String readCell(Cell cell) {
         if (cell == null || cell.getCellType() == CellType.BLANK) {
             return "";

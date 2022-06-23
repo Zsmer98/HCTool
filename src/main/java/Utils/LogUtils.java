@@ -22,7 +22,7 @@ public final class LogUtils {
     }
 
     public static String millsToDate(String mills) {
-        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//将毫秒级long值转换成日期格式
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");//将毫秒级long值转换成日期格式
         GregorianCalendar gc = new GregorianCalendar();
         gc.setTimeInMillis(Long.parseLong(mills));
         return dateformat.format(gc.getTime());

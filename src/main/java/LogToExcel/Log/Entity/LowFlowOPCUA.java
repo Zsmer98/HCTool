@@ -1,13 +1,15 @@
 package LogToExcel.Log.Entity;
 
+import LogToExcel.Log.Log;
+import LogToExcel.Log.PE;
 import Utils.ExcelUtils;
 import Utils.FileUtils;
 import Utils.LogUtils;
+import org.apache.commons.math3.util.Pair;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,56 +17,93 @@ import java.util.Map;
 public class LowFlowOPCUA {
     private final Row firstRow;
     private int lastHeader;
-    private final Map<String, Row> PEMap = new HashMap<>();
-    private final Map<Row, Integer> lastMsg = new HashMap<>();
+    private final int startHeader;
+
+    private final Map<String, PE> keyPE = new HashMap<>();
+    private final Map<PE, Row> PEMap = new HashMap<>();
+
+    private static final int COLUMNSIZE = 30 * 256;
+    private static final int PEMSG = 1;
 
     public LowFlowOPCUA(Sheet sheet) {
         this.firstRow = sheet.getRow(0);
         this.lastHeader = (int) ExcelUtils.getRowSize(firstRow);
+        this.startHeader = lastHeader;
+        putRowWithKey(sheet);
+    }
+
+    /**
+     * 将每行与PE对应上
+     */
+    public void putRowWithKey(Sheet sheet) {
         for (Row row : sheet) {
-            PEMap.put(ExcelUtils.readCell(row.getCell(1)), row);
-            lastMsg.put(row, lastHeader);
+            PE pe = new PE(ExcelUtils.readCell(row.getCell(PEMSG)));
+            keyPE.put(pe.getName(), pe);
+            PEMap.put(pe, row);
         }
     }
 
-    private void add(String PE, String Cstart, String Cstop) {
-        Row row = PEMap.get(PE);
+    /**
+     * 将每一行的数据读取储存进PE里
+     */
+    private void add(String PEname, String Cstart, String Cstop) {
+        PE pe = keyPE.get(PEname);
+        if (pe != null) pe.add(Cstart, Cstop);
+    }
+
+    /**
+     * 按照PE的顺序导出里面的数据至Excel里
+     */
+    private void exportPE(PE pe) {
+        pe.sort();
+        Row row = PEMap.get(pe);
         if (row == null) return;
-        int loc = lastMsg.get(row);
-        ExcelUtils.setCellValue(row, loc++, Cstart);
-        ExcelUtils.setCellValue(row, loc++, Cstop);
-        if (loc > lastHeader) {
-            increaseHeader();
+
+        int loc = startHeader;
+        Pair<String, String> piror = null;
+        for (Pair<String, String> pair : pe.getList()) {
+            ExcelUtils.setCellValue(row, loc++, LogUtils.millsToDate(pair.getFirst()));
+            ExcelUtils.setCellValue(row, loc++, LogUtils.millsToDate(pair.getSecond()));
+            if (piror != null) {
+                ExcelUtils.setCellValue(row, loc++, String.valueOf(Long.parseLong(pair.getFirst()) - Long.parseLong(piror.getSecond())));
+            } else {
+                loc++;
+            }
+            piror = pair;
+            if (loc > lastHeader) {
+                increaseHeader();
+            }
         }
-        lastMsg.put(row, loc);
     }
 
+    /**
+     * 当当前行的长度大于整张表的最大长度时增加标题
+     */
     private void increaseHeader() {
         ExcelUtils.setCellValue(firstRow, lastHeader++, "Cstart");
-        firstRow.getSheet().setColumnWidth(lastHeader - 1, 20 * 256);
+        firstRow.getSheet().setColumnWidth(lastHeader - 1, COLUMNSIZE);
+
         ExcelUtils.setCellValue(firstRow, lastHeader++, "Cstop");
-        firstRow.getSheet().setColumnWidth(lastHeader - 1, 20 * 256);
+        firstRow.getSheet().setColumnWidth(lastHeader - 1, COLUMNSIZE);
+
+        ExcelUtils.setCellValue(firstRow, lastHeader++, "Gap");
+        firstRow.getSheet().setColumnWidth(lastHeader - 1, COLUMNSIZE);
     }
 
     public static void main(String[] args) throws IOException {
-        XSSFWorkbook book = new XSSFWorkbook("C:\\Users\\Zsm\\Desktop\\random.xlsx");
-        Sheet sheet = book.getSheet("sheet1");
-        LowFlowOPCUA flowOPCUA = new LowFlowOPCUA(sheet);
+        XSSFWorkbook book = new XSSFWorkbook("C:\\Users\\Zsm\\Desktop\\new.xlsx");
+        LowFlowOPCUA flowOPCUA = new LowFlowOPCUA(book.getSheet("sheet1"));
 
         FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\opcua-logger.log")
                 .stream()
                 .filter(s -> s.contains("PE"))
                 .forEach(s -> {
                     String[] strings = s.split(",");
-                    String pe = strings[0].substring(s.indexOf("P"));
-                    flowOPCUA.add(pe, LogUtils.millsToDate(strings[2]), LogUtils.millsToDate(strings[4]));
+                    flowOPCUA.add(strings[0].substring(s.indexOf("P")), strings[2], strings[4]);
                 });
 
-        try (FileOutputStream out = new FileOutputStream("C:\\Users\\Zsm\\Desktop\\random1.xlsx")) {
-            book.write(out);
-            System.out.println("Excel文件写入成功");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        flowOPCUA.PEMap.keySet().forEach(flowOPCUA::exportPE);
+
+        FileUtils.exportExcel(book, "C:\\Users\\Zsm\\Desktop\\random1.xlsx");
     }
 }
