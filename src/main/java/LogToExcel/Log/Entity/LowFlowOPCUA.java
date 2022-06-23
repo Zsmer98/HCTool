@@ -91,7 +91,7 @@ public class LowFlowOPCUA {
     }
 
     public static void main(String[] args) throws IOException {
-        XSSFWorkbook book = new XSSFWorkbook("C:\\Users\\Zsm\\Desktop\\new.xlsx");
+        XSSFWorkbook book = new XSSFWorkbook("Files\\ExcelModel\\LowFlowModel.xlsx");
         LowFlowOPCUA flowOPCUA = new LowFlowOPCUA(book.getSheet("sheet1"));
 
         FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\opcua-logger.log")
