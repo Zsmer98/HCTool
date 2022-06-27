@@ -1,7 +1,5 @@
-package LogToExcel.Log.Entity;
+package LogToExcel.LowFlow;
 
-import LogToExcel.Log.Log;
-import LogToExcel.Log.PE;
 import Utils.ExcelUtils;
 import Utils.FileUtils;
 import Utils.LogUtils;
@@ -11,21 +9,38 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+/**
+ * 仅支持数据导出到单个表格当中，数据量有限
+ */
+@Deprecated
 public class LowFlowOPCUA {
-    private final Row firstRow;
-    private int lastHeader;
-    private final int startHeader;
-
-    private final Map<String, PE> keyPE = new HashMap<>();
-    private final Map<PE, Row> PEMap = new HashMap<>();
-
+    private static XSSFWorkbook SOURCE;
     private static final int COLUMNSIZE = 30 * 256;
     private static final int PEMSG = 1;
 
-    public LowFlowOPCUA(Sheet sheet) {
+    static {
+        try {
+            SOURCE = new XSSFWorkbook("src\\Files\\ExcelModel\\LowFlowModel.xlsx");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Row firstRow;
+    private int lastHeader;
+    private final int startHeader;
+    private int sheetNum = 1;
+
+    private final Map<String, PE> keyPE = new HashMap<>();
+    private final Map<PE, Row> PEMap = new HashMap<>();
+    private final List<Sheet> sheetList = new ArrayList<>();
+
+
+
+    public LowFlowOPCUA() {
+        Sheet sheet = SOURCE.getSheet("source");
         this.firstRow = sheet.getRow(0);
         this.lastHeader = (int) ExcelUtils.getRowSize(firstRow);
         this.startHeader = lastHeader;
@@ -60,18 +75,22 @@ public class LowFlowOPCUA {
         if (row == null) return;
 
         int loc = startHeader;
-        Pair<String, String> piror = null;
+        Pair<String, String> prior = null;
         for (Pair<String, String> pair : pe.getList()) {
             ExcelUtils.setCellValue(row, loc++, LogUtils.millsToDate(pair.getFirst()));
             ExcelUtils.setCellValue(row, loc++, LogUtils.millsToDate(pair.getSecond()));
-            if (piror != null) {
-                ExcelUtils.setCellValue(row, loc++, String.valueOf(Long.parseLong(pair.getFirst()) - Long.parseLong(piror.getSecond())));
+            if (prior != null) {
+                ExcelUtils.setCellValue(row, loc++, String.valueOf(Long.parseLong(pair.getFirst()) - Long.parseLong(prior.getSecond())));
             } else {
                 loc++;
             }
-            piror = pair;
+            prior = pair;
             if (loc > lastHeader) {
                 increaseHeader();
+            }
+            if (lastHeader > 16000) {
+                increaseSheet();
+                loc = startHeader;
             }
         }
     }
@@ -90,10 +109,16 @@ public class LowFlowOPCUA {
         firstRow.getSheet().setColumnWidth(lastHeader - 1, COLUMNSIZE);
     }
 
-    public static void main(String[] args) throws IOException {
-        XSSFWorkbook book = new XSSFWorkbook("src\\Files\\ExcelModel\\LowFlowModel.xlsx");
-        LowFlowOPCUA flowOPCUA = new LowFlowOPCUA(book.getSheet("sheet1"));
+    private void increaseSheet() {
+        SOURCE.cloneSheet(0, "sheet" + sheetNum);
+        firstRow = SOURCE.getSheet("sheet" + sheetNum).getRow(0);
+        ++sheetNum;
+        lastHeader = startHeader;
+    }
 
+    public static void main(String[] args) throws IOException {
+        LowFlowOPCUA flowOPCUA = new LowFlowOPCUA();
+        long t1 = System.nanoTime();
         FileUtils.readFile("C:\\Users\\Zsm\\Desktop\\opcua-logger.log")
                 .stream()
                 .filter(s -> s.contains("PE"))
@@ -104,6 +129,7 @@ public class LowFlowOPCUA {
 
         flowOPCUA.PEMap.keySet().forEach(flowOPCUA::exportPE);
 
-        FileUtils.exportExcel(book, "C:\\Users\\Zsm\\Desktop\\random1.xlsx");
+        FileUtils.exportExcel(SOURCE, "C:\\Users\\Zsm\\Desktop\\random1.xlsx");
+        System.out.println((System.nanoTime() - t1) / 1000000000);
     }
 }

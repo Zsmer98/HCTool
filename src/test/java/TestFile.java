@@ -1,9 +1,11 @@
 import LoadGenerator.Color;
 import LoadGenerator.Load;
+import LogToExcel.LowFlow.LowFlowOPCUA;
 import Utils.CollectionUtils;
 import Utils.ExcelUtils;
 import Utils.FileUtils;
 import Utils.XMLUtils;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 import org.w3c.dom.Document;
@@ -365,5 +367,12 @@ public class TestFile {
                 .map(v -> v.trim().split(" ")[2].replace(";",""))
                 .map(v ->"<td th:text=\"${item." + v + "}\"></td>")
                 .forEach(System.out::println);
+    }
+
+    @Test
+    public void copyExcel() throws IOException {
+        XSSFWorkbook book = new XSSFWorkbook("src\\Files\\ExcelModel\\LowFlowModel.xlsx");
+        book.cloneSheet(0, "newSheet");
+        ExcelUtils.exportExcel("C:\\Users\\Zsm\\Desktop\\copy.excel", book);
     }
 }

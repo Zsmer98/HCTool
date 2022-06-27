@@ -1,4 +1,4 @@
-package LogToExcel.Log;
+package LogToExcel.LowFlow;
 
 import org.apache.commons.math3.util.Pair;
 

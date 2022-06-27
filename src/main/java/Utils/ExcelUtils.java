@@ -50,14 +50,12 @@ public class ExcelUtils {
         return c;
     }
 
-    /**
-     * 返回一个Sheet里最后一行数据的行号
-     *
-     * @param sheet 待查询的sheet
-     * @return 行号，从0开始
-     */
-    public static long getSheetSize(Sheet sheet) {
-        return CollectionUtils.getIterableSize(sheet);
+    public static long getMaxColumn(Sheet sheet) {
+        long maxHeader = 0;
+        for (Row row : sheet) {
+            maxHeader = Math.max(maxHeader, ExcelUtils.getRowSize(row));
+        }
+        return maxHeader;
     }
 
     public static long getRowSize(Row row) {
@@ -86,6 +84,7 @@ public class ExcelUtils {
 
     /**
      * 读取Cell里的值,并将其转化成String类型返回
+     * cell为null或cell是空值时会返回长度为0的字符串
      */
     public static String readCell(Cell cell) {
         if (cell == null || cell.getCellType() == CellType.BLANK) {
