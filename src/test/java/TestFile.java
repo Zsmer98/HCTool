@@ -201,10 +201,8 @@ public class TestFile {
     }
 
     @Test
-    public void TestCollectionutils() {
-        String s = "abc";
-        s.chars().forEach(System.out::println);
-        System.out.println(97 == 'a');
+    public void TestCollectionutils() throws InterruptedException {
+
     }
 
     @Test

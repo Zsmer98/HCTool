@@ -1,10 +1,8 @@
 package LogToExcel.LowFlow;
 
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
+/**
+ * 支持大批量数据处理，超过Excel列数限制后自动切换到下一个表格
+ */
 public class Main {
     public static final String EXCEL_MODEL_PATH = "src\\Files\\ExcelModel\\LowFlowModel.xlsx";
     private static final String DATA_PATH = "C:\\Users\\Zsm\\Desktop\\opcua-logger.log";
@@ -18,6 +16,5 @@ public class Main {
         export.exportExcel(EXPORT_PATH);
 
         System.out.println((System.nanoTime() - t1) / 1000000000);
-
     }
 }

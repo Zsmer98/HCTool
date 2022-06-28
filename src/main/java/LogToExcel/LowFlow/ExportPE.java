@@ -12,12 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ExportPE {
-    private static XSSFWorkbook BOOK;
-    private static final Map<String, Integer> PE_LOC_MAP = new HashMap<>();
-    private static final int start;
-    private static final int COLUMNSIZE = 30 * 256;
+    private XSSFWorkbook BOOK;
+    private final Map<String, Integer> PE_LOC_MAP = new HashMap<>();
+    private final int start;
 
-    static {
+    public ExportPE() {
         try {
             BOOK = new XSSFWorkbook(Main.EXCEL_MODEL_PATH);
             BOOK.getSheet("source").iterator().forEachRemaining(
@@ -34,8 +33,7 @@ public class ExportPE {
 
         System.out.println(pe.name + " start");
         int sheetNum = 1, rowNum = PE_LOC_MAP.get(pe.name), loc = start;
-        Row peRow = getSheet(sheetNum).getRow(rowNum), firstRow = getSheet(sheetNum).getRow(0);
-        int headerSize = (int) ExcelUtils.getRowSize(firstRow);
+        Row peRow = getSheet(sheetNum).getRow(rowNum);
         Pair<String, String> piror = null;
 
         for (Pair<String, String> pair : pe.getList()) {
@@ -46,25 +44,13 @@ public class ExportPE {
             }
             loc++;
             piror = pair;
-            if (loc > headerSize) {
-                ExcelUtils.setCellValue(firstRow, headerSize++, "Cstart");
-                firstRow.getSheet().setColumnWidth(headerSize - 1, COLUMNSIZE);
-
-                ExcelUtils.setCellValue(firstRow, headerSize++, "Cstart");
-                firstRow.getSheet().setColumnWidth(headerSize - 1, COLUMNSIZE);
-
-                ExcelUtils.setCellValue(firstRow, headerSize++, "Gap");
-                firstRow.getSheet().setColumnWidth(headerSize - 1, 10 * 256);
-            }
 
             if (loc > 16000) {
                 peRow = getSheet(++sheetNum).getRow(rowNum);
                 loc = start;
-                firstRow = getSheet(sheetNum).getRow(0);
-                headerSize = (int) ExcelUtils.getRowSize(firstRow);
             }
         }
-        System.out.println(pe.name);
+        System.out.println(pe.name + " end");
     }
 
     private Sheet getSheet(int num) {
@@ -73,7 +59,22 @@ public class ExportPE {
         return BOOK.cloneSheet(0, "Data" + num);
     }
 
+    private void increaseTitle() {
+        BOOK.sheetIterator().forEachRemaining(sheet -> {
+            Row row = sheet.getRow(0);
+            String[] titles = {"Cstart", "Cstop", "Gap"};
+            int maxColumn = (int) ExcelUtils.getMaxColumn(sheet);
+            int loc = start;
+
+            while (loc < maxColumn) {
+                ExcelUtils.setCellValue(row, loc, titles[(loc - start) % 3]);
+                sheet.setColumnWidth(loc++, (loc - start) % 3 == 0 ? 10 * 256 : 30 * 256);
+            }
+        });
+    }
+
     public void exportExcel(String path) {
+        increaseTitle();
         ExcelUtils.exportExcel(path, BOOK);
     }
 }

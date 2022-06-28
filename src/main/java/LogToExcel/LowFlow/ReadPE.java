@@ -11,17 +11,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class ReadPE {
-    private static Sheet SOURCE;
+    private Sheet SOURCE;
     private static final int PE_LOC = 1;
-
-    static {
-        try {
-            SOURCE = new XSSFWorkbook(Main.EXCEL_MODEL_PATH).getSheet("source");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public final Map<String, PE> peMap = new HashMap<>();
 
     public void setPeMap() {
@@ -48,10 +39,11 @@ public class ReadPE {
     }
 
     public ReadPE(String datapath) {
-        setPeMap();
         try {
+            SOURCE = new XSSFWorkbook(Main.EXCEL_MODEL_PATH).getSheet("source");
+            setPeMap();
             readData(datapath);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -35,9 +35,6 @@ public class LowFlowOPCUA {
 
     private final Map<String, PE> keyPE = new HashMap<>();
     private final Map<PE, Row> PEMap = new HashMap<>();
-    private final List<Sheet> sheetList = new ArrayList<>();
-
-
 
     public LowFlowOPCUA() {
         Sheet sheet = SOURCE.getSheet("source");
@@ -75,6 +72,7 @@ public class LowFlowOPCUA {
         if (row == null) return;
 
         int loc = startHeader;
+        System.out.println(pe.name);
         Pair<String, String> prior = null;
         for (Pair<String, String> pair : pe.getList()) {
             ExcelUtils.setCellValue(row, loc++, LogUtils.millsToDate(pair.getFirst()));
